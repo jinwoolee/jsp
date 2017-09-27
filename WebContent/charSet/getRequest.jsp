@@ -27,7 +27,7 @@ function getUrl(encode){
 <body>
 
 <!--
-tomcat8 부터는 한글 파라미터를 사용할경우 에러가 발생 -> encode uri 과정을 반드시 거쳐야 한다.
+tomcat8 부터는 한글 query string을 사용할 경우 에러가 발생 -> encode uri 과정을 반드시 거쳐야 한다.
 tomcat6의 경우 한글이 깨지지만 에러는 발생하지 않음.
 
 tomcat8의 경우 encodeURIComponent 를 사용하면 별도 설정은 필요 없음

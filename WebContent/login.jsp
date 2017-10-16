@@ -10,8 +10,7 @@
 <%@include file="/commonJsp/bootstrap.jsp"%>	<%--정적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
 <%--<jsp:include page="/jsp/common/uppermenu.jsp" flush="true"/> --%> <%--동적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
 <!-- css -->
-
-<link href="css/signin.css" rel="stylesheet">    
+<link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">

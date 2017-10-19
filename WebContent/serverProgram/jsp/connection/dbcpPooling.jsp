@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page import="org.apache.commons.dbcp.DriverManagerConnectionFactory" %>
+<%@ page import="org.apache.commons.dbcp.ConnectionFactory" %>
+<%@ page import="org.apache.commons.dbcp.PoolableConnectionFactory" %>
+
 <%@ page import="org.apache.commons.dbcp.BasicDataSource" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.SQLException" %>

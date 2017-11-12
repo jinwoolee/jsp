@@ -7,7 +7,8 @@
 <font color="${map.color}">
 <%
 	java.util.Map map = (java.util.Map)jspContext.getAttribute("map");
-	int lineSize = Integer.parseInt((String)map.getOrDefault("lineSize", "10"));
+	//int lineSize = Integer.parseInt((String)map.getOrDefault("lineSize", "10"));
+	int lineSize = Integer.parseInt((String)map.get("lineSize"));
 	
 for(int i=0; i < lineSize; i++)
 	out.print("=");

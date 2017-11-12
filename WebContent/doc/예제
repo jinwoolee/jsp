@@ -1,0 +1,11 @@
+[servlet]
+1.servlet life cycle 예제
+init, service(doXX), destory 로깅을 통해 순서 확인
+servlet 수정을 통해 destory 로깅  확인
+
+2.servlet context parameter, servlet init parameter 예제
+
+[servlet - 실습]
+input을 통핸 form 전송
+
+[jsp]

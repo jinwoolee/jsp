@@ -19,18 +19,18 @@
 </head>
 <body>
 	<h4>Factorial 구하기</h4>
-	<table>   
-		<tr>      
-			<th>5!</th>               
-			<td><%= factorial(5)%></td>        
-		</tr>    
-		<tr>             
-			<th>6!</th>               
-			<td><%= factorial(6)%></td>        
-		</tr>   
-		<tr>             
-			<th>7!</th>               
-			<td><%= factorial(7) %></td>        
+	<table>
+		<tr>
+			<th>5!</th>
+			<td><%= factorial(5)%></td>
+		</tr>
+		<tr>
+			<th>6!</th>
+			<td><%= factorial(6)%></td>
+		</tr>
+		<tr>
+			<th>7!</th>
+			<td><%= factorial(7) %></td>
 		</tr>
 	</table>
 </body>

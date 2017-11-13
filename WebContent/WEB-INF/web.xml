@@ -24,7 +24,7 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping> -->
   
-  <filter>
+  <!-- <filter>
     <filter-name>requestCounterFilter</filter-name>
     <filter-class>filters.RequestCountFilter</filter-class>
   </filter>
@@ -39,7 +39,8 @@
   <filter-mapping>
     <filter-name>SetBasicParameterFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
+  
   <error-page>
     <error-code>404</error-code>
     <location>/error/404/404.html</location>

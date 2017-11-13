@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  %>
 <%@ page import="java.util.Enumeration,java.util.Map,java.util.Set,java.util.Iterator"%>
 <%
-System.out.println(request.getCharacterEncoding());
-System.out.println( request.getParameter("userId"));
-String userId = request.getParameter("userId");
-
 request.setCharacterEncoding("utf-8");
-System.out.println(request.getCharacterEncoding());
-System.out.println( request.getParameter("userId"));
 %>
 
 <!-- pageEncoding : jsp 파일 작성에 대한 인코딩 -->

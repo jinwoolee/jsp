@@ -33,9 +33,13 @@ public class RequestCountFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
 		//int count = counterMap.getOrDefault(req.getRequestURI(), 0);
-		int count = counterMap.get(req.getRequestURI());
+		String uri = req.getRequestURI();
 		
-		counterMap.put(req.getRequestURI(), ++count);
+		if(uri != null) {
+			int count = counterMap.get(uri);
+			counterMap.put(req.getRequestURI(), ++count);
+		}
+		
 		
 		chain.doFilter(request, response);
 	}

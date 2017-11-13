@@ -1,14 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  %>
-<%@ page import="java.util.Enumeration,java.util.Map,java.util.Set,java.util.Iterator"%>
-<%
-System.out.println(request.getCharacterEncoding());
-System.out.println( request.getParameter("userId"));
-String userId = request.getParameter("userId");
-
-request.setCharacterEncoding("utf-8");
-System.out.println(request.getCharacterEncoding());
-System.out.println( request.getParameter("userId"));
-%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="java.util.Enumeration,java.util.Map,java.util.Set,java.util.Iterator"%>
 
 <!-- pageEncoding : jsp 파일 작성에 대한 인코딩 -->
 <!-- charset : jsp 파일 출력시의 인코딩 / contentType 헤더 설정값 -->
@@ -22,14 +13,13 @@ System.out.println( request.getParameter("userId"));
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--  <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">-->
+<meta charset="utf-8"> 
 <title>Insert title here</title>
 
 </head>
 <body>
 <!-- web.xml 의 setCharacterEncodingFilter 활성화 -->
-
 
 userId : <%= request.getParameter("userId") %> <br/>
 password : <%= request.getParameter("password") %> <br/>

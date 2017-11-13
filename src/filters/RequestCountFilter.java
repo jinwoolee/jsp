@@ -36,8 +36,10 @@ public class RequestCountFilter implements Filter {
 		String uri = req.getRequestURI();
 		
 		if(uri != null) {
-			int count = counterMap.get(uri);
-			counterMap.put(req.getRequestURI(), ++count);
+			Integer count = counterMap.get(uri);
+			int cnt = count == null ? 0 : count.intValue();
+			System.out.println("count : " + cnt);
+			counterMap.put(req.getRequestURI(), ++cnt);
 		}
 		
 		

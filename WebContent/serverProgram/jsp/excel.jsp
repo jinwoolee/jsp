@@ -5,8 +5,9 @@ response.setHeader("Cache-Control", "no-cache");	//http 1.1 , 브라우저에게
 response.addHeader("Cache-Control", "no-store");	//파이어 폭스 no-cache bug
 response.setDateHeader("Expires", 1L);				//만료일자 설정
 
-response.setHeader("Content-Disposition", "attachment; filename=diary.xlsx"); 
-response.setHeader("Content-Description", "JSP Generated Data"); 
+response.setHeader("Content-Disposition", "attachment; filename=excel.xls");
+response.setHeader("Content-Description", "JSP Generated Data");
+response.setContentType("application/vnd.ms-excel");  
 %>
 <!DOCTYPE html>
 <html>

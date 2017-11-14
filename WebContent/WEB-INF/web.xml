@@ -10,7 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>hello.jsp</welcome-file>
   </welcome-file-list>
-
+	
+	<context-param>
+		<param-name>adminUser</param-name>
+		<param-value>15101001</param-value>
+	</context-param>
+	
 <!--   <filter>
     <filter-name>Set Character Encoding</filter-name>
     <filter-class>filters.SetCharacterEncodingFilter</filter-class>

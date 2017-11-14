@@ -1,3 +1,4 @@
+<%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="java.util.Enumeration,java.util.Map,java.util.Set,java.util.Iterator"%>
 
@@ -20,6 +21,12 @@
 </head>
 <body>
 <!-- web.xml 의 setCharacterEncodingFilter 활성화 -->
+
+<%
+
+
+%>
+
 
 userId : <%= request.getParameter("userId") %> <br/>
 password : <%= request.getParameter("password") %> <br/>
@@ -50,13 +57,12 @@ request.getParameterMap()
 <br/>
 
 <h4>request header</h4>
-request.getHeader("Accept") : <%= request.getHeader("Accept") %> <br/>
-request.getHeaderNames() : 
+request.getHeaderNames() : <br/> 
 <% Enumeration enumerationHeaders = request.getHeaderNames();
-	while(enumerationHeaders.hasMoreElements()){ %>
-		<%= (String)enumerationHeaders.nextElement()%> /
+	while(enumerationHeaders.hasMoreElements()){
+		String headerName= (String)enumerationHeaders.nextElement();
+		out.println(headerName + " : " + request.getHeader(headerName) + "<br/>");
+	%>
 <%}%>
-
-
 </body>
 </html>

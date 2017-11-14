@@ -3,12 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function validate(){
+	var userId1_desc = document.getElementById("userId1Desc");
+	var userId2_desc = document.getElementById("userId2Desc");
+	var password_desc = document.getElementById("passwordDesc");
+	userId1_desc.innerHTML = "";
+	userId2_desc.innerHTML = "";
+	password_desc.innerHTML = "";
+	
+	var userId_1 = document.getElementsByName("userId")[0];
+	var userId_2 = document.getElementsByName("userId")[1];
+	var password = document.getElementsByName("password")[0]; 
+	
+	if(userId_1.value.length <= 4){
+		userId1_desc.innerHTML = "사용자 아이디 1은  5글자 이상입니다.";
+		userId_1.focus();
+		return false;
+	}	
+	if(userId_2.value.length <= 4){
+		userId2_desc.innerHTML = "사용자 아이디 2는  5글자 이상입니다.";
+		userId_2.focus();
+		return false;
+	}
+	if(password.value.length <= 6){
+		password_desc.innerHTML = "비밀번호는 7글자 이상입니다.";
+		password.focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
-<form method="get" action="/serverProgram/jsp/requestReceive.html">
-	user id : <input type="text" name="userId"/> <br/>
-	user id : <input type="text" name="userId"/> <br/>
-	password : <input type="password" name="password"/> <br/>
+<form method="get" action="/serverProgram/jsp/requestReceive.html" onsubmit="javascript : return validate();")>
+	user id : <input type="text" name="userId"/> <span id="userId1Desc"> </span><br/>
+	user id : <input type="text" name="userId"/> <span id="userId2Desc"> </span><br/>
+	password : <input type="password" name="password"/> <span id="passwordDesc"> </span><br/>
 	<input type="submit" value="전송"/>
 </form>
 </body>

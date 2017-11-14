@@ -23,8 +23,7 @@ private int loopFactorial(int num){
 			tmp = i * tmp;
 				
 		result = tmp;
-	}
-	
+	}	
 	return result;
 }
 	
@@ -39,27 +38,12 @@ private int loopFactorial(int num){
 <body>
 	<h4>Factorial 구하기</h4>
 	<table>
-		<tr>
-			<th>5!</th>
-			<td><%= factorial(5)%> / <%=loopFactorial(5) %></td>
-		</tr>
-		<tr>
-			<th>6!</th>
-			<td><%= factorial(6)%> / <%=loopFactorial(6)%> </td>
-		</tr>
-		<tr>
-			<th>7!</th>
-			<td><%= factorial(7)%> / <%=loopFactorial(7)%></td>
-		</tr>
-		<tr>
-			<th>8!</th>
-			<td><%= factorial(8)%> / <%=loopFactorial(8)%></td>
-		</tr>
-		<tr>
-			<th>9!</th>
-			<% int factorial = 9; %>
-			<td><%= factorial(factorial)%> / <%=loopFactorial(factorial)%></td>
-		</tr>
+		<% for(int i=1; i <= 8; i++){ %>
+			<tr>
+				<th><%= "factorial : " + i + "! : "%></th>
+				<td><%=loopFactorial(i) %></td>
+			</tr>
+			<%} %>
 	</table>
 </body>
 </html>

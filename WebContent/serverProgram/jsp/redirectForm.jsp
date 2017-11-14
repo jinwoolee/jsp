@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/serverProgram/jsp/dispatch.jsp">
+<form method="post" action="/serverProgram/jsp/redirect.jsp">
 	클래스 : <input type="text" name="class" value="webApplcation"/>
 	<input type="submit" value="submit"/>
 </form>

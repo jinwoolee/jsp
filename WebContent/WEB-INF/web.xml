@@ -69,4 +69,13 @@
     <servlet-name>ServletLifeCycle</servlet-name>
     <url-pattern>/ServletLifeCycle</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>basicServlet</servlet-name>
+  	<servlet-class>servlet.BasicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>basicServlet</servlet-name>
+  	<url-pattern>/basicServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

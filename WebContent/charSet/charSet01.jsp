@@ -1,4 +1,4 @@
-<!-- utf-8 인코딩 파일을 euc-kr로 디코딩  -->
+<!-- euc-kr 인코딩 파일을 euc-kr로 디코딩  -->
 <%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr" %>
 <!DOCTYPE html >
 <html>

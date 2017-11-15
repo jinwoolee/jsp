@@ -83,4 +83,19 @@
   	<servlet-name>basicServlet</servlet-name>
   	<url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>FrontController</display-name>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>mvc.web.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+    <listener-class>listener.SessionListener</listener-class>
+  </listener>
 </web-app>

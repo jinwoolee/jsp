@@ -24,16 +24,15 @@ scope : 지정한 locale이 영향을 미치는 범위 (default : page)
 
 <%--
 bundle, message
-<fmt:bundle basename="kr.or.ddit.msgs.message" prefix="webBiz.">
+<fmt:bundle basename="message" prefix="webBiz.">
      <fmt:message key="title">
             <fmt:param value="메시지 아규먼트값"/>
      </fmt:message>
 </fmt:bundle>
 --%>
 
-  
 <fmt:bundle basename="resource.message">
-	<fmt:message key="GREETING"/> </br>
+	<fmt:message key="GREETING"/> </br> 
 	<fmt:message key="VISITOR"> </br>
 		<fmt:param value="${userId}"/>
 	</fmt:message>

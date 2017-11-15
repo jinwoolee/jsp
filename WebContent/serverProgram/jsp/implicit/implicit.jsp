@@ -33,6 +33,11 @@
 	out.println("=====application======<br/>");
 	out.println("application.getContextPath() : " + application.getContextPath() + "<br/");
 	
+	//config
+	out.println("=====config======<br/>");
+	out.println("config.getInitParameter(\"adminUser\") : " + config.getInitParameter("adminUser") + "<br/");
+	
+	
 	//application 속성 설정후 implicitApplication.jsp페이지를 통해 속성값을 조회할수 있는지 확인하자
 	application.setAttribute("applicationAttribute_userId", request.getParameter("userId") +"<br/>");
 	out.println("<br/>");
@@ -46,6 +51,7 @@
 	out.println("session.equals(pageContext.getSession()) : " + session.equals(pageContext.getSession()) +"<br/>");
 	out.println("request.getSession().equals(pageContext.getSession()) : " + request.getSession().equals(pageContext.getSession()) +"<br/>");
 	out.println("out.equals(pageContext.getOut()) : " + out.equals(pageContext.getOut()) +"<br/>");
+	
 	
 	/*pageContext.getServletContext();		//application
 	pageContext.getServletConfig();			//config

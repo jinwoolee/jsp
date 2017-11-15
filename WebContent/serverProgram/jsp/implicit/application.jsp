@@ -19,8 +19,7 @@
     while(enumeration.hasMoreElements()){
     		String initParamName = (String)enumeration.nextElement();
     		out.println(initParamName + " : " +  application.getInitParameter(initParamName) + "<br/>");
-    }
-    
+    }  
 %>
 </body>
 </html>

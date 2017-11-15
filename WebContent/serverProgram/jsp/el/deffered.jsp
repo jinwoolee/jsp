@@ -18,6 +18,7 @@
 		now.set(2000, 10, 2);
 	%>
 	EL : ${elNow } , 값을 설정한 시점에 값
-	<br /> DeferredEL : ${deferredELNow }, 값을 표현하는 시점의 값 
+	<br /> DeferredEL : ${deferredELNow }, 값을 표현하는 시점의 값
+	  
 </body>
 </html>

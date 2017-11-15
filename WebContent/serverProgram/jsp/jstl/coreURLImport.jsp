@@ -18,11 +18,13 @@ import
 ${daum } 
  --%>
  
-coreURL.jsp<br/>
+coreURL.jsp<br/><br/>
 <c:import url="coreURL_target.jsp">
 	<c:param name="userId" value="userId"/>
 </c:import>
-coreURL.jsp<br/>
+<br/>
+<br/>
+coreURL.jsp
 
 </body>
 </html>

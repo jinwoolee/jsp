@@ -8,11 +8,12 @@
 <%@ page import="java.sql.SQLException" %>
 <%
 	final	String	driver		=	"oracle.jdbc.driver.OracleDriver";
-	final	String	url			=	"jdbc:oracle:thin:@dev.osstem.com:1521:DEV1";
-	final	String	user		=	"common";
-	final	String	pass		=	"oracle";
+	final	String	url			=	"jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+	final	String	user		=	"pc01";
+	final	String	pass		=	"java";
 	final	int		LOOP_COUNT	=	10;
 	final	int		POOL_SIZE	=	5;
+
 
 	long start = 0L;
 	long end = 0L;

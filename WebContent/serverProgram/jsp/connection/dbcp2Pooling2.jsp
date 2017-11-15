@@ -17,7 +17,6 @@
 	final	int		LOOP_COUNT	=	10;
 	final	int		POOL_SIZE	=	5;
 
-	PoolingDataSource<PoolableConnection> dataSource = null;
 	BasicDataSource bds = null;
 	
 	long start = 0L;
@@ -28,11 +27,12 @@
 		Class.forName(driver);
 		
 		//신규 conn
-		ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(url, user, pass);
-		PoolableConnectionFactory poolableConnectionFactory = new PoolableConnectionFactory(connectionFactory, null);
-		GenericObjectPool<PoolableConnection> connectionPool =  new GenericObjectPool<PoolableConnection>(poolableConnectionFactory);
-		dataSource  =  new PoolingDataSource<PoolableConnection>(connectionPool);
-		poolableConnectionFactory.setPool(connectionPool);
+		bds = new BasicDataSource();
+		bds.setUrl(url);
+		bds.setDriverClassName(driver);
+		bds.setUsername(user);
+		bds.setPassword(pass);
+		bds.setInitialSize(10);
 		
 	}
 	catch(ClassNotFoundException e){
@@ -43,9 +43,8 @@
 	try{
 		for(int i = 0; i < LOOP_COUNT; i++){
 			System.out.println(i);
-			Connection conn = dataSource.getConnection();
+			Connection conn = bds.getConnection();
 			conn.close();
-			//Connection conn = bds.getConnection();
 			
 		}
 	}catch(SQLException e){
@@ -63,6 +62,6 @@
 	out.println("basic datasource close duration : " + (end-start) + "ms" + "<br/>");
 	out.println("basic datasource close duration : " + (end-start)/1000 + "s" + "<br/>");
 	
-	dataSource.close();
-	//bds.close();
+
+	bds.close();
 %>

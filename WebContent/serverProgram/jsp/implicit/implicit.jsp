@@ -11,7 +11,7 @@
 	
 	//response 객체
 	out.println("=====response======+<br/>");
-	response.setHeader("contentType", "text/html; charset=UTF-8");		//page directive 주석처리후 비교
+	response.setHeader("content-Type", "text/html; charset=UTF-8");		//page directive 주석처리후 비교
 	out.println("<br/>");
 	
 	//session 객체

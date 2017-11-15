@@ -34,6 +34,7 @@
 		dataSource  =  new PoolingDataSource<PoolableConnection>(connectionPool);
 		poolableConnectionFactory.setPool(connectionPool);
 		
+		
 	}
 	catch(ClassNotFoundException e){
 		throw new RuntimeException("fail jdbc driver load", e);

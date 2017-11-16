@@ -34,6 +34,7 @@
 		bds.setPassword(pass);
 		bds.setInitialSize(10);
 		
+		
 	}
 	catch(ClassNotFoundException e){
 		throw new RuntimeException("fail jdbc driver load", e);

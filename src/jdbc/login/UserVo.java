@@ -1,23 +1,27 @@
 package jdbc.login;
 
 public class UserVo {
-	private	String	usereId;
+	private	String	userId;
 	private	String	userNm;
 	private	String	pass;
 	private	String	reg_dt;
 	
 	
-	public UserVo(String usereId, String userNm, String pass, String reg_dt) {
-		this.usereId = usereId;
+	public UserVo() {
+		
+	}
+	
+	public UserVo(String userId, String userNm, String pass, String reg_dt) {
+		this.userId = userId;
 		this.userNm = userNm;
 		this.pass = pass;
 		this.reg_dt = reg_dt;
 	}
-	public String getUsereId() {
-		return usereId;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUsereId(String usereId) {
-		this.usereId = usereId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getUserNm() {
 		return userNm;
@@ -39,6 +43,6 @@ public class UserVo {
 	}
 	@Override
 	public String toString() {
-		return "UserVo [usereId=" + usereId + ", userNm=" + userNm + ", pass=" + pass + ", reg_dt=" + reg_dt + "]";
+		return "UserVo [userId=" + userId + ", userNm=" + userNm + ", pass=" + pass + ", reg_dt=" + reg_dt + "]";
 	}
 }

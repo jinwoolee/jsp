@@ -6,6 +6,7 @@
 
 	<typeAliases>
 		<typeAlias alias="boardVo" type="member.model.MemberVo"/>
+		<typeAlias alias="UserVo" type="jdbc.login.UserVo"/>
 	</typeAliases>
 	
     <environments default="development">
@@ -24,6 +25,7 @@
 	
 	<mappers>
 		<mapper resource="mybatis/mapper/member.xml" />
+		<mapper resource="mybatis/mapper/user.xml" />
 	</mappers>
 	
 </configuration>

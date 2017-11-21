@@ -118,7 +118,7 @@ cookie jsession id : ${cookie.JSESSIONID}
 	<caption>list-표현식(jstl)</caption>
 	<c:forEach items="${boardList}" var="vo"> 
 	 <tr>
-	 	<td>${vo.seq}</td>`
+	 	<td>${vo.seq}</td>
 	 	<td>${vo.title}</td>
 	 	<td>${vo.reg_id}</td>
 	 	<td>${vo.reg_dt}</td>

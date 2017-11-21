@@ -1,8 +1,8 @@
-<%@page import="user.dao.UserDaoMyBatisImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.io.Reader, java.io.FileNotFoundException, java.io.IOException, java.sql.SQLException, java.util.List" %>
 <%@ page import="user.model.UserVo" %>
-<%@ page import="user.dao.*" %>
+<%@ page import="org.apache.ibatis.io.Resources, org.apache.ibatis.session.SqlSessionFactory, org.apache.ibatis.session.SqlSessionFactoryBuilder" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
 
 
 <% 
@@ -20,11 +20,29 @@ response.setDateHeader("Expires", 1L);				//만료일자 설정
 <body>
 <%
 
-	UserDao userDao = new UserDaoMyBatisImpl();	
-	List<UserVo> userList = userDao.getUserList();
+	SqlSessionFactory sqlSessionFactory = null; 
+	try {
+		String resource = "mybatis/mybatis-config.xml";
+		Reader reader = Resources.getResourceAsReader(resource);
+		if (sqlSessionFactory == null) {
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+		}
+	} catch (FileNotFoundException fileNotFoundException) {
+		fileNotFoundException.printStackTrace();
+	} catch (IOException iOException) {
+		iOException.printStackTrace();
+	}
+
+	SqlSession sqlSession = sqlSessionFactory.openSession();
+	
+	
+	List<UserVo> userList = sqlSession.selectList("getUserList");
 	
 	for(UserVo vo : userList)
 		out.print(vo.getUserId() + " / " + vo.getUserNm() + " / " + vo.getPass() + "<br/>");
+	
+	sqlSession.close();
+
 %>
 
 </body>

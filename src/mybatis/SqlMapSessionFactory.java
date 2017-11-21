@@ -1,6 +1,6 @@
 package mybatis;
 
-import java.io.FileNotFoundException; 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -27,4 +27,5 @@ public class SqlMapSessionFactory {
 	public static SqlSessionFactory getSqlSessionFactory() {
 		return sqlSessionFactory;
 	}
+	
 }

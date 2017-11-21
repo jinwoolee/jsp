@@ -2,16 +2,23 @@
 <!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 
 <sqlMapConfig>
-   <settings useStatementNamespaces="true"/>
-	
-   <transactionManager type="JDBC">
-      <dataSource type="SIMPLE">		
-         <property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/>
-         <property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
-         <property name="JDBC.Username" value="pc01"/>
-         <property name="JDBC.Password" value="java"/>
-      </dataSource>
-   </transactionManager>
-	
-   <sqlMap resource="/ibatis/user.xml"/> 
+	<properties resource="/ibatis/db.properties" />
+	<settings useStatementNamespaces="true" />
+
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+
+			<property name="JDBC.Driver" value="${jdbc.driver}" />
+			<property name="JDBC.ConnectionURL" value="${jdbc.url}" />
+			<property name="JDBC.Username" value="${jdbc.username}" />
+			<property name="JDBC.Password" value="${jdbc.password}" />
+
+			<!-- <property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/> 
+				<property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/> 
+				<property name="JDBC.Username" value="pc01"/> <property name="JDBC.Password" 
+				value="java"/> -->
+		</dataSource>
+	</transactionManager>
+
+	<sqlMap resource="/ibatis/user.xml" />
 </sqlMapConfig>

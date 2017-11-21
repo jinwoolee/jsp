@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.io.Reader, java.io.IOException, java.sql.SQLException, java.util.List" %>
-<%@ page import="user.model.UserVo" %>
+<%@ page import="user.model.UserVo, user.dao.*" %>
 <%@ page import="com.ibatis.common.resources.Resources, com.ibatis.sqlmap.client.SqlMapClient, com.ibatis.sqlmap.client.SqlMapClientBuilder" %>
 
 <% 
@@ -17,21 +17,12 @@ response.setDateHeader("Expires", 1L);				//만료일자 설정
 </head>
 <body>
 <%
-	try{
-		Reader rd = Resources.getResourceAsReader("/ibatis/sqlMapConfig.xml");
-		SqlMapClient smc = SqlMapClientBuilder.buildSqlMapClient(rd);
+	UserDao userDao = new UserDaoImpl();			
+	List<UserVo> userList = userDao.getUserList();
+	
+	for(UserVo vo : userList)
+		out.print(vo.getUserId() + " / " + vo.getUserNm() + " / " + vo.getPass() + "<br/>");
 		
-		List<UserVo> userList = smc.queryForList("user.getUserList", null);
-		
-		for(UserVo vo : userList)
-			out.print(vo.getUserId() + " / " + vo.getUserNm() + " / " + vo.getPass() + "<br/>");
-		
-	}catch(IOException e){
-		e.printStackTrace();
-	}catch(SQLException e ){
-		e.printStackTrace();
-	}finally {
-	}
 %>
 
 </body>

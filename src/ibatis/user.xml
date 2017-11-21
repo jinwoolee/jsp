@@ -3,7 +3,7 @@
 
 <sqlMap namespace="user"> 
 
-<typeAlias alias="UserVo" type="jdbc.login.UserVo"/>
+<typeAlias alias="UserVo" type="user.model.UserVo"/>
 
 <select id="getUserList" resultClass="UserVo">
 select *

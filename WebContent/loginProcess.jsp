@@ -1,10 +1,4 @@
-<%@page import="user.dao.UserDaoMyBatisImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.io.Reader, java.io.FileNotFoundException, java.io.IOException, java.sql.SQLException, java.util.List" %>
-<%@ page import="user.model.UserVo" %>
-<%@ page import="user.dao.*" %>
-
-
 <% 
 response.setHeader("Pragma", "no-cache");			//http 1.0 , 브라우저에게 응답결과를 캐쉬하지 않도록 설정
 response.setHeader("Cache-Control", "no-cache");	//http 1.1 , 브라우저에게 응답결과를 캐쉬하지 않도록 설정
@@ -18,14 +12,6 @@ response.setDateHeader("Expires", 1L);				//만료일자 설정
 <title>Insert title here</title>
 </head>
 <body>
-<%
-
-	UserDao userDao = new UserDaoMyBatisImpl();	
-	List<UserVo> userList = userDao.getUserList();
-	
-	for(UserVo vo : userList)
-		out.print(vo.getUserId() + " / " + vo.getUserNm() + " / " + vo.getPass() + "<br/>");
-%>
 
 </body>
 </html>

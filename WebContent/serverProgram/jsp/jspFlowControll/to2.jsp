@@ -6,11 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-to jsp
+to2 jsp <br/>
 
 request.getParameter("fromParameterValue") : <%= request.getParameter("fromParameterValue") %> <br/>
 request.getAttribute("fromParameterValue") : <%= request.getAttribute("fromParameterValue") %> <br/>
-
-<jsp:forward page="to2.jsp"/>
 </body>
 </html>

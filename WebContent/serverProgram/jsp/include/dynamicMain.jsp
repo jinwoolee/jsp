@@ -18,7 +18,7 @@ url encoded
 	//String encodeUrl = URLEncoder.encode("?fromDmValue=fromDmValue");
 	//RequestDispatcher rd = request.getRequestDispatcher("header.jsp" + encodeUrl);
 	
-	
+	out.flush();
 	RequestDispatcher rd = request.getRequestDispatcher("header.jsp?fromDmValue=fromDmValue");
 	rd.include(request, response);
 %>

@@ -15,6 +15,10 @@
     <param-value>15101001</param-value>
   </context-param>
   <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error/error.jsp</location>
+  </error-page>
+  <error-page>
     <error-code>404</error-code>
     <location>/error/404/404.html</location>
   </error-page>

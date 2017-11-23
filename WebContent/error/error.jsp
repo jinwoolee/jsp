@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-default error
+default error page
 
 </body>
 </html>

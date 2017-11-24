@@ -7,12 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <!-- css -->
+<link href="/css/signin.css" rel="stylesheet">
 <%@include file="/commonJsp/jquery.jsp"%>
 <%@include file="/commonJsp/bootstrap.jsp"%>	<%--정적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
 <%--<jsp:include page="/jsp/common/uppermenu.jsp" flush="true"/> --%> <%--동적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
-<!-- css -->
 
-<link href="/css/signin.css" rel="stylesheet">
+<script src="/js/jqueryCookie/js.cookie.js"></script>
+<script src="/js/jqueryCookie/jquery.cookie.js"></script>
+
 
 <script>
 $(document).ready(function(){

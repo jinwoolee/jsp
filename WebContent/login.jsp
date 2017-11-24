@@ -7,10 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <!-- css -->
-<%@include file="/commonJsp/bootstrap.jsp"%>	<%--정적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
-<%--<jsp:include page="/jsp/common/uppermenu.jsp" flush="true"/> --%> <%--동적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
-<!-- css -->
 <link href="/css/signin.css" rel="stylesheet">
+<%@include file="/commonJsp/bootstrap.jsp"%>	<%--정적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
+<%@include file="/commonJsp/jquery.jsp" %>
+<%--<jsp:include page="/jsp/common/uppermenu.jsp" flush="true"/> --%> <%--동적 include : page가 삽입되어 하나의 jsp파일로 컴파일된다. --%>
+
 </head>
 <body>
 	<div class="container">
@@ -21,7 +22,7 @@
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password" id="inputPassword" class="form-control" placeholder="Password" >
 			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
+				<label> <input type="checkbox" name="rememberMe" value="rememberMe">
 					Remember me
 				</label>
 			</div>

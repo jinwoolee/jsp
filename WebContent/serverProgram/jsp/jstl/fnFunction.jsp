@@ -14,6 +14,11 @@
 <c:set var="str2" value="사용" />
 <c:set var="tokens" value="1,2,3,4,5,6,7,8,9,10" />
 <!-- jstl에서 제공하는 표현언어에서 사용가능한 함수들 -->
+
+${str1} <br/>
+${str2} <br/>
+${tokens} <br/><br/>
+
 length(str1) = ${fn:length(str1)} <br>
 toUpperCase(str1) = "${fn:toUpperCase(str1)}" <br>
 toLowerCase(str1) = "${fn:toLowerCase(str1)}" <br>

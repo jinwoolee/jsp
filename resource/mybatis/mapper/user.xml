@@ -3,7 +3,7 @@
 <mapper namespace="user">
 
 <!-- 사용자 전체 리스트 -->
-<select id="getUserList" resultType="UserVo">
+<select id="getUserList" resultType="userVo">
 	select *
  		from t_user
 </select>
@@ -25,5 +25,23 @@
   	select count(*) cnt
  	  from t_user
   </select>
-  
+
+<!-- 사용자 조회-->
+<select id="getUser" parameterType="map" resultType="userVo">
+	select *
+	 from t_user
+	 where userid = #{userId}
+</select>
+
+<!-- 사용자 정보 수정 -->
+<update id="updateUser" parameterType="map">
+	update set userNm = #{usreNm}, userAlias = #{userAlias}, pass = #{pass}
+	where userId = #{userId}
+</update>
+
+<!-- 사용자 정보 삭제 -->
+<update id="deleteUser" parameterType="map">
+	delete t_user
+	where userId = #{userId}
+</update>
 </mapper>

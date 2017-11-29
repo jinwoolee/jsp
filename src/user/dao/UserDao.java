@@ -38,6 +38,16 @@ public interface UserDao {
 	//사용자 인증
 	public boolean checkLogin(Map<String, String> userinfo);
 	
-	//특정 유저 조회
+	//유저 조회
 	public UserVo getUser(Map<String, String> userinfo) throws SQLException;
+	
+	//유저 생성
+	public int insertUser(Map<String, String> userinfo) throws SQLException;
+	
+	//유저 수정
+	public int updateUser(Map<String, String> userinfo) throws SQLException;
+	
+	//유저 삭제
+	public int deleteUser(Map<String, String> userinfo) throws SQLException;
+	
 }

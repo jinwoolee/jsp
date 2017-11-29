@@ -13,10 +13,6 @@
 
 <title>Jsp</title>
 
-<style>
-	#userList tr {cursor: pointer;}
-</style>
-
 <%@ include file="/commonJsp/jquery.jsp" %>
 <%@ include file="/commonJsp/bootstrap.jsp" %>
 
@@ -25,18 +21,11 @@
 
 <script>
 $(document).ready(function(){
-
-	//사용자 클릭시 상세 조회 화면 이동
-	$("#userList tr").on("click", function(){
-		
-		/*"data-productId"  translates to "productid"
-		"data-product-id" translates to "productId"
-		"data-PRODUCT-ID" translates to "productId"
-		"data-ProDUctId"  translates to "productid"*/
-		var userId = $(this).data("userid");
-		
-		$(location).attr("href", "<%=request.getContextPath()%>/user/getUser?userId=" + userId);
-	});
+	//사용자 삭제 버튼
+	$("#deleteUser").on("click", function(){
+		if(confirm("사용자를 삭제하시겠습니까?"))
+			$("#delForm").submit();
+	})
 });
 </script>
 </head>
@@ -50,7 +39,7 @@ $(document).ready(function(){
 			</div>
 			
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<jsp:include page="/user/userContent.jsp" />
+				<jsp:include page="/user/userViewContent.jsp" />
 			</div>
 		</div>			
 	</div>	

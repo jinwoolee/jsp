@@ -60,7 +60,7 @@ public class UserController extends HttpServlet {
     		String	pageParam		=	request.getParameter("page");
     		String	pageSizeParam	=	request.getParameter("pageSize");
     		
-    		int	page		=	pageParam == null ? 0 : Integer.valueOf(pageParam);
+    		int	page		=	pageParam == null ? 1 : Integer.valueOf(pageParam);
     		int	pageSize	=	pageSizeParam == null ? DefaultConst.PAGESIZE : Integer.valueOf(pageSizeParam); 
     		
     		

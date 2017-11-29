@@ -13,14 +13,11 @@
 
 <title>Jsp</title>
 
-<script src="/js/jquery-3.2.1.js"></script>
-
-<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 
-<!-- Bootstrap core CSS -->
-<script src="/bootstrap/js/bootstrap.js"></script>
-<!-- Custom styles for this template -->
+<%@ include file="/commonJsp/jquery.jsp" %>
+<%@ include file="/commonJsp/bootstrap.jsp" %>
+
 <link href="/css/dashboard.css" rel="stylesheet">
 <link href="/css/blog.css" rel="stylesheet">
 </head>

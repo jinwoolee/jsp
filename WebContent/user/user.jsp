@@ -13,13 +13,31 @@
 
 <title>Jsp</title>
 
-
+<style>
+	#userList tr {cursor: pointer;}
+</style>
 
 <%@ include file="/commonJsp/jquery.jsp" %>
 <%@ include file="/commonJsp/bootstrap.jsp" %>
 
 <link href="/css/dashboard.css" rel="stylesheet">
 <link href="/css/blog.css" rel="stylesheet">
+
+<script>
+$(document).ready(function(){
+
+	//사용자 클릭시 상세 조회 화면 이동
+	$("#userList tr").on("click", function(){
+		
+		/*"data-productId"  translates to "productid"
+		"data-product-id" translates to "productId"
+		"data-PRODUCT-ID" translates to "productId"
+		"data-ProDUctId"  translates to "productid"*/
+		console.log($(this).data("userid"));
+		
+	});
+});
+</script>
 </head>
 
 <body>

@@ -1,6 +1,7 @@
 package user.web;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -74,7 +75,6 @@ public class UserController extends HttpServlet {
     											Integer.valueOf(page), DefaultConst.PAGESIZE);
 			request.setAttribute("pageNav", html);
 			
-				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

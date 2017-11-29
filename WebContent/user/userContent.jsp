@@ -2,14 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@page import="user.model.UserVo"%>
 <%@page import="java.util.List"%>
-
-
-
 <div class="row">
 	<div class="col-sm-8 blog-main">
 		<h2 class="sub-header">사용자</h2>
 		<div class="table-responsive">
-			<table class="table table-striped">
+			<table class="table table-striped table-hover"">
 				<tr>
 					<th>사용자 아이디</th>
 					<th>사용자 이름</th>
@@ -19,10 +16,11 @@
 				
 				<%--하단 코드는 디자이너로 부터 받은 하드 코딩 내용.
 				    해당 부분은 UserController로 부터 받은 userList 객체를 화면에 출력 --%>
+				<tbody id="userList">
 				<%
 					List<UserVo> userList = (List<UserVo>)request.getAttribute("userList");
 					for(UserVo vo : userList){
-						out.println("<tr>");	
+						out.println("<tr class=\"clickable-row\" data-userid=\"" + vo.getUserId() + "\" >");	
 						out.println("	<td>" + vo.getUserId() + "</td>");
 						out.println("	<td>" + vo.getUserNm() + "</td>");
 						out.println("	<td>" + vo.getUserAlias() + "</td>");
@@ -30,6 +28,7 @@
 						out.println("</tr>");
 					}
 				%>
+				</tbody>
 			</table>
 		</div>
 

@@ -13,7 +13,7 @@
 	out.println("application.getContextPath() :" + application.getContextPath() + "<br/>");
 	out.println("application.getMajorVersion() :" + application.getMajorVersion() + "<br/>");
 	out.println("application.getMinorVersion() :" + application.getMinorVersion() + "<br/>");
-	
+		
 	out.println("application.getMinorVersion() : <br/>");
     Enumeration enumeration =   application.getInitParameterNames();
     while(enumeration.hasMoreElements()){

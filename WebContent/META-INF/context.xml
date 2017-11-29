@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+<Resource name="jdbc/oracleDB" 
+            auth="Container" 
+            type="javax.sql.DataSource" 
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+            maxActive="100" 
+            minIdle="10" 
+            maxWait="10000" 
+            initialSize="10"
+            validationQuery="SELECT 1 FROM DUAL"
+            driverClassName="oracle.jdbc.driver.OracleDriver"
+            defaultAutoCommit="false"
+            username="pc01" 
+            password="java"
+            url="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+</context>            

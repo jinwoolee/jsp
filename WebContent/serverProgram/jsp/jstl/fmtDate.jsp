@@ -11,10 +11,12 @@
 <body>
 
 <%--locale 설정에 따라 표현 변경 --%>
-<fmt:setLocale value="en" scope="request" />
+<%--<fmt:setLocale value="en" scope="request" /> --%>
+<fmt:setLocale value="ko" scope="request" />
 
 <c:set var="now" value="<%= new java.util.Date() %>" />
 dateStyle full : <fmt:formatDate value="${now}" type="date" dateStyle="full" /> <br/>
+dateStyle medium : <fmt:formatDate value="${now}" type="date" dateStyle="medium" /> <br/>
 dateStyle short : <fmt:formatDate value="${now}" type="date" dateStyle="short" /> <br/>
 dateStyle default :  <fmt:formatDate value="${now}" type="time" /> <br/>
 dateStyle / timeStyle : <fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full" /> <br/>

@@ -17,6 +17,7 @@
 		for(int i = 0; i < LOOP_COUNT; i++){
 			System.out.println(i);
 			Connection conn = datasource.getConnection();
+			
 			out.println("conn.getSchema() : " + conn.getSchema() + "<br/>");
 			conn.close();
 		}

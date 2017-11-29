@@ -15,16 +15,18 @@
     <param-value>15101001</param-value>
   </context-param>
   
-  <!-- exception type은 상세 타입보다 일반적인 타입을 우선시한다. -->
-  <error-page>
-    <exception-type>java.lang.Throwable</exception-type>
-    <location>/error/error.jsp</location>
-  </error-page>
+  
+  <!-- exception type을  java.lang.Throwable로 할 경우 다른 exception-type은 무시됨-->
   
   <error-page>
     <exception-type>java.lang.ArithmeticException</exception-type>
-    <!-- <location>/serverProgram/jsp/error/arithmeticError.jsp</location> -->
     <location>/WEB-INF/arithmeticError.jsp</location>
+    <!--<location>/serverProgram/jsp/error/arithmeticError.jsp</location>  -->
+  </error-page>
+  
+  <error-page>
+    <exception-type>java.lang.RuntimeException</exception-type>
+    <location>/error/error.jsp</location>
   </error-page>
   
   <error-page>

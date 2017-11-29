@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	arithmeticerror
+	WEB-INF/arithmeticerror
 	<br/>
 	<%
 	//에러 페이지에서는 exception 객체를 사용할수 있다.
@@ -16,6 +16,6 @@
 	out.println(exception.getMessage() + "<br/>");
 	out.println("<br/>==========error=======<br/>");
 	%>
-	arithmeticerror
+	WEB-INF/arithmeticerror
 </body>
 </html>

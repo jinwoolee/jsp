@@ -36,27 +36,27 @@ public class UserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	//localhost:8090/user.do·Î ¼­ºí¸´ Á¢¼Ó
-		//mybatis ¸ğµâÀ» ÀÌ¿ëÇÏ¿© userList Á¶È¸ 
-		//Á¶È¸µÈ userList¸¦ /user/user.jsp¿¡ Àü´Ş
-		// /user/user.jsp¿¡¼­´Â ÇØ´ç °á°ú¸¦ È­¸é¿¡ Ãâ·Â
+    	//localhost:8090/user.doë¡œ ì„œë¸”ë¦¿ ì ‘ì†
+		//mybatis ëª¨ë“ˆì„ ì´ìš©í•˜ì—¬ userList ì¡°íšŒ 
+		//ì¡°íšŒëœ userListë¥¼ /user/user.jspì— ì „ë‹¬
+		// /user/user.jspì—ì„œëŠ” í•´ë‹¹ ê²°ê³¼ë¥¼ í™”ë©´ì— ì¶œë ¥
     	
     	UserDao userDao = new UserDaoMyBatisImpl();
     	try {
 			//request.setAttribute("userList", userDao.getUserList());
     		
-    		//À¯Àú ¸®½ºÆ® ÆäÀÌÂ¡ Ã³¸®
+    		//ìœ ì € ë¦¬ìŠ¤íŠ¸ í˜ì´ì§• ì²˜ë¦¬
     		Map<String, Integer> paramMap = new HashMap<String, Integer>();
     		
-    		// »ç¿ëÀÚ°¡ /user.do ·ÎÁ¢¼Ó
-    		// 1. page, pageSize¸¦ ÆÄ¶ó¹ÌÅÍ·Î º¸³½°æ¿ì
+    		// ì‚¬ìš©ìê°€ /user.do ë¡œì ‘ì†
+    		// 1. page, pageSizeë¥¼ íŒŒë¼ë¯¸í„°ë¡œ ë³´ë‚¸ê²½ìš°
     		///user.do?page=1&pageSize=10
     		
-    		// 2.  page, pageSize¸¦ ÆÄ¶ó¹ÌÅÍ·Î ¾Èº¸³½°æ¿ì
-    		//		--> controller¿¡¼­ default·Î page = 1, pageSize = 10
+    		// 2.  page, pageSizeë¥¼ íŒŒë¼ë¯¸í„°ë¡œ ì•ˆë³´ë‚¸ê²½ìš°
+    		//		--> controllerì—ì„œ defaultë¡œ page = 1, pageSize = 10
     		
     		//page, pageSize
-    		//Á¶È¸ ÇÏ°íÀÚ ÇÏ´Â ÆäÀÌÁö, ÆäÀÌÁö »çÀÌÁî : ÆÄ¶ó¹ÌÅÍ·Î ³Ñ¾î¿ÀÁö ¾ÊÀ»°æ¿ì default 1, 10
+    		//ì¡°íšŒ í•˜ê³ ì í•˜ëŠ” í˜ì´ì§€, í˜ì´ì§€ ì‚¬ì´ì¦ˆ : íŒŒë¼ë¯¸í„°ë¡œ ë„˜ì–´ì˜¤ì§€ ì•Šì„ê²½ìš° default 1, 10
     		String	pageParam		=	request.getParameter("page");
     		String	pageSizeParam	=	request.getParameter("pageSize");
     		

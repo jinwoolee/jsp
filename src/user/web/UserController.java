@@ -37,7 +37,7 @@ public class UserController extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	//localhost:8090/user.do로 서블릿 접속
-		//mybatis 모듈을 이용하여 userList 조회
+		//mybatis 모듈을 이용하여 userList 조회 
 		//조회된 userList를 /user/user.jsp에 전달
 		// /user/user.jsp에서는 해당 결과를 화면에 출력
     	

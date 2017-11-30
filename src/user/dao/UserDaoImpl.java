@@ -48,13 +48,13 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public int insertUser(Map<String, String> userinfo) throws SQLException {
+	public int insertUser(UserVo userVo) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateUser(Map<String, String> userinfo) throws SQLException {
+	public int updateUser(UserVo userVo) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}

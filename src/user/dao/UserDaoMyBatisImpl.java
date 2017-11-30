@@ -56,20 +56,26 @@ public class UserDaoMyBatisImpl implements UserDao{
 	}
 
 	@Override
-	public int insertUser(Map<String, String> userinfo) throws SQLException {
+	public int insertUser(UserVo userVo) throws SQLException {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		return sqlSession.insert("user.insertUser", userinfo);
+		int insertCnt = sqlSession.insert("user.insertUser", userVo);
+		sqlSession.commit();
+		return insertCnt;
 	}
 
 	@Override
-	public int updateUser(Map<String, String> userinfo) throws SQLException {
+	public int updateUser(UserVo userVo) throws SQLException {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		return sqlSession.insert("user.updateUser", userinfo);
+		int updateCnt = sqlSession.insert("user.updateUser", userVo);
+		sqlSession.commit();
+		return updateCnt;
 	}
 
 	@Override
 	public int deleteUser(Map<String, String> userinfo) throws SQLException {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		return sqlSession.insert("user.deleteUser", userinfo);
+		int delCnt = sqlSession.insert("user.deleteUser", userinfo);
+		sqlSession.commit();
+		return delCnt;
 	}
 }

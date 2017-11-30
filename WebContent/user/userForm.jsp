@@ -13,16 +13,53 @@
 
 <title>Jsp</title>
 
-<script src="/js/jquery-3.2.1.js"></script>
+<%@ include file="/commonJsp/jquery.jsp" %>
+<%@ include file="/commonJsp/bootstrap.jsp" %>
 
-<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-
-<!-- Bootstrap core CSS -->
-<script src="/bootstrap/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
 <link href="/css/dashboard.css" rel="stylesheet">
 <link href="/css/blog.css" rel="stylesheet">
+
+<script>
+$(document).ready(function(){
+	//사용자 신규 저장
+	$("#insertUser").on("click", function(){
+		if(userFormValidate == true)
+			$("#userFormFrm").submit();
+	});
+	
+	//사용자 수정
+	$("#updateUser").on("click", function(){
+		if(userFormValidate == true)
+			$("#userFormFrm").submit();
+	});
+});
+//사용자 정보 검증
+function validateUserForm(){
+	if($("#userId").val().length < 5 ){
+		alert("사용자 아이디의 길이가 적당하지 않습니다.");
+		return false;
+	}
+	
+	if($("#userNm").val().length < 5 ){
+		alert("사용자 이름 길이가 적당하지 않습니다.");
+		return false;
+	}
+	
+	if($("#userAlias").val().length < 5 ){
+		alert("사용자 별칭 길이가 적당하지 않습니다.");
+		return false;
+	}
+	
+	if($("#pass").val().length < 5 ){
+		alert("패스워드 길이가 적당하지 않습니다.");
+		return false;
+	}	
+	
+	//여기까지 정상적으로 진행되면 검증 완료
+	return true;
+}
+</script>
 </head>
 
 <body>

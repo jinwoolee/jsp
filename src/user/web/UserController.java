@@ -22,7 +22,15 @@ import util.NaviUtil;
 /**
  * Servlet implementation class UserController
  */
-@WebServlet(urlPatterns= {"/user/userList", "/user/getUser"})
+/*
+ * /user/userList 		:	사용자 리스트 조회
+ * /user/getUser 		:	사용자 상세 조회
+ * /user/deleteUser 	:	사용자 삭제
+ * /user/userFormView	:	사용자 폼 화면(신규입력/수정)
+ * /user/userForm		:	사용자 등록/수정
+ * /user/insertUser		:	사용자 추가
+ */
+@WebServlet(urlPatterns= {"/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"})
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,16 +42,7 @@ public class UserController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// localhost:8090/user.do로 서블릿 접속
-		// mybatis 모듈을 이용하여 userList 조회
-		// 조회된 userList를 /user/user.jsp에 전달
-		// /user/user.jsp에서는 해당 결과를 화면에 출력
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
 		
@@ -53,6 +52,102 @@ public class UserController extends HttpServlet {
 			userList(request, response);
 		else if(uri.equals("/user/getUser"))
 			getUser(request, response);
+		else if(uri.equals("/user/userFormView"))
+			userFormView(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uri = request.getRequestURI();
+		uri = uri.replace(request.getContextPath(), "");
+		
+		System.out.println("uri : " + uri);
+		
+		if(uri.equals("/user/deleteUser"))
+			deleteUser(request, response);
+		else if(uri.equals("/usre/userForm"))
+			userForm(request, response);
+	}
+
+	/** 
+	 * Method   : userForm
+	 * 최초작성일  : 2017. 11. 30. 
+	 * 작성자 : jw
+	 * 변경이력 : 
+	 * @param request
+	 * @param response 
+	 * Method 설명 : 사용자 정보 입력/수정
+	 */
+	private void userForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int modifyCnt = 0;
+		String method 		= request.getParameter("method");
+		String userId 		= request.getParameter("userId");
+		String userNm 		= request.getParameter("userNm");
+		String userAlias	= request.getParameter("userAlias");
+		String pass			= request.getParameter("psss");
+		
+		UserVo userVo	= new UserVo(userId, userNm, userAlias, pass);
+		UserDao userDao	= new UserDaoMyBatisImpl();
+		
+		try {
+			if(method.equals("insert"))
+				modifyCnt = userDao.insertUser(userVo);
+			else if(method.equals("update"))
+				modifyCnt = userDao.updateUser(userVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//입력/수정이 성공시 => 사용자 상세 조회 화면으로 이동
+		if(modifyCnt == 1)
+			getUser(request, response);
+		//실패시 입력화면으로 이동
+		else
+			userFormView(request, response);
+			
+	}
+
+	/** 
+	 * Method   : updateUserView
+	 * 최초작성일  : 2017. 11. 30. 
+	 * 작성자 : jw
+	 * 변경이력 : 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException 
+	 * Method 설명 : 사용자 수정 view
+	 */
+	private void userFormView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+		//insert / method 구분
+		String method = request.getParameter("method");
+		method = method == null ? "insert" : method;
+		request.setAttribute("method", method);
+		
+		//사용자 id input disabled
+		String userIdDisabled = "disabled";
+		if(method.equals("insert"))
+			userIdDisabled = "";
+		else
+			userIdDisabled = "disabled";
+		request.setAttribute("userIdDisabled", userIdDisabled);
+		
+		//사용자 정보 조회
+		String userId = request.getParameter("userId");
+		Map<String, String> pMap = new HashMap<String, String>();
+		pMap.put("userId", userId);
+		UserDao userDao = new UserDaoMyBatisImpl();
+		
+		try {
+			UserVo userVo = userDao.getUser(pMap);
+			request.setAttribute("userVo", userVo);
+		} catch (SQLException e) {
+			request.setAttribute("userVo", new UserVo());
+			e.printStackTrace();
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/user/userForm.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -139,21 +234,6 @@ public class UserController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String uri = request.getRequestURI();
-		uri = uri.replace(request.getContextPath(), "");
-		
-		System.out.println("uri : " + uri);
-		
-		if(uri.equals("/user/delUser"))
-			delUser(request, response);
-	}
-
-	/**
 	  * @FileName : UserController.java
 	  * @Project : jsp
 	  * @Date : 2017. 11. 30.
@@ -163,17 +243,18 @@ public class UserController extends HttpServlet {
 	  * @param response
 	  * @프로그램 설명 : 사용자 삭제
 	  */
-	private void delUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserDao userDao = new UserDaoMyBatisImpl();
 		
 		//사용자 정보
-		String userId = request.getParameter("usreId");
+		String userId = request.getParameter("userId");
 		
-		//사용자 정보가 정상적으로 들어오지 않은 경우
+		//사용자 정보가 정상적으로 들어오지 않은 경우 : 사용자 리스트 화면으로 이동
 		if(userId == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("user/userList");
-			rd.forward(request, response);
+			/*RequestDispatcher rd = request.getRequestDispatcher("/user/userList");
+			rd.forward(request, response);*/
+			userList(request, response);
 		}
 		//사용자 정보가 정상적으로 들어온 경우
 		else {
@@ -189,14 +270,19 @@ public class UserController extends HttpServlet {
 			}
 			
 			//delCnt == 1 :정상삭제, delCnt == 0 :비정상
-			String msg = null;
-			if(delCnt == 1)
-				msg = "삭제되었습니다.";
-			else if(delCnt == 0)
-				msg = userId + " 정상적으로 삭제되지 않았습니다.";
+			String 	msg = null;
+			String	path	=	"";
+			if(delCnt == 1){
+				msg 	=	"삭제되었습니다.";
+				path	=	"/user/userList";
+			}
+			else if(delCnt == 0) {
+				msg 	=	userId + " 정상적으로 삭제되지 않았습니다.";
+				path	=	"/user/getUser";
+			}
 			
 			request.setAttribute("msg", msg);
-			RequestDispatcher rd = request.getRequestDispatcher("user/userList");
+			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		}
 	}

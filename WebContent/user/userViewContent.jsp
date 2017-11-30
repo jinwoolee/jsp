@@ -7,7 +7,10 @@
 </style>
 </head>
 
-<form id="delForm" method="post" action="${pageContext.request.contextPath}/user/delUser" class="form-horizontal" role="form">
+<form id="frm" method="post" action="${pageContext.request.contextPath}/user/deleteUser" class="form-horizontal" role="form">
+
+	<input type="hidden" name="userId" value="${userVo.userId}">
+	
 	<div class="form-group">
 		<label class="col-sm-2 control-label">사용자 아이디</label>
 		<div class="col-sm-10">
@@ -48,8 +51,9 @@
 	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<input type="hidden" id="userId" value="${userVo.userId}" />
-			<button id="deleteUser" type="submit" class="btn btn-default">사용자 삭제</button>
+			<input type="hidden" name="userId" value="${userVo.userId}" />
+			<button id="deleteUserBtn" type="button" class="btn btn-default">사용자 삭제</button>
+			<button id="updateUserBtn" type="button" class="btn btn-default">사용자 수정</button>
 		</div>
 	</div>
 </form>

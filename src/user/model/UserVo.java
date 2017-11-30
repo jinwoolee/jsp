@@ -9,6 +9,16 @@ public class UserVo {
 	private	String	pass;
 	private	String	reg_id;
 	private	Date	reg_dt;
+	
+	public UserVo(String userId, String userNm, String userAlias, String pass) {
+		this.userId		=	userId;
+		this.userNm		=	userNm;
+		this.userAlias	=	userAlias;
+		this.pass		=	pass;
+	}
+	public UserVo() {
+		
+	}
 	public String getUserId() {
 		return userId;
 	}

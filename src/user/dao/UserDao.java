@@ -42,10 +42,10 @@ public interface UserDao {
 	public UserVo getUser(Map<String, String> userinfo) throws SQLException;
 	
 	//유저 생성
-	public int insertUser(Map<String, String> userinfo) throws SQLException;
+	public int insertUser(UserVo userVo) throws SQLException;
 	
 	//유저 수정
-	public int updateUser(Map<String, String> userinfo) throws SQLException;
+	public int updateUser(UserVo userVo) throws SQLException;
 	
 	//유저 삭제
 	public int deleteUser(Map<String, String> userinfo) throws SQLException;

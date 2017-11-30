@@ -22,10 +22,20 @@
 <script>
 $(document).ready(function(){
 	//사용자 삭제 버튼
-	$("#deleteUser").on("click", function(){
-		if(confirm("사용자를 삭제하시겠습니까?"))
-			$("#delForm").submit();
-	})
+	$("#deleteUserBtn").on("click", function(){
+		if(confirm("사용자를 삭제하시겠습니까?")){
+			$("#frm").attr("action", "${pageContext.request.contextPath}/user/deleteUser");
+			$("#frm").attr("method", "post");
+			$("#frm").submit();
+		}
+	});
+	
+	//사용자 수정 버튼
+	$("#updateUserBtn").on("click", function(){
+		$("#frm").attr("action", "${pageContext.request.contextPath}/user/userFormView?method=update");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+	});
 });
 </script>
 </head>
@@ -45,3 +55,4 @@ $(document).ready(function(){
 	</div>	
 </body>
 </html>
+

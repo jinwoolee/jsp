@@ -32,7 +32,7 @@ $(document).ready(function(){
 	
 	//사용자 수정 버튼
 	$("#updateUserBtn").on("click", function(){
-		$("#frm").attr("action", "${pageContext.request.contextPath}/user/userFormView?method=update");
+		$("#frm").attr("action", "${pageContext.request.contextPath}/user/userFormView");
 		$("#frm").attr("method", "get");
 		$("#frm").submit();
 	});

@@ -64,7 +64,7 @@ public class UserController extends HttpServlet {
 		
 		if(uri.equals("/user/deleteUser"))
 			deleteUser(request, response);
-		else if(uri.equals("/usre/userForm"))
+		else if(uri.equals("/user/userForm"))
 			userForm(request, response);
 	}
 
@@ -82,7 +82,7 @@ public class UserController extends HttpServlet {
 		String method 		= request.getParameter("method");
 		String userId 		= request.getParameter("userId");
 		String userNm 		= request.getParameter("userNm");
-		String userAlias	= request.getParameter("userAlias");
+		String userAlias		= request.getParameter("userAlias");
 		String pass			= request.getParameter("psss");
 		
 		UserVo userVo	= new UserVo(userId, userNm, userAlias, pass);
@@ -220,7 +220,7 @@ public class UserController extends HttpServlet {
 
 			request.setAttribute("userList", userDao.getUserListPaging(paramMap));
 
-			String html = NaviUtil.makePageNav(request.getContextPath() + "user.do", userDao.getUserTotalCnt(),
+			String html = NaviUtil.makePageNav(request.getContextPath() + "/user/userList", userDao.getUserTotalCnt(),
 					Integer.valueOf(page), DefaultConst.PAGESIZE);
 			request.setAttribute("pageNav", html);
 
@@ -274,16 +274,14 @@ public class UserController extends HttpServlet {
 			String	path	=	"";
 			if(delCnt == 1){
 				msg 	=	"삭제되었습니다.";
-				path	=	"/user/userList";
+				request.setAttribute("msg", msg);
+				userList(request, response);
 			}
 			else if(delCnt == 0) {
 				msg 	=	userId + " 정상적으로 삭제되지 않았습니다.";
-				path	=	"/user/getUser";
+				request.setAttribute("msg", msg);
+				getUser(request, response);
 			}
-			
-			request.setAttribute("msg", msg);
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
 		}
 	}
 }

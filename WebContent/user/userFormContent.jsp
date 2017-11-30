@@ -14,15 +14,15 @@
 	<div class="form-group">
 		<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 		<div class="col-sm-10">
-			<input type="hidden" id="method" value="${method}" />
+			<input type="hidden" id="method" name="method" value="${method}" />
 			 
-			<%--스크립틀릿 / 표현식 --%>
+			<%--스크립틀릿 / 표현식 
 			<% 	String disabled = "";
 				if("insert".equals(request.getAttribute("method")))
 					disabled = "";
 				else
-					disabled = "disabled"; %>			
-			<input type="text" class="form-control" id="userId" name="userId" placeholder="사용자 아이디" <%=disabled %> value="${userVo.userId}">
+					disabled = "disabled"; %>--%>			
+			<input type="text" class="form-control" id="userId" name="userId" placeholder="사용자 아이디" <%--<%=disabled %>--%>  value="${userVo.userId}" ${userIdDisabled}>
 			
 			
 			<%-- jstl / EL --%>

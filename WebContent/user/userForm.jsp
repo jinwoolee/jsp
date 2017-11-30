@@ -24,13 +24,13 @@
 $(document).ready(function(){
 	//사용자 신규 저장
 	$("#insertUser").on("click", function(){
-		if(userFormValidate == true)
+		if(validateUserForm() == true)
 			$("#userFormFrm").submit();
 	});
 	
 	//사용자 수정
 	$("#updateUser").on("click", function(){
-		if(userFormValidate == true)
+		if(validateUserForm() == true)
 			$("#userFormFrm").submit();
 	});
 });

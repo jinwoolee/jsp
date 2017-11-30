@@ -60,6 +60,7 @@ public class UserDaoMyBatisImpl implements UserDao{
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int insertCnt = sqlSession.insert("user.insertUser", userVo);
 		sqlSession.commit();
+		sqlSession.close();
 		return insertCnt;
 	}
 
@@ -68,6 +69,7 @@ public class UserDaoMyBatisImpl implements UserDao{
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int updateCnt = sqlSession.insert("user.updateUser", userVo);
 		sqlSession.commit();
+		sqlSession.close();
 		return updateCnt;
 	}
 
@@ -76,6 +78,7 @@ public class UserDaoMyBatisImpl implements UserDao{
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int delCnt = sqlSession.insert("user.deleteUser", userinfo);
 		sqlSession.commit();
+		sqlSession.close();
 		return delCnt;
 	}
 }

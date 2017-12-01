@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <div class="row">
@@ -17,7 +19,7 @@
 				<%--하단 코드는 디자이너로 부터 받은 하드 코딩 내용.
 				    해당 부분은 UserController로 부터 받은 userList 객체를 화면에 출력 --%>
 				<tbody id="userList">
-				<%
+				<%--<%
 					List<UserVo> userList = (List<UserVo>)request.getAttribute("userList");
 					for(UserVo vo : userList){
 						out.println("<tr class=\"clickable-row\" data-userid=\"" + vo.getUserId() + "\" >");	
@@ -27,12 +29,21 @@
 						out.println("	<td>" + vo.getReg_dt() + "</td>");
 						out.println("</tr>");
 					}
-				%>
+				--%>
+				
+				<c:forEach items="${userList}" var="userVo">
+					<tr class="clickable-row" data-userid="${userVo.userId}">	
+						<td>${userVo.userId}</td>
+						<td>${userVo.userNm}</td>
+						<td>${userVo.userAlias}</td>
+						<td><fmt:formatDate value="${userVo.reg_dt}" pattern="YYYY-MM-dd"/> </td>
+					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right">사용자 등록</a>
+		<a id="userInsertBtn" href="${pageContext.request.contextPath}/user/userFormView?method=insert" class="btn btn-default pull-right">사용자 등록</a>
 	
 	
 		<div class="text-center">

@@ -30,12 +30,18 @@ $(document).ready(function(){
 	
 	//사용자 수정
 	$("#updateUser").on("click", function(){
-		if(validateUserForm() == true)
+		if(validateUserForm() == true){
+			$("#userId").attr("disabled", false);
 			$("#userFormFrm").submit();
+			
+		}
 	});
 });
 //사용자 정보 검증
 function validateUserForm(){
+	//검증 기준이 명확하지 않아 skip
+	return true;
+	
 	if($("#userId").val().length < 5 ){
 		alert("사용자 아이디의 길이가 적당하지 않습니다.");
 		return false;

@@ -1,8 +1,9 @@
 package user.web;
 
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import user.dao.UserDao;
 import user.dao.UserDaoMyBatisImpl;
 import user.model.UserVo;
 import util.DefaultConst;
 import util.NaviUtil;
+import util.PartUtil;
 
 /**
  * Servlet implementation class UserController
@@ -57,6 +60,13 @@ public class UserController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("====================================");
+		Collection<Part> parts = request.getParts();
+		for(Part part : parts) {
+			System.out.println(part.getName() + " / " + part.getContentType());
+		}
+		System.out.println("====================================");
+		
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
 		
@@ -66,6 +76,7 @@ public class UserController extends HttpServlet {
 			deleteUser(request, response);
 		else if(uri.equals("/user/userForm"))
 			userForm(request, response);
+		
 	}
 
 	/** 
@@ -78,19 +89,43 @@ public class UserController extends HttpServlet {
 	 * Method 설명 : 사용자 정보 입력/수정
 	 */
 	private void userForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		int modifyCnt = 0;
-		String method 		= request.getParameter("method");
+		/*String method 		= request.getParameter("method");
 		String userId 		= request.getParameter("userId");
 		String userNm 		= request.getParameter("userNm");
-		String userAlias		= request.getParameter("userAlias");
-		String pass			= request.getParameter("psss");
+		String userAlias	= request.getParameter("userAlias");
+		String pass			= request.getParameter("pass");*/
+		
+		/*InputStreamReader isr = new InputStreamReader(request.getInputStream());
+		char[] buff = new char[512];
+		while( isr.read(buff) != -1) {
+			System.out.println(buff);
+		}*/
+		
+		System.out.println("====================================");
+		Collection<Part> parts = request.getParts();
+		for(Part part : parts) {
+			System.out.println(part.getName() + " / " + part.getContentType());
+		}
+		System.out.println("====================================");
+		
+		String method 		= PartUtil.readParameterValue(request.getPart("method"));
+		String userId 		= PartUtil.readParameterValue(request.getPart("userId"));
+		String userNm 		= PartUtil.readParameterValue(request.getPart("userNm"));
+		String userAlias	= PartUtil.readParameterValue(request.getPart("userAlias"));
+		String pass			= PartUtil.readParameterValue(request.getPart("pass"));
 		
 		UserVo userVo	= new UserVo(userId, userNm, userAlias, pass);
 		UserDao userDao	= new UserDaoMyBatisImpl();
 		
+		
+		
 		try {
-			if(method.equals("insert"))
+			if(method.equals("insert")) {
+				userVo.setReg_id("system");		//세션을 통해 접속한 사용자의 아이디를 가져온다.
 				modifyCnt = userDao.insertUser(userVo);
+			}
 			else if(method.equals("update"))
 				modifyCnt = userDao.updateUser(userVo);
 		} catch (SQLException e) {
@@ -118,7 +153,7 @@ public class UserController extends HttpServlet {
 	 * Method 설명 : 사용자 수정 view
 	 */
 	private void userFormView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-
+		
 		//insert / method 구분
 		String method = request.getParameter("method");
 		method = method == null ? "insert" : method;
@@ -126,11 +161,6 @@ public class UserController extends HttpServlet {
 		
 		//사용자 id input disabled
 		String userIdDisabled = "disabled";
-		if(method.equals("insert"))
-			userIdDisabled = "";
-		else
-			userIdDisabled = "disabled";
-		request.setAttribute("userIdDisabled", userIdDisabled);
 		
 		//사용자 정보 조회
 		String userId = request.getParameter("userId");
@@ -139,12 +169,21 @@ public class UserController extends HttpServlet {
 		UserDao userDao = new UserDaoMyBatisImpl();
 		
 		try {
-			UserVo userVo = userDao.getUser(pMap);
-			request.setAttribute("userVo", userVo);
+			//udpate : 사용자 정보를 조회-> 화면에 적용
+			if(method.equals("update")) {
+				UserVo userVo = userDao.getUser(pMap);
+				request.setAttribute("userVo", userVo);
+				userIdDisabled = "disabled";
+			}
+			else if(method.equals("insert")) {
+				userIdDisabled = "";
+			}
 		} catch (SQLException e) {
 			request.setAttribute("userVo", new UserVo());
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("userIdDisabled", userIdDisabled);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/user/userForm.jsp");
 		rd.forward(request, response);

@@ -7,6 +7,7 @@ public class UserVo {
 	private	String	userNm;
 	private	String	userAlias;
 	private	String	pass;
+	private	String	picture_path;
 	private	String	reg_id;
 	private	Date	reg_dt;
 	
@@ -43,6 +44,12 @@ public class UserVo {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	public String getPicture_path() {
+		return picture_path;
+	}
+	public void setPicture_path(String picture_path) {
+		this.picture_path = picture_path;
+	}
 	public String getReg_id() {
 		return reg_id;
 	}
@@ -55,10 +62,10 @@ public class UserVo {
 	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserVo [userId=" + userId + ", userNm=" + userNm + ", userAlias=" + userAlias + ", pass=" + pass
-				+ ", reg_id=" + reg_id + "]";
-	}
-	
+				+ ", picture_path=" + picture_path + ", reg_id=" + reg_id + ", reg_dt=" + reg_dt + "]";
+	}	
 }

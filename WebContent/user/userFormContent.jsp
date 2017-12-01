@@ -10,11 +10,22 @@
 </head>
 
 <%-- ${method} / <%=request.getAttribute("method") %> --%>
-<form id="userFormFrm" method="post" action="${pageContext.request.contextPath}/user/userForm" class="form-horizontal" role="form">
+<form id="userFormFrm" method="post" action="${pageContext.request.contextPath}/user/userForm"
+		class="form-horizontal" role="form" enctype="multipart/form-data">
+	
+	<input type="hidden" id="method" name="method" value="${method}" />
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">사진</span></label>
+		<div class="col-sm-10">
+			<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150">
+			<input type="file" name="user_picture"/> 
+		</div>
+	</div>
+	
 	<div class="form-group">
 		<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 		<div class="col-sm-10">
-			<input type="hidden" id="method" name="method" value="${method}" />
 			 
 			<%--스크립틀릿 / 표현식 
 			<% 	String disabled = "";

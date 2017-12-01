@@ -35,9 +35,14 @@
 
 <!-- 사용자 정보 수정 -->
 <update id="updateUser" parameterType="map">
-	update set userNm = #{usreNm}, userAlias = #{userAlias}, pass = #{pass}
+	update t_user set userNm = #{userNm}, userAlias = #{userAlias}, pass = #{pass}, reg_dt = sysdate
 	where userId = #{userId}
 </update>
+
+<!-- 사용자 정보 등록 -->
+<insert id="insertUser" parameterType="map">
+	insert into t_user values (#{userId}, #{userNm}, #{userAlias}, #{pass}, #{reg_id}, sysdate)
+</insert>
 
 <!-- 사용자 정보 삭제 -->
 <update id="deleteUser" parameterType="map">

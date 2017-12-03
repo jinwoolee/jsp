@@ -14,7 +14,7 @@
 	
 	String str = "new string";
 %>
-<c:set var="testStr" value="string"/>
+<c:set var="testStr" value="string" />
 str : ${testStr} <br/>
 
 pageContext.getAttribute("testStr") : <%= pageContext.getAttribute("testStr") %>

@@ -12,6 +12,7 @@
 		Calendar now = Calendar.getInstance();
 		request.setAttribute("now", now);
 	%>
+	${now }
 	<c:set var="elNow" value="${now.time }" />
 	<c:set var="deferredELNow" value="#{now.time }" />
 	<%

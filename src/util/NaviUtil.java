@@ -103,4 +103,35 @@ public class NaviUtil {
 		
 		return endIndex;
 	}
+	
+	public static String makePageNavForFunction(String url, int totalCnt, int page, int pageSize){
+		String html = "";
+		 
+	    int pageTotalCnt = pageTotalCnt(totalCnt, pageSize);
+	    
+	    //2페이지 : 2~11
+	    //pageNum : 21, page : 2 , NVISIZE : 10  page + NAVISIZE= 12
+	    
+	    //이전 페이지
+	    if(page <= 1)
+	    	html += ("<li class=\"prev disabled\"><span>&lt;&lt;</span></li>");
+	    else
+	    	html += ("<li class=\"prev\" data-page=\"" + page + "\" data-pageSize=\"" + pageSize + "\"> <a onclick=\"javascript:getPage('" + (page-1) + "');\">&lt;&lt;</a></li>");
+	    
+	    
+		for(int i = calcStartIndex(page, pageTotalCnt); i <= calcEndIndex(page, pageTotalCnt) ; i++){
+			if( i == page)
+				html += ("<li class=\"active\" data-page=\"" + page + "\" data-pageSize=\"" + pageSize + "\" ><a onclick=\"javascript:getPage('" + i + "');\">" + i +"</a></li>");
+			else
+				html += ("<li data-page=\"" + page + "\" data-pageSize=\"" + pageSize + "\" ><a onclick=\"getPage('" + i + "')\">" + i +"</a></li>");
+		}
+		
+		//다음 페이지
+	    if(page >= pageTotalCnt)
+	    	html += ("<li class=\"next disabled\"><span>&gt;&gt;</span></li>");
+	    else
+	    	html += ("<li class=\"next\" data-page=\"" + page + "\" data-pageSize=\"" + pageSize + "\"> <a onclick=\"javascript:getPage('" + (page+1) + "');\">&gt;&gt;</a></li>");
+	    
+		return html;
+	}
 }

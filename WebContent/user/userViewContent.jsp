@@ -11,7 +11,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">사진</span></label>
 		<div class="col-sm-10">
-			<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150"> 
+			<img src="${pageContext.request.contextPath}${userVo.picture_path}" width="150"  height="150"> 
 		</div>
 	</div>
 	<div class="form-group">

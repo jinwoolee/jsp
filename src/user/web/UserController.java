@@ -1,19 +1,30 @@
 package user.web;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import user.dao.UserDao;
 import user.dao.UserDaoMyBatisImpl;
@@ -33,9 +44,12 @@ import util.PartUtil;
  * /user/userForm		:	사용자 등록/수정
  * /user/insertUser		:	사용자 추가
  */
-@WebServlet(urlPatterns= {"/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"})
+@WebServlet(urlPatterns= {"/user/userListAjax", "/user/userListPage", "/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"} )
+@MultipartConfig(location="/tmp", maxFileSize=-1l, maxRequestSize=200000)
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,6 +60,7 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
 		
@@ -57,15 +72,85 @@ public class UserController extends HttpServlet {
 			getUser(request, response);
 		else if(uri.equals("/user/userFormView"))
 			userFormView(request, response);
+		else if(uri.equals("/user/userListAjax"))
+			userListAjaxView(request, response);
+		else if(uri.equals("/user/userListPage"))
+			userListPage(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("====================================");
-		Collection<Part> parts = request.getParts();
-		for(Part part : parts) {
-			System.out.println(part.getName() + " / " + part.getContentType());
+	/**
+	  * @FileName : UserController.java
+	  * @Project : jsp
+	  * @Date : 2017. 12. 3.
+	  * @작성자 : jw
+	  * @변경이력 :
+	  * @param request
+	  * @param response
+	  * @프로그램 설명 : 사용자 리스트 페이지 조회(ajax)
+	  */
+	private void userListPage(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		UserDao userDao = new UserDaoMyBatisImpl();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		try {
+
+			// 유저 리스트 페이징 처리
+			Map<String, Integer> paramMap = new HashMap<String, Integer>();
+
+			// 사용자가 /user.do 로접속
+			// 1. page, pageSize를 파라미터로 보낸경우
+			/// user.do?page=1&pageSize=10
+
+			// 2. page, pageSize를 파라미터로 안보낸경우
+			// --> controller에서 default로 page = 1, pageSize = 10
+
+			// page, pageSize
+			// 조회 하고자 하는 페이지, 페이지 사이즈 : 파라미터로 넘어오지 않을경우 default 1, 10
+			String pageParam = request.getParameter("page");
+			String pageSizeParam = request.getParameter("pageSize");
+
+			int page = pageParam == null ? 1 : Integer.valueOf(pageParam);
+			int pageSize = pageSizeParam == null ? DefaultConst.PAGESIZE : Integer.valueOf(pageSizeParam);
+
+			paramMap.put("page", page);
+			paramMap.put("pageSize", pageSize);
+
+			//request.setAttribute("userList", userDao.getUserListPaging(paramMap));
+			map.put("userList", userDao.getUserListPaging(paramMap));
+
+			String html = NaviUtil.makePageNavForFunction(request.getContextPath() + "/user/userList", userDao.getUserTotalCnt(),
+					Integer.valueOf(page), DefaultConst.PAGESIZE);
+			//request.setAttribute("pageNav", html);
+			map.put("pageNav", html);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("====================================");
+		
+		ObjectMapper om = new ObjectMapper();		 
+		om.writeValue(response.getWriter(), map);
+
+		//RequestDispatcher rd = request.getRequestDispatcher("/user/user.jsp");
+		//rd.forward(request, response);
+	}
+
+	/**
+	  * @FileName : UserController.java
+	  * @Project : jsp
+	  * @Date : 2017. 12. 3.
+	  * @작성자 : jw
+	  * @변경이력 :
+	  * @param request
+	  * @param response
+	  * @프로그램 설명 : 사용자 리스트 ajax view 
+	  */
+	private void userListAjaxView(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("/user/userListAjax.jsp");
+		rd.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
@@ -94,7 +179,7 @@ public class UserController extends HttpServlet {
 		/*String method 		= request.getParameter("method");
 		String userId 		= request.getParameter("userId");
 		String userNm 		= request.getParameter("userNm");
-		String userAlias	= request.getParameter("userAlias");
+		String userAlias		= request.getParameter("userAlias");
 		String pass			= request.getParameter("pass");*/
 		
 		/*InputStreamReader isr = new InputStreamReader(request.getInputStream());
@@ -110,18 +195,40 @@ public class UserController extends HttpServlet {
 		}
 		System.out.println("====================================");
 		
+
+		
 		String method 		= PartUtil.readParameterValue(request.getPart("method"));
 		String userId 		= PartUtil.readParameterValue(request.getPart("userId"));
 		String userNm 		= PartUtil.readParameterValue(request.getPart("userNm"));
-		String userAlias	= PartUtil.readParameterValue(request.getPart("userAlias"));
+		String userAlias		= PartUtil.readParameterValue(request.getPart("userAlias"));
 		String pass			= PartUtil.readParameterValue(request.getPart("pass"));
-		
-		UserVo userVo	= new UserVo(userId, userNm, userAlias, pass);
+
 		UserDao userDao	= new UserDaoMyBatisImpl();
 		
-		
-		
 		try {
+			//첨부파일 준비
+			Part picturePart = request.getPart("picture");
+			String filePath = "";
+			
+			//첨부파일이 있는경우
+			if(picturePart != null) {
+				printHeader(picturePart);
+				
+				String picturePath  = "/uploadPicture";
+				String fileName		=	PartUtil.getFileName(picturePart);
+				PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart);
+				
+				filePath = picturePath + "/" + fileName;
+			}
+			else {
+				Map<String, String> pMap = new HashMap<String, String>();
+				pMap.put("userId", userId);
+				UserVo userVoOrg = userDao.getUser(pMap);
+				filePath = userVoOrg.getPicture_path();
+			}
+			
+			UserVo userVo	= new UserVo(userId, userNm, userAlias, pass, "system", filePath);
+			
 			if(method.equals("insert")) {
 				userVo.setReg_id("system");		//세션을 통해 접속한 사용자의 아이디를 가져온다.
 				modifyCnt = userDao.insertUser(userVo);
@@ -139,6 +246,15 @@ public class UserController extends HttpServlet {
 		else
 			userFormView(request, response);
 			
+	}
+
+	private void printHeader(Part picturePart) {
+		Collection collection = picturePart.getHeaderNames();
+		Iterator iterator = collection.iterator();
+		while(iterator.hasNext()) {
+			String headerName = (String)iterator.next();
+			System.out.println(headerName + " : " + picturePart.getHeader(headerName)); 
+		}
 	}
 
 	/** 

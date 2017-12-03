@@ -18,8 +18,8 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">사진</span></label>
 		<div class="col-sm-10">
-			<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150">
-			<input type="file" name="user_picture"/> 
+			<img src="${pageContext.request.contextPath}${userVo.picture_path}" width="150"  height="150">
+			<input type="file" name="picture"/> 
 		</div>
 	</div>
 	
@@ -65,6 +65,21 @@
 				name="userAlias" placeholder="별명" value="${userVo.userAlias}">
 		</div>
 	</div>
+	
+	<div class="form-group">
+		<label for="addr1" class="col-sm-2 control-label">주소1</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="addr1"
+				name="addr1" placeholder=주소" value="" readonly> <%--${userVo.addr1} --%>
+			<input type="text" class="form-control" id="addr2"
+				name="addr2" placeholder=상세주소" value="" readonly> <%--${userVo.addr2} --%>
+			<input type="text" class="form-control" id="userAlias" 
+				name="zipcode" placeholder="우편번호" value="${userVo.zipcode}" readonly>
+			<button id="addrSearhBtn">주소검색</button>
+		</div>
+	</div>
+	
+	
 	<div class="form-group">
 		<label for="pass" class="col-sm-2 control-label">Password</label>
 		<div class="col-sm-10">

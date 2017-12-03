@@ -6,7 +6,7 @@
 
 	<typeAliases>
 		<typeAlias alias="boardVo" type="member.model.MemberVo"/>
-		<typeAlias alias="UserVo" type="user.model.UserVo"/>
+		<typeAlias alias="userVo" type="user.model.UserVo"/>
 	</typeAliases>
 	
     <environments default="development">

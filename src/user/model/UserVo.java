@@ -11,12 +11,15 @@ public class UserVo {
 	private	String	reg_id;
 	private	Date	reg_dt;
 	
-	public UserVo(String userId, String userNm, String userAlias, String pass) {
-		this.userId		=	userId;
-		this.userNm		=	userNm;
-		this.userAlias	=	userAlias;
-		this.pass		=	pass;
+	public UserVo(String userId, String userNm, String userAlias, String pass, String reg_id, String picture_path) {
+		this.userId			=	userId;
+		this.userNm			=	userNm;
+		this.userAlias		=	userAlias;
+		this.pass			=	pass;
+		this.reg_id			=	reg_id;
+		this.picture_path	=	picture_path;
 	}
+	
 	public UserVo() {
 		
 	}

@@ -14,8 +14,22 @@
     <param-name>adminUser</param-name>
     <param-value>15101001</param-value>
   </context-param>
-  
-  
+
+<!--  
+	<servlet>
+		<servlet-name>userServlet</servlet-name>
+		<servlet-class>user.web.UserController</servlet-class>
+		<multipart-config>
+			<location>/upload</location>
+			<max-file-size>20000</max-file-size>
+			<max-request-size>20000</max-request-size>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userServlet</servlet-name>
+		<url-pattern>/user/userForm</url-pattern>
+	</servlet-mapping>
+  -->
   <!-- exception type을  java.lang.Throwable로 할 경우 다른 exception-type은 무시됨-->
   
   <error-page>

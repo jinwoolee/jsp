@@ -3,4 +3,5 @@
 <ul class="nav nav-sidebar">
 	<li><a href="<%=request.getContextPath()%>/main.do">Main <span class="sr-only">(current)</span></a></li>
 	<li class="active"><a href="<%=request.getContextPath()%>/user/userList">사용자 리스트</a></li>
+	<li class="active"><a href="<%=request.getContextPath()%>/user/userListAjax">사용자 리스트(Ajax)</a></li>
 </ul>

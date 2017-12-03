@@ -35,7 +35,7 @@
 
 <!-- 사용자 정보 수정 -->
 <update id="updateUser" parameterType="map">
-	update t_user set userNm = #{userNm}, userAlias = #{userAlias}, pass = #{pass}, reg_dt = sysdate
+	update t_user set userNm = #{userNm}, userAlias = #{userAlias}, pass = #{pass}, picture_path = #{picture_path}, reg_dt = sysdate
 	where userId = #{userId}
 </update>
 

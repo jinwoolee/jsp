@@ -19,7 +19,7 @@ url : url 생성
 <c:url value="coreURL_target.jsp"/>
 <br/><br/><br/>
 
-<c:url value="coreURL_target.jsp" var="brown">
+<c:url value="coreURL_target.jsp">
 	<c:param name="userId" value="brown"/>
 </c:url>
 <c:out value="${brown }" />
@@ -28,5 +28,12 @@ url : url 생성
 
 <c:url value="coreURL_target.jsp" var="coreUrl_target"/> <br/>
 <a href="${coreUrl_target}"> coreUrl_target </a>
+
+<c:import url="coreURL_target.jsp" var="var">
+	<c:param name="userId" value="brown"/>
+</c:import>
+<br/><br/>
+${var}
+ 
 </body>
 </html>

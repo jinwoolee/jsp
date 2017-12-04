@@ -38,6 +38,11 @@ ${vo}<br/>
 <c:set target="${vo}" property="seq" value="105" />
 ${vo}<br/>
 
+<%--
+ deffered EL
+ --%>
+<c:set var="deff" value="#{vo}"/> 
+
 
 <%--remove --%>
 <c:remove var="vo"/>

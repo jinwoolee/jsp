@@ -32,6 +32,9 @@ public class UserVo {
 	public String getUserNm() {
 		return userNm;
 	}
+	public String getUserNm_fm() {
+		return "*** " +  userNm + " ***";
+	}
 	public void setUserNm(String userNm) {
 		this.userNm = userNm;
 	}

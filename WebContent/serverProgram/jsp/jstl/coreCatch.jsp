@@ -21,7 +21,7 @@ ${exceptionObj}
 <c:catch var="exception">
 <% 
 	String userId = request.getParameter("userId");
-	boolean userIdChekck = userId.equals("brown");		//parameter를 호출하지 않아 nullpointer예외 발생
+	boolean userIdChekck = userId.equals("brown");		//전송되지 않은 parameter를 사용 -> nullpointer예외 발생
 %>
 
 </c:catch>

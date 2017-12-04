@@ -24,7 +24,13 @@ coreURL.jsp<br/><br/>
 </c:import>
 <br/>
 <br/>
-coreURL.jsp
+coreURL.jsp <br/>
+
+----------------------------------------------------<br/>
+<c:import varReader="reader" url="/serverProgram/jsp/jstl/coreURL_target.jsp"/>
+<%--${reader } <br/> --%>
+<c:out value="${reader}"/> <br/>
+----------------------------------------------------<br/>
 
 </body>
 </html>

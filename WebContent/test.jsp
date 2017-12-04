@@ -1,5 +1,10 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.Reader"%>
+<%@page import="java.io.FileReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="user.model.UserVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -7,14 +12,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-isNew():<%= session.isNew()%><br/>
-getCreationTime(): <%= new java.util.Date(session.getCreationTime()) %><br/>
-getLastAccessedTime(): <%= new java.util.Date(session.getLastAccessedTime()) %><br/>
-getId()[세션 ID]: <%= session.getId() %><br/>
-getMaxInactiveInterval() <%= session.getMaxInactiveInterval() %> 초 <br/>
 
-session.getAttribute("testStrSession") : <%= session.getAttribute("testStrSession") %><br/>
-session.getAttribute("testStrSession") : ${testStrSession}<br/>
+<%
+	Date date = new Date();
+%>
 
+
+ 
 </body>
 </html>

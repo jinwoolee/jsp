@@ -44,7 +44,7 @@ public class PartUtil {
 	  */
 	public static String getFileName(Part part) {
 		//content-type : image/jpeg
-		//content-disposition : form-data; name="picture"; filename="샐리.jpeg"
+		//content-disposition : form-data; name="picture"; filename="sally.png"
 		
 		String[] contentDiposition = part.getHeader("Content-Disposition").split(";"); 
 		for (String cd : contentDiposition) {

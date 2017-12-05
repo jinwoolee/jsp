@@ -29,12 +29,13 @@
 $(document).ready(function(){
 
 	//사용자 클릭시 상세 조회 화면 이동
-	$("#userList tr").on("click", function(){
+	$("#userList").on("click", "tr", function(){
 		
 		/*"data-productId"  translates to "productid"
 		"data-product-id" translates to "productId"
 		"data-PRODUCT-ID" translates to "productId"
 		"data-ProDUctId"  translates to "productid"*/
+		//html 속성 규칙(소문자)에 의해 대문자로 작성한 data 속성도 소문자로 변경됨. 주의
 		var userId = $(this).data("userid");
 		
 		$(location).attr("href", "<%=request.getContextPath()%>/user/getUser?userId=" + userId);

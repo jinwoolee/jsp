@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -60,7 +61,7 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setCharacterEncoding("utf-8");
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
 		
@@ -89,7 +90,6 @@ public class UserController extends HttpServlet {
 	  * @프로그램 설명 : 사용자 리스트 페이지 조회(ajax)
 	  */
 	private void userListPage(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
 		
 		UserDao userDao = new UserDaoMyBatisImpl();
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -153,6 +153,7 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
 		
 		String uri = request.getRequestURI();
 		uri = uri.replace(request.getContextPath(), "");
@@ -176,6 +177,11 @@ public class UserController extends HttpServlet {
 	 * Method 설명 : 사용자 정보 입력/수정
 	 */
 	private void userForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter pw = response.getWriter();
+		
+		String contentType = request.getContentType();
+		pw.println("contentType : " + contentType);
+		
 		request.setCharacterEncoding("utf-8");
 		int modifyCnt = 0;
 		/*String method 		= request.getParameter("method");

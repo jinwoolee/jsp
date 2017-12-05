@@ -29,7 +29,7 @@
 $(document).ready(function(){
 
 	//사용자 클릭시 상세 조회 화면 이동
-	$("#userList tr").on("click", function(){
+	$("#userList").on("click", "tr", function(){
 		
 		/*"data-productId"  translates to "productid"
 		"data-product-id" translates to "productId"

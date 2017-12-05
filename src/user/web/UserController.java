@@ -45,7 +45,7 @@ import util.PartUtil;
  * /user/insertUser		:	사용자 추가
  */
 @WebServlet(urlPatterns= {"/user/userListAjax", "/user/userListPage", "/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"} )
-@MultipartConfig(location="/tmp", maxFileSize=-1l, maxRequestSize=200000)
+@MultipartConfig( maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5)
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -89,6 +89,8 @@ public class UserController extends HttpServlet {
 	  * @프로그램 설명 : 사용자 리스트 페이지 조회(ajax)
 	  */
 	private void userListPage(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		
 		UserDao userDao = new UserDaoMyBatisImpl();
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -214,7 +216,7 @@ public class UserController extends HttpServlet {
 			if(picturePart != null) {
 				printHeader(picturePart);
 				
-				String picturePath  = "/uploadPicture";
+				String picturePath  = "uploadPicture";
 				String fileName		=	PartUtil.getFileName(picturePart);
 				PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart);
 				

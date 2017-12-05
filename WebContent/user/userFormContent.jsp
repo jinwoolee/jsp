@@ -16,7 +16,7 @@
 	<input type="hidden" id="method" name="method" value="${method}" />
 	
 	<div class="form-group">
-		<label class="col-sm-2 control-label">사진</span></label>
+		<label class="col-sm-2 control-label">사진</label>
 		<div class="col-sm-10">
 			<img src="${pageContext.request.contextPath}${userVo.picture_path}" width="150"  height="150">
 			<input type="file" name="picture"/> 
@@ -66,18 +66,19 @@
 		</div>
 	</div>
 	
-	<div class="form-group">
+		<div class="form-group">
 		<label for="addr1" class="col-sm-2 control-label">주소1</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="addr1"
-				name="addr1" placeholder=주소" value="" readonly> <%--${userVo.addr1} --%>
+				name="addr1" placeholder="주소" value="" readonly> <%--${userVo.addr1} --%>
 			<input type="text" class="form-control" id="addr2"
-				name="addr2" placeholder=상세주소" value="" readonly> <%--${userVo.addr2} --%>
+				name="addr2" placeholder="상세주소" value="" readonly> <%--${userVo.addr2} --%>
 			<input type="text" class="form-control" id="userAlias" 
-				name="zipcode" placeholder="우편번호" value="${userVo.zipcode}" readonly>
+				name="zipcode" placeholder="우편번호" value="" readonly> <%--${userVo.zipcode} --%>
 			<button id="addrSearhBtn">주소검색</button>
 		</div>
 	</div>
+	
 	
 	
 	<div class="form-group">

@@ -52,6 +52,7 @@ public class UserDaoMyBatisImpl implements UserDao{
 	public UserVo getUser(Map<String, String> userinfo) throws SQLException {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserVo userVo = sqlSession.selectOne("user.getUser", userinfo);
+		sqlSession.close();
 		return userVo;
 	}
 

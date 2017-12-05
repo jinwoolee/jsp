@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Map, java.util.List, mvc.model.BoardVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,6 +16,30 @@ table {margin-bottom : 15px;}
 </head>
 <body>
 
+<%
+
+	//map
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("key", "value");
+		request.setAttribute("map", map);
+		
+		
+		//list
+		List<BoardVo> boardList = new ArrayList<BoardVo>();
+		for(int i = 1; i <= 10; i++)
+			boardList.add(new BoardVo(i, "게시글 제목" + i, "게시글내용입니다", "userId", "2017-10-18"));
+		request.setAttribute("boardList", boardList);
+		
+		//session
+		session.setAttribute("sessionValue", "session-Value");
+		session.setAttribute("sameValue", "sameValue-session");
+		
+		//request
+		request.setAttribute("requestValue", "request-Value");
+		request.setAttribute("sameValue", "sameValue-reuqest");
+		
+		request.setAttribute("totalCnt", 15);
+		%>
 cookie jsession id : ${JSESSIONID}
 cookie jsession id : ${cookie.JSESSIONID}
 

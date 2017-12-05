@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 .container {
 	padding-top: 30px;
@@ -9,9 +10,14 @@
 
 <form id="frm" method="post" action="${pageContext.request.contextPath}/user/deleteUser" class="form-horizontal" role="form">
 	<div class="form-group">
-		<label class="col-sm-2 control-label">사진</span></label>
+		<label class="col-sm-2 control-label">사진</label>
 		<div class="col-sm-10">
-			<img src="${pageContext.request.contextPath}${userVo.picture_path}" width="150"  height="150"> 
+			<c:choose>
+				<c:when test="${!empty userVo.picture_path }">
+					<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150"/>					
+				</c:when>
+				<c:otherwise>사진이 등록되지 않았습니다.</c:otherwise>		
+			</c:choose>
 		</div>
 	</div>
 	<div class="form-group">

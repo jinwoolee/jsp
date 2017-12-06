@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.catalina.Globals;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,7 +65,19 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
 		String uri = request.getRequestURI();
-		uri = uri.replace(request.getContextPath(), "");
+		
+		String dispatchUri = (String)request.getAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR);
+		Enumeration<String> enumeration = request.getAttributeNames();
+		while(enumeration.hasMoreElements()) {
+			String key = enumeration.nextElement();
+			System.out.println(key + " / " + request.getAttribute(key));
+		}
+		
+		if(dispatchUri != null)
+			uri = dispatchUri.replace(request.getContextPath(), "");
+		else
+			uri = uri.replace(request.getContextPath(), "");
+		
 		
 		System.out.println("uri : " + uri);
 		

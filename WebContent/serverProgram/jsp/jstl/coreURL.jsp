@@ -11,7 +11,7 @@
 <body>
 
 <%--
-url : url 생성
+url : url 생성http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=7117
 <c:url value="URL" [var="변수명“] [scope="영역”]>
     <c:param name="파라미터명“ value="파라미터값” />
 </c:u 

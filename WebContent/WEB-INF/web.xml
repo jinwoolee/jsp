@@ -14,35 +14,14 @@
     <param-name>adminUser</param-name>
     <param-value>15101001</param-value>
   </context-param>
-
-<!--  
-	<servlet>
-		<servlet-name>userServlet</servlet-name>
-		<servlet-class>user.web.UserController</servlet-class>
-		<multipart-config>
-			<location>/upload</location>
-			<max-file-size>20000</max-file-size>
-			<max-request-size>20000</max-request-size>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>userServlet</servlet-name>
-		<url-pattern>/user/userForm</url-pattern>
-	</servlet-mapping>
-  -->
-  <!-- exception type을  java.lang.Throwable로 할 경우 다른 exception-type은 무시됨-->
-  
   <error-page>
     <exception-type>java.lang.ArithmeticException</exception-type>
     <location>/WEB-INF/arithmeticError.jsp</location>
-    <!--<location>/serverProgram/jsp/error/arithmeticError.jsp</location>  -->
   </error-page>
-  
   <error-page>
     <exception-type>java.lang.RuntimeException</exception-type>
     <location>/error/error.jsp</location>
   </error-page>
-  
   <error-page>
     <error-code>404</error-code>
     <location>/error/404/404.html</location>
@@ -79,25 +58,10 @@
     <servlet-name>basicServlet</servlet-name>
     <url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
-  <!-- <servlet>
-    <description></description>
-    <display-name>FrontController</display-name>
-    <servlet-name>FrontController</servlet-name>
-    <servlet-class>mvc.web.FrontController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FrontController</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping> -->
-  <!-- <listener>
-    <listener-class>listener.SessionListener</listener-class>
-  </listener> -->
-  
-   <!-- JNDI -->
-    <resource-ref>
-        <description>DB Connection</description>
-        <res-ref-name>jdbc/oracleDB</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/oracleDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>

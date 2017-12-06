@@ -1,16 +1,9 @@
 package user.web;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,14 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.catalina.Globals;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import user.dao.UserDao;
 import user.dao.UserDaoMyBatisImpl;
 import user.model.UserVo;
+import util.ControllerUtil;
 import util.DefaultConst;
 import util.NaviUtil;
 import util.PartUtil;
@@ -52,7 +43,7 @@ import util.PartUtil;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	Logger logger = LoggerFactory.getLogger(UserController.class);
+	//Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -63,23 +54,7 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		String uri = request.getRequestURI();
-		
-		String dispatchUri = (String)request.getAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR);
-		Enumeration<String> enumeration = request.getAttributeNames();
-		while(enumeration.hasMoreElements()) {
-			String key = enumeration.nextElement();
-			System.out.println(key + " / " + request.getAttribute(key));
-		}
-		
-		if(dispatchUri != null)
-			uri = dispatchUri.replace(request.getContextPath(), "");
-		else
-			uri = uri.replace(request.getContextPath(), "");
-		
-		
-		System.out.println("uri : " + uri);
+		String uri = ControllerUtil.parseUri(request, response);
 		
 		if(uri.equals("/user/userList"))
 			userList(request, response);
@@ -167,12 +142,7 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		
-		String uri = request.getRequestURI();
-		uri = uri.replace(request.getContextPath(), "");
-		
-		System.out.println("uri : " + uri);
+		String uri = ControllerUtil.parseUri(request, response);
 		
 		if(uri.equals("/user/deleteUser"))
 			deleteUser(request, response);
@@ -271,8 +241,8 @@ public class UserController extends HttpServlet {
 	}
 
 	private void printHeader(Part picturePart) {
-		Collection collection = picturePart.getHeaderNames();
-		Iterator iterator = collection.iterator();
+		Collection<String> collection = picturePart.getHeaderNames();
+		Iterator<String> iterator = collection.iterator();
 		while(iterator.hasNext()) {
 			String headerName = (String)iterator.next();
 			System.out.println(headerName + " : " + picturePart.getHeader(headerName)); 

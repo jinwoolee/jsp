@@ -24,7 +24,7 @@
 <script type="text/javascript">
 var oEditors = [];
 $(document).ready(function() {
-	// Editor Setting
+	// 스마트 에디터 설정 
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef : oEditors, 
 		elPlaceHolder : "smarteditor", 		//에디터-textarea ID
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 	// 전송버튼 클릭이벤트
 	$("#savebutton").click(function(){
-		//if(confirm("저장하시겠습니까?")) {
+		
 			// id가 smarteditor인 textarea에 에디터에서 대입
 			oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
 	})
 });
 
-// 필수값 Check
+// 값체크
 function validation(){
 	var contents = $.trim(oEditors[0].getContents());
 	if(contents === '<p>&nbsp;</p>' || contents === ''){ // 기본적으로 아무것도 입력하지 않아도 <p>&nbsp;</p> 값이 입력되어 있음. 
@@ -63,16 +63,6 @@ function validation(){
 	return true;
 }
 
-// 글쓰기 저장 & 수정
-// function fWrite() {
-// 	if(validation()){
-// 		if(confirm("저장하시겠습니까?")) {
-// 			oEditors[0].exec("UPDATE_CONTENTS_FIELD", []); // Editor내용을 DB에 가져가기 위해 필수로 작성!
-// 														   // oEditors << 전역변수로 선언한 변수명과 동일해야 함.
-// 			$("#boardForm").attr('action','${pageContext.request.contextPath}/save').submit();
-// 		}
-// 	}
-// }
 </script>
 </head>
 

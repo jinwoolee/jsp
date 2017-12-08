@@ -1,5 +1,6 @@
 package user.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -39,7 +40,7 @@ import util.PartUtil;
  * /user/insertUser		:	사용자 추가
  */
 @WebServlet(urlPatterns= {"/user/userListAjax", "/user/userListPage", "/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"} )
-//@MultipartConfig( maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5)
+@MultipartConfig( maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5)
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -200,7 +201,6 @@ public class UserController extends HttpServlet {
 		String pass			= PartUtil.readParameterValue(request.getPart("pass"));*/
 
 		UserDao userDao	= new UserDaoMyBatisImpl();
-		PartUtil.uploadFile(getServletContext().getRealPath("uploadPicture"), request);
 		
 		try {
 			//첨부파일 준비
@@ -214,14 +214,11 @@ public class UserController extends HttpServlet {
 				String picturePath  = "uploadPicture";
 				String fileName		=	PartUtil.getFileName(picturePart);
 				
-				//servlert parts
-				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart);
-				//servlert parts inputstream
-				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart.getInputStream());
-				//
-				PartUtil.uploadFile(getServletContext().getRealPath(picturePath), request);
+				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + File.separator + fileName, picturePart);		//servlert parts, @multipartConfi 설정 필요
+				PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + File.separator + fileName, picturePart.getInputStream());	//servlert parts inputstream @multipartConfi 설정 필요
+				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath), request);	//commons fileupload, servlet @multipartConfi 설정 제거 필요
 				
-				filePath = picturePath + "/" + fileName;
+				filePath = picturePath + File.separator + fileName;
 			}
 			else {
 				Map<String, String> pMap = new HashMap<String, String>();

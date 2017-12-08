@@ -35,10 +35,10 @@ public class FileUploadServlet extends HttpServlet {
 		String	param = request.getParameter("param");
 		System.out.println("param : " + param);
 		
-		File temporaryDir = new File(getServletContext().getRealPath("/upload/"));       //업로드 된 파일의 임시 저장 폴더를 설정
-		String realDir = getServletContext().getRealPath("/upload/");
-		//DiskFileItemFactory factory = new DiskFileItemFactory(1*1024*1024, temporaryDir);
-		DiskFileItemFactory factory = new DiskFileItemFactory();
+		File temporaryDir = new File(getServletContext().getRealPath("/tmp"));       //업로드 된 파일의 임시 저장 폴더를 설정
+		String realDir = getServletContext().getRealPath("/upload");
+		DiskFileItemFactory factory = new DiskFileItemFactory(30, temporaryDir);
+		
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
@@ -49,7 +49,7 @@ public class FileUploadServlet extends HttpServlet {
 					pw.println("fileItem.getFieldName() + fileItem.getString() : " + fileItem.getFieldName() + " / " + fileItem.getString());
 				else {					
 					pw.println(fileItem.getFieldName() + " / " + fileItem.getSize() + " / " + fileItem.getContentType());
-					File uploadedFile=new File(realDir, fileItem.getFieldName());                                                   //실제 디렉토리에 fileName으로 카피 된다.
+					File uploadedFile = new File(realDir, fileItem.getFieldName());                                                   //실제 디렉토리에 fileName으로 카피 된다.
 					fileItem.write(uploadedFile);
 					fileItem.delete();
 				}

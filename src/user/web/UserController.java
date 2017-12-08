@@ -39,7 +39,7 @@ import util.PartUtil;
  * /user/insertUser		:	사용자 추가
  */
 @WebServlet(urlPatterns= {"/user/userListAjax", "/user/userListPage", "/user/userList", "/user/getUser", "/user/deleteUser", "/user/userFormView", "/user/userForm"} )
-@MultipartConfig( maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5)
+//@MultipartConfig( maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5)
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -188,14 +188,19 @@ public class UserController extends HttpServlet {
 		System.out.println("====================================");
 		
 
-		
-		String method 		= PartUtil.readParameterValue(request.getPart("method"));
+		String method 		= request.getParameter("method");
+		String userId 		= request.getParameter("userId");
+		String userNm 		= request.getParameter("userNm");
+		String userAlias		= request.getParameter("userAlias");
+		String pass			= request.getParameter("pass");
+		/*String method 		= PartUtil.readParameterValue(request.getPart("method"));
 		String userId 		= PartUtil.readParameterValue(request.getPart("userId"));
 		String userNm 		= PartUtil.readParameterValue(request.getPart("userNm"));
 		String userAlias		= PartUtil.readParameterValue(request.getPart("userAlias"));
-		String pass			= PartUtil.readParameterValue(request.getPart("pass"));
+		String pass			= PartUtil.readParameterValue(request.getPart("pass"));*/
 
 		UserDao userDao	= new UserDaoMyBatisImpl();
+		PartUtil.uploadFile(getServletContext().getRealPath("uploadPicture"), request);
 		
 		try {
 			//첨부파일 준비
@@ -208,7 +213,13 @@ public class UserController extends HttpServlet {
 				
 				String picturePath  = "uploadPicture";
 				String fileName		=	PartUtil.getFileName(picturePart);
-				PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart);
+				
+				//servlert parts
+				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart);
+				//servlert parts inputstream
+				//PartUtil.uploadFile(getServletContext().getRealPath(picturePath) + "/" + fileName, picturePart.getInputStream());
+				//
+				PartUtil.uploadFile(getServletContext().getRealPath(picturePath), request);
 				
 				filePath = picturePath + "/" + fileName;
 			}

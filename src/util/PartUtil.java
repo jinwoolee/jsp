@@ -1,10 +1,23 @@
 package util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.FilterWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,6 +87,83 @@ public class PartUtil {
 			} catch (IOException e) {
 				logger.error("can't upload file {}", picturePart.getName());
 			}
+		}
+	}
+	
+	/*
+	public static void uploadFile(String pictureFilePath, InputStream is) {
+		File file = new File(pictureFilePath);
+		FileWriter fw = null;
+		
+		try {
+			char[] cuff = new char[512];
+			byte[] buff = new byte[512];
+			int len = -1;
+			InputStreamReader isr = new InputStreamReader(is);
+			fw = new FileWriter(file);
+			
+			while( (len = isr.read(cuff)) != -1) {
+				fw.write(cuff);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				fw.close();} catch (IOException e) {e.printStackTrace();}
+		}
+	}
+	*/
+	
+	public static void uploadFile(String pictureFilePath, InputStream is) {
+		logger.debug("pisctureFilePath : {} ", pictureFilePath );
+		File uploadFile = null;
+		OutputStream os = null;
+		
+	  try {
+			byte[] buff = new byte[is.available()];
+			is.read(buff);
+			
+			uploadFile = new File(pictureFilePath);
+			os = new FileOutputStream(uploadFile);
+			os.write(buff);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				os.close();} catch (IOException e) {e.printStackTrace();}
+		}
+	}
+	
+	public static void uploadFile(String uploadPath, HttpServletRequest request) {
+		
+		//파일 업로드 임시 영역 설
+		String tempUploadPath = request.getServletContext().getRealPath("/tmp");
+		File temporaryDir  = new File(tempUploadPath);
+		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory(1024*1024*1, temporaryDir);
+		
+		//파일 업로드 설정
+		ServletFileUpload upload = new ServletFileUpload(diskFileItemFactory);                               
+		upload.setSizeMax(1024 * 1024 * 2);           		  //최대 파일 크기(2M)
+		try {
+			List<FileItem> items = upload.parseRequest(request);
+			for(FileItem fileItem : items) {
+				//일반 form - text
+				if(fileItem.isFormField())
+					;
+				//file
+				else {				
+					logger.debug("file info : {}, size : {}, contentType : {}",
+								  fileItem.getName(), fileItem.getSize(), fileItem.getContentType() );
+					 File uploadedFile=new File(uploadPath.replace(fileItem.getName(), ""), fileItem.getName());                                                   //실제 디렉토리에 fileName으로 카피 된다.
+					 fileItem.write(uploadedFile);
+					 //fileItem.delete();                         
+				}
+			}
+		} catch (FileUploadException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

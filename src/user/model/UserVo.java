@@ -2,7 +2,10 @@ package user.model;
 
 import java.util.Date;
 
-public class UserVo {
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+public class UserVo implements HttpSessionBindingListener{
 	private String	userId;
 	private	String	userNm;
 	private	String	userAlias;
@@ -73,5 +76,16 @@ public class UserVo {
 	public String toString() {
 		return "UserVo [userId=" + userId + ", userNm=" + userNm + ", userAlias=" + userAlias + ", pass=" + pass
 				+ ", picture_path=" + picture_path + ", reg_id=" + reg_id + ", reg_dt=" + reg_dt + "]";
+	}
+
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		System.out.println("sessionBinding valueBound");
+		
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		System.out.println("sessionBinding valueUnBound");
 	}	
 }

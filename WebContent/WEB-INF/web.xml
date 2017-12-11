@@ -14,20 +14,18 @@
     <param-name>adminUser</param-name>
     <param-value>15101001</param-value>
   </context-param>
-  
   <context-param>
-        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
-        <param-value>en</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-        <param-value>resourece.message</param-value>
-    </context-param>
-    <context-param>
-    		<param-name>javax.servlet.jsp.jstl.fmt.tileZone</param-name>
-    		<param-value>HongKong</param-value>
-    </context-param>
-    
+    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+    <param-value>en</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resourece.message</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.tileZone</param-name>
+    <param-value>HongKong</param-value>
+  </context-param>
   <error-page>
     <exception-type>java.lang.ArithmeticException</exception-type>
     <location>/WEB-INF/arithmeticError.jsp</location>
@@ -78,4 +76,11 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
+  
+  <listener>
+    <listener-class>listener.SessionListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.TestSessionListener</listener-class>
+  </listener>
 </web-app>

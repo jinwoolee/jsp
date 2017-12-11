@@ -14,7 +14,7 @@
 		class="form-horizontal" role="form" enctype="multipart/form-data">
 	
 	<input type="hidden" id="method" name="method" value="${method}" />
-	
+	 
 	<div class="form-group">
 		<label class="col-sm-2 control-label">사진</label>
 		<div class="col-sm-10">

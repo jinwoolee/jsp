@@ -27,5 +27,8 @@ after end tag : ${varFromTag } <br/><br/>
 	<%=pageContext.getAttribute("testString") %>
 </c:if>
 
+<%
+session.invalidate();
+%>
 
 

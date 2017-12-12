@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class TestSetCharacterEncoding
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class TestSetCharacterEncoding implements Filter {
 
     /**

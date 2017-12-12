@@ -24,7 +24,7 @@ response.setDateHeader("Expires", 1L);				//만료일자 설정
 	ResultSet rs = null;
 	
 	try{
-		Class.forName(driver);
+		//Class.forName(driver);
 		conn = DriverManager.getConnection(url, user, pass);
 		
 		pstm = conn.prepareStatement("select userid, usernm, pass from t_user");

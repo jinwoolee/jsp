@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 .container {
 	padding-top: 30px;
@@ -14,7 +15,8 @@
 		<div class="col-sm-10">
 			<c:choose>
 				<c:when test="${!empty userVo.picture_path }">
-					<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150"/>					
+					<%--<img src="${pageContext.request.contextPath}/${userVo.picture_path}" width="150"  height="150"/> --%>
+					<img src="${pageContext.request.contextPath}/fileDownloadServlet?fileName=${fn:replace(userVo.picture_path, 'uploadPicture/', '')}" width="150"  height="150"/>					
 				</c:when>
 				<c:otherwise>사진이 등록되지 않았습니다.</c:otherwise>		
 			</c:choose>

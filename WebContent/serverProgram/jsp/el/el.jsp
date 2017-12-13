@@ -55,7 +55,7 @@ cookie jsession id : ${cookie.JSESSIONID}
 	</thead>
 	<tbody>
 		<tr>
-			<td><% Map map = (Map)request.getAttribute("map"); %>
+			<td><% map = (Map)request.getAttribute("map"); %>
 				<%=map.get("key") %></td>
 			<td>${map.key}</td>
 		</tr>
@@ -127,7 +127,7 @@ cookie jsession id : ${cookie.JSESSIONID}
 
 <table>
 	<caption>list-표현식</caption>
-	<% List<BoardVo> boardList = (List<BoardVo>)request.getAttribute("boardList");
+	<% boardList = (List<BoardVo>)request.getAttribute("boardList");
 	  for(BoardVo vo : boardList){
 	%>
 	 <tr>

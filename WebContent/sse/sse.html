@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	if (typeof (EventSource) !== "undefined") {
+		var source = new EventSource("http://localhost:8080/SSEservlet");
+		source.onmessage = function(event) {
+			document.getElementById("ServerTime").innerHTML += event.data
+					+ "<br><br>";
+		};
+	} else {
+		document.getElementById("ServerTime").innerHTML = "Sorry, your browser does not support server-sent events...";
+	}
+</script>
+</head>
+<body>
+	<h1>Current Server Time :</h1>
+
+	<div id="ServerTime"></div>
+</body>
+</html>

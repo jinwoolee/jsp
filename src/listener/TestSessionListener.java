@@ -31,12 +31,12 @@ public class TestSessionListener implements ServletRequestListener, ServletReque
 
 	@Override
 	public void requestDestroyed(ServletRequestEvent sre) {
-		System.out.println("requestDestroyed ");
+		//System.out.println("requestDestroyed ");
 	}
 
 	@Override
 	public void requestInitialized(ServletRequestEvent sre) {
 		HttpServletRequest hsr = (HttpServletRequest)sre.getServletRequest(); 
-		System.out.println("requestInitialzized " + hsr.getRequestURI());
+		//System.out.println("requestInitialzized " + hsr.getRequestURI());
 	}
 }

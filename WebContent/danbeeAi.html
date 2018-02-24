@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/js/jquery/jquery-3.2.1.js"></script>
+<script>
+$(document).ready(function(){
+	var param = {"chatbot_id" : "71134f37-fdb0-49da-af8c-5ccceac0a09c", "input_sentence" : "안녕하세요"};
+	
+	$.ajax({
+	      url: "https://danbee.ai/chatflow/engine.do",
+	      method : "post",
+	      contentType : "application/json;charset=UTF-8",
+	      dataType : "json",
+	      data : JSON.stringify(param), 
+	      success: function(data){
+	    	console.log(data);
+	        jQuery("#message").append(data.responseSet.result.input_sentence);
+	      }
+    });
+});
+
+
+</script>
+</head>
+<body>
+<div id="message">
+</div>
+</body>
+</html>

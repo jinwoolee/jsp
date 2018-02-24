@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/js/jquery/jquery-3.2.1.js"></script>
+<script>
+$(document).ready(function(){
+	
+});
+
+function initIframe(){
+	$("body iframe").remove();
+	
+	for(var i = 1; i <= 2; i++)
+		$("body").append($("<iframe></iframe>").css("display", "none").attr("id", "filedown"+i));
+}
+
+function getFiles(){
+	initIframe();
+	$("#filedown1").attr("src", "/FileDownloadServlet?fileName=brown.png")
+	$("#filedown2").attr("src", "/FileDownloadServlet?fileName=cony.png")
+}
+</script>
+</head>
+<body>
+<iframe id="filedown" style="display:none;"></iframe>
+<iframe id="filedown2" style="display:none;"></iframe>
+</body>
+</html>

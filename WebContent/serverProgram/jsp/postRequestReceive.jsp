@@ -54,13 +54,13 @@ request.getParameterMap()
 <br/>
 
 <h4>request header</h4>
-request.getHeader("Accept") : <%= request.getHeader("Accept") %> <br/>
-request.getHeaderNames() : 
+request.getHeaderNames() : <br/>
 <% Enumeration enumerationHeaders = request.getHeaderNames();
-	while(enumerationHeaders.hasMoreElements()){ %>
-		<%= (String)enumerationHeaders.nextElement()%> /
+    while(enumerationHeaders.hasMoreElements()){
+        String headerName= (String)enumerationHeaders.nextElement();
+        out.println(headerName + " : " + request.getHeader(headerName) + "<br/>");
+    %>
 <%}%>
-
 
 </body>
 </html>

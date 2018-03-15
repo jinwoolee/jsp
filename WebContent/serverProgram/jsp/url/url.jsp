@@ -7,10 +7,10 @@
 </head>
 <body>
 <a href="<%=request.getContextPath()%>/serverProgram/jsp/url/sameContext.jsp">동일 컨텍스트</a> <br/>
-<a href="relativePath.jsp">상태경로로 이동</a> <br/>
-<a href="relative/relativePath.jsp">상태경로로 이동2</a> <br/>
+<a href="relativePath.jsp">상대경로로 이동</a> <br/>
+<a href="relative/relativePath.jsp">상대경로로 이동2</a> <br/>
 <a href="http://localhost:8080/serverProgram/jsp/url/absolute/absolutePath.jsp">절대경로 이동</a> <br/>
-<a href="http://localhost:8080/jsp2/index.jsp">다른 컨텍스 절대경로</a> <br/>
-<a href="/jsp2/index.jsp">다른 컨텍스</a> <br/>
+<a href="http://localhost:8080/jsp2/jsp2Index.jsp">다른 컨텍스 절대경로</a> <br/>
+<a href="/jsp2/jsp2Index.jsp">다른 컨텍스</a> <br/>
 </body>
 </html>

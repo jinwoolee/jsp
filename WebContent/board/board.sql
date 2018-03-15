@@ -1,4 +1,4 @@
-
+	
 create table board(
  boardNo number,
  pboardNo number,

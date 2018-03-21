@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class CORSFilter
  */
+
 //@WebFilter("/CORSFilter")
 public class CORSFilter implements Filter {
 

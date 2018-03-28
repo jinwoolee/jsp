@@ -52,7 +52,7 @@ function getCookieValue(cookieName){
 		var cookieValueEndIndex		=	document.cookie.indexOf(";", cookieValueStartIndex);
 		if(cookieValueEndIndex == -1)	cookieValueEndIndex	=	document.cookie.length;
 		var cookieValue				=	unescape(document.cookie.substring(cookieValueStartIndex+1, cookieValueEndIndex));
-		return cookieValue;
+		return decodeURIComponent(cookieValue);
 	}
 }
 
@@ -60,7 +60,7 @@ function getCookieValue(cookieName){
 function setCookieValue(cookieName, cookieValue, expires){
 	var today = new Date();
 	today.setDate( today.getDate() + parseInt(expires) );
-	document.cookie = cookieName + "=" +  escape(cookieValue) + "; path=/; expires=" + today.toGMTString() + ";";
+	document.cookie = cookieName + "=" +  encodeURIComponent(cookieValue) + "; path=/; expires=" + today.toGMTString() + ";";
 }
 
 //cookie 값 삭제
@@ -69,7 +69,7 @@ function deleteCookieValue(cookieName){
 	expireDate.setDate( expireDate.getDate() -1 );
 	document.cookie = cookieName + "=; path=/; expires=" + expireDate.toGMTString() + ";";
 }
-</script>    
+</script>
 </head>
 <body>
 	<div class="container">

@@ -2,5 +2,5 @@
 <%
 	//logout시 사용자 id를 세션에서 삭제한다.
 	session.removeAttribute("userId");
-	out.println(session.getAttribute("userId") + "<br/>");
+	out.println("userId : " + session.getAttribute("userId") + "<br/>");
 %>

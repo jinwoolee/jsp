@@ -70,6 +70,18 @@
     <servlet-name>basicServlet</servlet-name>
     <url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
+  
+  <!-- front servlet -->
+  <servlet>
+    <description></description>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>mvc.web.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/oracleDB</res-ref-name>

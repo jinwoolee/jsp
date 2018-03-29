@@ -14,4 +14,4 @@
             username="pc01" 
             password="java"
             url="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
-</context>            
+</context>

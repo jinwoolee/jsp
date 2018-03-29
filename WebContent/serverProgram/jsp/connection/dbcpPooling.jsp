@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="org.apache.commons.dbcp.DriverManagerConnectionFactory" %>
 <%@ page import="org.apache.commons.dbcp.ConnectionFactory" %>
 <%@ page import="org.apache.commons.dbcp.PoolableConnectionFactory" %>
@@ -13,7 +13,6 @@
 	final	String	pass		=	"java";
 	final	int		LOOP_COUNT	=	10;
 	final	int		POOL_SIZE	=	5;
-
 
 	long start = 0L;
 	long end = 0L;
@@ -39,7 +38,6 @@
 	end = System.currentTimeMillis();
 	out.println("duration : " + (end-start) + "ms" + "<br/>");
 	out.println("duration : " + (end-start)/1000 + "s" + "<br/>");
-	
 	
 	start = System.currentTimeMillis();
 	bds.close();

@@ -1,6 +1,6 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	final	String	driver		=	"oracle.jdbc.driver.OracleDriver";
 	final	String	url			=	"jdbc:oracle:thin:@127.0.0.1:1521:orcl";

@@ -11,7 +11,7 @@ import mvc.service.BoardService;
 import mvc.service.impl.BoardServiceImpl;
 
 public class BoardController implements IAction{
-		BoardService boardService = new BoardServiceImpl();
+	BoardService boardService = new BoardServiceImpl();
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response)

@@ -74,7 +74,7 @@ function deleteCookieValue(cookieName){
 		<form class="form-signin" action="loginProcess.jsp">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="inputEmail" class="sr-only">Email address</label>
-			<input type="email" id="inputEmail" name="useId" class="form-control" placeholder="Email address" required autofocus>
+			<input type="email" id="inputEmail" name="userId" class="form-control" placeholder="Email address" required autofocus>
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 			<div class="checkbox">

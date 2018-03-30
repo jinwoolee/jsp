@@ -19,6 +19,7 @@ public class RequestCountFilter implements Filter {
 	public RequestCountFilter() {
 		System.out.println("RequestCountFilter 생성자" );
 	}
+	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		System.out.println("RequestCountFilter 초기화" );
@@ -30,7 +31,8 @@ public class RequestCountFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+					throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
 		//int count = counterMap.getOrDefault(req.getRequestURI(), 0);
 		String uri = req.getRequestURI();
@@ -41,7 +43,6 @@ public class RequestCountFilter implements Filter {
 			System.out.println("count : " + cnt);
 			counterMap.put(req.getRequestURI(), ++cnt);
 		}
-		
 		
 		chain.doFilter(request, response);
 	}

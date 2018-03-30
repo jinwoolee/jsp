@@ -4,10 +4,10 @@
 	//session에 사용자 아이디를 저장
 	//해당 세션이 유지되는 동안에는 session 객체를 통해 해당 사용자의 id를 확인할수 있다.
 	
-	String userId		=	request.getParameter("useId");
+	String userId		=	request.getParameter("userId");
 	String password		=	request.getParameter("password");
 	
-	System.out.println("useId = " + userId);
+	System.out.println("userId = " + userId);
 	System.out.println("password = " + password);
 	
 	//이부분은 사용자가 입력한 id, pass에 대해 검증하는 로직이 들어와야함.

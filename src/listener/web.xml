@@ -29,4 +29,8 @@
   <listener>
     <listener-class>listener.SessionListener</listener-class>
   </listener>
+  
+  <listener>
+    <listener-class>listener.HttpSessionAttrListener</listener-class>
+  </listener>
 </web-app>

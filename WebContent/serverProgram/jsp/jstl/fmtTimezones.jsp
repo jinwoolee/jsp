@@ -10,11 +10,9 @@
 </head>
 <body>
 
-
 <c:forEach var="id" items="<%= java.util.TimeZone.getAvailableIDs() %>">
     ${id}<br/>
 </c:forEach>
-
 
 </body>
 </html>

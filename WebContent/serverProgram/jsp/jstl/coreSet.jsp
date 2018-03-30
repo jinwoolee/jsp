@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Map, java.util.List, mvc.model.BoardVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,31 +20,24 @@ value : 변수의 값, 표현식, EL, 텍스트
 scope : 변수를 저장한 영역(page, request, session, application)
 --%>
 
-<c:set var="userId" value="user_id" scope="request"/> 
+<c:set var="userId" value="user_id" scope="request"/>
 ${userId} <br/>
 <%=request.getAttribute("userId")%> <br/>
 
 
 <%--
 <c:set target="대상객체" property="프로퍼티명" value="값“ />
-target에 변수명만 표시하는것이 아니라 el혀앹로 설정
+target에 변수명만 표시하는것이 아니라 el형태로 설정
 --%>
 <%
-BoardVo vo = new BoardVo(0, "게시글 제목" , "게시글내용입니다", "userId", "2017-10-18");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+BoardVo vo = new BoardVo(0, "게시글 제목" , "게시글내용입니다", "userId", sdf.format(new Date()));
 request.setAttribute("vo", vo);
 %>
 
 ${vo}<br/>
-
-<%-- <c:set target="<%=vo%>" property="seq" value="100" />--%>
 <c:set target="${vo}" property="seq" value="105" />
 ${vo}<br/>
-
-<%--
- deffered EL
- --%>
-<c:set var="deff" value="#{vo}"/> 
-
 
 <%--remove --%>
 <c:remove var="vo"/>

@@ -1,6 +1,5 @@
-<%--
-body-content
-scriptless : 
+<%-- body-content
+scriptless : EL, 텍스트 사용가능 (스크립틀릿, 표현식 사용 불가)
 tagdependent : body-content 를 텍스트로 처리
 empty : body-content 없음. 있을경우 에러
  --%>
@@ -21,7 +20,7 @@ logging
 for(int i=0; i < lineSize; i++)
 	out.print("=");
 %>
-</font><br/>
+</font><br>
 
 <jsp:doBody/>
 
@@ -36,4 +35,4 @@ logging
 for(int i=0; i < lineSize; i++)
 	out.print("=");
 %>
-</font><br/>
+</font><br>

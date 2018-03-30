@@ -82,6 +82,18 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
+  <!--  el servlet -->
+  <servlet>
+    <description></description>
+    <display-name>ElServlet</display-name>
+    <servlet-name>ElServlet</servlet-name>
+    <servlet-class>el.ElServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElServlet</servlet-name>
+    <url-pattern>/ElServlet</url-pattern>
+  </servlet-mapping>
+  
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/oracleDB</res-ref-name>

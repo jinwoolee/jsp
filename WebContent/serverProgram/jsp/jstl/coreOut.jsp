@@ -21,14 +21,20 @@ default : 값이 없을경우 대체되는 값
 <% 
 	request.setAttribute("userId", "brown");
 %>
-<c:out value="${userId}" default="cony"/><br/>
-<c:out value="${noUserId}" default="cony"/><br/>
+<c:out value="${userId}" default="cony"/><br>
+<c:out value="${noUserId}" default="cony"/><br>
 
 <%
-	FileReader reader = new FileReader(getServletContext().getRealPath("serverProgram/jsp/jstl/coreURL_target.jsp"));
+    FileReader reader = new FileReader(getServletContext().getRealPath("serverProgram/jsp/jstl/coreURL_target.jsp"));
+    FileReader reader2 = new FileReader(getServletContext().getRealPath("serverProgram/jsp/jstl/coreURL_target.jsp"));
 %>
-<pre>
+
+escape true : <br>
 <c:out value="<%=reader%>" escapeXml="true"/>
-</pre>
+<br><br>
+
+escape false : <br>
+<c:out value="<%=reader2%>" escapeXml="false"/>
+
 </body>
 </html>

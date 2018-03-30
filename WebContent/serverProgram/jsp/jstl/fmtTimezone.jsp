@@ -15,9 +15,14 @@
 <fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full" />
 
 <br>
-<fmt:timeZone value="Hongkong">
-	<fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full" />
+<fmt:timeZone value="Asia/Shanghai">
+	<fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full" /><br>
 </fmt:timeZone>
 
+<br>
+set timezone to US/Alaska
+<fmt:setTimeZone value="US/Alaska" var="timezone"/>
+timezone : ${timezone }<br>
+<fmt:formatDate value="${now}" timeZone="${timezone }" type="both" dateStyle="full" timeStyle="full" />
 </body>
 </html>

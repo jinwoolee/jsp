@@ -9,31 +9,28 @@
 </head>
 <body>
 
-body 안에서 실행되는 로직<br/>
+body 안에서 실행되는 로직<br>
 
 <tags:colorLogging color="red" lineSize="5"/>
 <%
 for(int i = 0; i < 10; i++)
-	out.print(i + "<br/>");
+	out.print(i + "<br>");
 %>
 <tags:colorLogging color="blue"/>
+<br><br>
 
-
-<br/><br/><br/><br/><br/><br/>
-
-<tags:dyColorLogging color="red" lineSize="5"/>
+<tags:bodyColorLogging color="red" lineSize="5"/>
 <%
 for(int i = 0; i < 10; i++)
-	out.print(i + "<br/>");
+	out.print(i + "<br>");
 %>
-<tags:dyColorLogging color="blue"/>
+<tags:bodyColorLogging color="blue"/>
 
-<br/><br/><br/><br/><br/><br/>
+<br><br>
 <tags:bodyColorLogging color="red" lineSize="5">
 <c:forEach var="i" begin="0" end="10">
-	<c:out value="${i}"/><br/>
+	<c:out value="${i}"/><br>
 </c:forEach>
 </tags:bodyColorLogging >
-</br>
 </body>
 </html>

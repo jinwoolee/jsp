@@ -17,19 +17,17 @@
 
 <c:set var="price" value="10000" />
 
-<fmt:formatNumber value="${price}" type="number" var="numberType" /> <br/>
-숫자: ${numberType} <br/>
+<fmt:formatNumber value="${price}" type="number" var="numberType" /><br>
+숫자: ${numberType} <br>
 
-통화: <fmt:formatNumber value="${price}" type="currency" /><br/>
-퍼센트: <fmt:formatNumber value="${price}" type="percent" groupingUsed="false" /> <br/>
-패턴: <fmt:formatNumber value="${price}" pattern="00000000.00"/><br/><br/>
+통화: <fmt:formatNumber value="${price}" type="currency" /><br>
+퍼센트: <fmt:formatNumber value="${price}" type="percent" groupingUsed="false" /><br>
+패턴: <fmt:formatNumber value="${price}" pattern="00000000.00"/><br><br>
 
 <%--문자형을 숫자형으로 --%>
-parseNumber
-<%--<fmt:parseNumber value="1,100.12" pattern="0,000.00" var="num"/> --%>
-<fmt:parseNumber value="1,100.12"  />
-<%--${num} --%>
-</body>
-</html>
+parseNumber<br>
+<fmt:parseNumber value="1,100.12"/><br>
+<fmt:parseNumber value="1,100.12" pattern="0,000.00" var="num"/>
+num : ${num}
 </body>
 </html>

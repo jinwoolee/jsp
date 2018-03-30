@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Map, java.util.List, mvc.model.BoardVo" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html >
@@ -32,34 +31,27 @@ bundle, message
 --%>
 
 <fmt:bundle basename="resource.message">
-	<fmt:message key="GREETING"/> </br> 
-	<fmt:message key="VISITOR"> </br>
+	<fmt:message key="GREETING"/> <br>
+	<fmt:message key="VISITOR">
 		<fmt:param value="${userId}"/>
-	</fmt:message>
-</fmt:bundle>
+	</fmt:message><br>
+</fmt:bundle><br>
 
 <fmt:setLocale value="en" scope="request" />
 <fmt:bundle basename="resource.message">
-	<fmt:message key="GREETING"/> </br>
-	<fmt:message key="VISITOR">	</br>
+	<fmt:message key="GREETING"/> <br>
+	<fmt:message key="VISITOR">
 		<fmt:param value="${userId}"/>
-	</fmt:message>
-</fmt:bundle> 
-<br/><br/>
-
+	</fmt:message><br>
+</fmt:bundle><br>
 
 <fmt:setLocale value="ko" scope="request" />
 <fmt:setBundle basename="resource.message" var="message"/>
-<fmt:message bundle="${message}" key="GREETING"/>
-<br/><br/>
+<fmt:message bundle="${message}" key="GREETING"/><br>
 
 <fmt:setLocale value="en" scope="request" />
 <fmt:setBundle basename="resource.message" var="message"/>
-<fmt:message bundle="${message}" key="GREETING"/>
-
-
-
-
+<fmt:message bundle="${message}" key="GREETING"/><br>
 
 </body>
 </html>

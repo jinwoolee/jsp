@@ -1,7 +1,9 @@
 package el;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +20,12 @@ import mvc.model.BoardVo;
 /**
  * Servlet implementation class ElServlet
  */
+@SuppressWarnings("serial")
 public class ElServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+
 	@Override
-	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
 		
 		//map
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -30,9 +33,11 @@ public class ElServlet extends HttpServlet {
 		req.setAttribute("map", map);
 		
 		//list
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		for(int i = 1; i <= 10; i++)
-			boardList.add(new BoardVo(i, "게시글 제목" + i, "게시글내용입니다", "userId", "2017-10-18"));
+			boardList.add(new BoardVo(i, "게시글 제목" + i, "게시글내용입니다", "userId", sdf.format(new Date())));
 		req.setAttribute("boardList", boardList);
 		
 		//session

@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Map, java.util.HashMap, java.util.List, java.util.ArrayList, mvc.model.BoardVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,21 +37,20 @@ java if 구문, else가 없기 때문에 제한적으로 사용
 </c:choose>
 <br/><br/><br/>
 
-<%--
-foreach
-
+<%-- foreach
 <c:forEach var="블럭변수" items=“집합객체" varStatus="상태객체변수">
-           반복 구문
+   반복 구문
 </c:forEach>     
 
- <c:forEach var="블럭변수" begin="시작값" end="종료값“ step="증가치">
-           반복 구문
- </c:forEach>  
+<c:forEach var="블럭변수" begin="시작값" end="종료값“ step="증가치">
+   반복 구문
+</c:forEach>  
  --%>
 <%
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 List<BoardVo> boardList = new ArrayList<BoardVo>();
 for(int i = 1; i <= 10; i++)
-	boardList.add(new BoardVo(i, "게시글 제목" + i, "게시글내용입니다", "userId", "2017-10-18"));
+	boardList.add(new BoardVo(i, "게시글 제목" + i, "게시글내용입니다", "userId", sdf.format(new Date())));
 request.setAttribute("boardList", boardList); 
 %>
 <c:forEach items="${boardList}" var="vo" varStatus="status"> 
@@ -96,13 +97,8 @@ current : 컬렉션 중 현재 루프에서 사용할 객체
 </c:forEach>
 <br/><br/><br/>
 
-<%--
-forTokens : java의 StringTokenizer  
---%>
-
-<%
-	request.setAttribute("lineRangers", "brown,cony,sally,james,jesica");
-%>
+<%-- forTokens : java의 StringTokenizer --%>
+<% request.setAttribute("lineRangers", "brown,cony,sally,james,jesica"); %>
 LineRangers
 <c:forTokens items="${lineRangers}" delims="," var="i">
 	${i}&nbsp;

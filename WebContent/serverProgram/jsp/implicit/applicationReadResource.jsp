@@ -16,9 +16,7 @@
 		InputStreamReader isr = new InputStreamReader(is, "utf-8");
 		System.out.println("isr.getEncoding()" + isr.getEncoding());
 		
-		
 		br = new BufferedReader(isr);
-		
 		
 		char[] buff = new char[512];
 		int len = -1;

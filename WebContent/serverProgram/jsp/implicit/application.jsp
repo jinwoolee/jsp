@@ -8,17 +8,17 @@
 </head>
 <body>
 <%
-	out.println("application.getServerInfo() : " + application.getServerInfo() + "<br/>");
-	out.println("application.getServletContextName() : " + application.getServletContextName() + "<br/>");
-	out.println("application.getContextPath() :" + application.getContextPath() + "<br/>");
-	out.println("application.getMajorVersion() :" + application.getMajorVersion() + "<br/>");
-	out.println("application.getMinorVersion() :" + application.getMinorVersion() + "<br/>");
-		
-	out.println("application.getMinorVersion() : <br/>");
+	out.println("application.getServerInfo() : " + application.getServerInfo() + "<br>");
+	out.println("application.getServletContextName() : " + application.getServletContextName() + "<br>");
+	out.println("application.getContextPath() :" + application.getContextPath() + "<br>");
+	out.println("application.getMajorVersion() :" + application.getMajorVersion() + "<br>");
+	out.println("application.getMinorVersion() :" + application.getMinorVersion() + "<br>");
+	out.println("<br>");
+	out.println("application.getInitParameterNames() : <br>");
     Enumeration enumeration =   application.getInitParameterNames();
     while(enumeration.hasMoreElements()){
     		String initParamName = (String)enumeration.nextElement();
-    		out.println(initParamName + " : " +  application.getInitParameter(initParamName) + "<br/>");
+    		out.println(initParamName + " : " +  application.getInitParameter(initParamName) + "<br>");
     }  
 %>
 </body>

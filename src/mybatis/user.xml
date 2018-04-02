@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+  
+  <!-- 사용자 전체 리스트 -->
+  <select id="getUserList" resultType="userVo">
+    select *
+      from t_user
+  </select>
+  
+  <!-- 사용자 리스트 페이징 조회 -->
+  <select id="getUserListPaging" resultType="userVo" parameterType="map">
+  	select *
+	 from 
+	    (select a.*, rownum rn
+	     from 
+	        (select *
+	         from t_user
+	        order by reg_dt, userid) a )
+	where rn between (#{page}-1) * #{pageSize} +1 and (#{page})* #{pageSize}
+  </select>
+  
+  <!-- 사용자 전체 건수 조회 -->
+  <select id="getUserTotalCnt" resultType="int">
+  	select count(*) cnt
+ 	  from t_user
+  </select>
+  
+  <!-- 사용자 조회 -->
+  <select id="getUser" parameterType="map" resultType="userVo" >
+  	select *
+      from t_user
+    where userId = #{userId}
+  </select>
+  
+  <!-- 사용자 삭제 -->
+  <delete id="deleteUser" parameterType="map">
+  	delete t_user
+  	where userId = #{userId}
+  </delete>
+  
+  <!-- 사용자 수정 -->
+  <update id="updateUser" parameterType="userVo">
+  	update t_user set userNm = #{userNm}, userAlias = #{userAlias},  pass = #{pass}, picturePath = #{picturePath, jdbcType=VARCHAR} 
+  	where userId = #{userId}
+  </update>
+  
+  <!-- 사용자 입력 -->
+  <insert id="insertUser" parameterType="userVo">
+  	insert into t_user values
+  				(#{userId}, #{userNm}, #{userAlias}, #{pass}, #{reg_id}, sysdate, #{picturePath, jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 사용자 중복 체크 -->
+  <select id="checkDupId" parameterType="string" resultType="int">
+  	select count(*) cnt
+  	 from t_user
+  	where userId = #{userId}
+  </select>
+  
+</mapper>

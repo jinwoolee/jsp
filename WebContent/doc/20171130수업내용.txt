@@ -1,0 +1,87 @@
+지금까지 한것
+1. 사용자 리스트 조회 (sql 페이징 처리, 페이지 내비게이션 적용)
+
+앞으로 할것
+1. 사용자 상세정보 조회 페이지
+--> 사용자 리스트에서 마우스 클릭시 상세 정보 조회 페이지로 이동
+      사용자 상세 정보 조회 페이지는 조회만 가능한 조회성 페이지
+      
+***진행사항
+userDao.getUser 기능 구현
+user.jsp  copy-->  userView.jsp (layout)
+userContent.jsp copy --> userViewContent.jsp (사용자 상세화면 컨텐츠)
+--> userView.jsp
+    
+ 기능 두개(버튼) : 삭제버튼, 수정버튼
+
+===현재 진행중 
+삭제 버튼 기능 구현
+1. sql 구현
+2. IUserDao 인터페이스 메소드 추가 deleteUser(Map<String, String> userinfo);
+3. UserDaoMybatis 구현체 메소드 추가  deleteUser(Map<String, String> userinfo);
+4. UserController  : userDelete.do (doPost)
+5. 화면상에서 버튼 클릭이벤트 
+ 삭제버튼 클릭 : "사용자를 삭제하시겠습니까? 예 / 아니오
+       --> 예 : 사용자를 삭제후 -> 사용자 리스트 페이지로 이동(1페이지)
+                아니오 : 화면 유지
+ 
+               
+    수정 버튼 클릭 : 사용자 정보를 수정할 수 있는 페이지로 이동
+              (단 사용자 아이디는 변경 불가, 나머지 정보는 수정 가능)
+                   사용자 수정 버튼 클릭 : 사용자 정보 수정후 해당 사용자의 상세정보 조회 페이지로 이동
+
+
+
+사용자 신규 입력(수정) 페이지
+(사용자 리스트 : user.jsp -> userContent.jsp 
+사용자 상세 : userView.jsp -> userViewContent.jsp)
+1.view 구현  (userForm.jsp -> userFormContent.jsp)
+  -->userFormContent.jsp : userForm.html 을 통해서 화면구성
+  
+테스트 : localhost:8090/user/userForm.jsp (아직 servlet mapping을 구현하지 않았기 때문)  
+
+2.update sql
+
+
+3.IUserDao : updateUser(UserVo userVo);
+ UserDao(ibatis) : 빈 메소드 생성
+ UserDaoMybatis : 메소드 구현
+ 
+4.UserController 
+수정 / 신규입력 화면 호출 url : userFormView.do (http method : get)
+신규입력 / 수정 구분을 위한 파라미터 (method : insert -> 신규 / update -> 수정)
+
+--수정 /신규 입력 기능개발
+수정 / 신규입력 기능 url : userForm.do (http method : post)
+
+**수정
+정상수정 : 상세조회 페이지
+에러 --> 상세조회 페이지
+ 
+수정 : 해당 사용자의 정보를 input에 설정 (단 사용자 아이디 항목은 레이블, userId input hidden에서 설정)
+신규 : 신규 입력이므로 input에 값 설정 필요 없음
+
+
+
+
+
+
+
+사용사 수정 / 신규입력 기능 : userForm.do (서버의 상태변경이 이루어 지므로 : http method : post)
+controlller
+
+
+
+현재 사용중인 servlet url
+(jsp-화면을 url로 호출하지 않음. 요청은 servlet, 응답은 jsp)
+
+1. 메인 화면 : main.do
+2. 사용자 리스트 화면 : user.do
+3. 사용자 상세정보 조회 : userView.do
+4. 사용자 수정화면 : -----
+5. 사용자 수정
+6. 사용자 삭제
+
+
+
+ 

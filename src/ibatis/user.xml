@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="user"> 
+
+<select id="getUserList" resultClass="user.model.UserVo" >
+select *
+ from t_user
+</select> 
+
+<select id="getUser" resultClass="user.model.UserVo" parameterClass="map">
+select *
+ from t_user
+ where userId = #userId#
+</select>
+
+
+<select id="loginCheck" resultClass="user.model.UserVo" parameterClass="HashMap">
+	select * from t_user
+	where userid = #userId# and pass = #pass#
+</select>
+
+</sqlMap>

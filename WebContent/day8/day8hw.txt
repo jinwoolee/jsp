@@ -1,0 +1,34 @@
+
+1.프로젝트젝트를 새로 생성할것 (프로젝트명 : day8hw)
+2. 
+login.jsp
+main.jsp
+/Day7LoginProcessServlet --> LoginProcessServlet
+logoutProcess.jsp
+bootstrap, css 폴더
+
+db 설정
+mybatis 설정 복사(mybatis package 복사)
+user.model, user.dao 패키지 복사  
+
+login.jsp id, pass를 받아서  LoginProcessServlet 로그인 처리요청
+로그인 성공(id, pass가 동일한경) 하면 main.jsp
+로그인 실패(존재하지 않는 id, 혹은 비밀번호가 틀린경우)시 login.jsp이동
+
+1.
+웹브라우저에 http://localhost:8090/login.jsp 접속시 session에 userVo객체가 null이 아니면
+id, pass 입력 없이 main.jsp이동
+
+(session.setAttribute("userVo", userVo);
+
+2.
+웹브라우저에 http://localhost:8090/main.jsp 접속시
+session에 userVo객체가 null이면 login.jsp로 이동
+
+
+
+
+
+
+
+

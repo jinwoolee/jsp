@@ -1,0 +1,22 @@
+ 2017.12.11 JSP/과제
+
+1. day21/hw.jsp
+
+2. tag 파일 생성
+
+3. mybatis를 통한 제품 코드 조회
+
+<%--화장품 제품코드--%>
+<prod:getLprod prod_lgu="P302" >		
+
+getLprod : 
+<select >
+	<option value="P302000011">남성 향수</option>
+    <option value="P302000012">여성 향수</option>
+    .
+    .
+    .
+    .
+</select>
+
+    

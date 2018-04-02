@@ -1,0 +1,30 @@
+화면 : dynamicPlus.jsp
+
+결과추력 : Day6DynamicCalculateServlet
+
+
+과제
+1. 화면에 연산를 선택할수 있는 selecet box 추가
+   (위치는 편한 곳으로)
+1-1. 연산자는 +, -, *
+ <select id,name >
+ 	<option value="mulitply"> * </option>
+ 	<option value="plus"> + </option>
+ 	<option value="minus"> - </option>
+ </select>   
+ 
+<select id,name >
+ 	<option value="*"> mulitply </option>
+ 	<option value="+"> plus </option>
+ 	<option value="-"> minus </option>
+ </select> 
+
+<select id,name >
+ 	<option value="mulitply"> mulitply </option>
+ 	<option value="plus"> plus </option>
+ 	<option value="minus"> minus </option>
+ </select> 
+    
+2. 
+
+

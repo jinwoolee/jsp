@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FileDownloadServlet
  */
-@WebServlet("/FileDownloadServlet")
+@WebServlet("/fileDownloadServlet")
 public class FileDownloadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

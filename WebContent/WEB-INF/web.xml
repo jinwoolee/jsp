@@ -23,7 +23,7 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>resourece.message</param-value>
+		<param-value>resource.message</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.tileZone</param-name>

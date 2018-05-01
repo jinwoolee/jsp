@@ -30,6 +30,13 @@ bundle, message
 </fmt:bundle>
 --%>
 
+<!-- web.xml 설정에 의해 bundle 설정 없이도 가능
+<context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resource.message</param-value>
+</context-param> -->
+***<fmt:message key="GREETING"/> <br>
+    
 <fmt:bundle basename="resource.message">
 	<fmt:message key="GREETING"/> <br>
 	<fmt:message key="VISITOR">

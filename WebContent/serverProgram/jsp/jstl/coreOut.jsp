@@ -24,17 +24,24 @@ default : 값이 없을경우 대체되는 값
 <c:out value="${userId}" default="cony"/><br>
 <c:out value="${noUserId}" default="cony"/><br>
 
-<%
+<input type="text" value ='<c:out value="${noUserId}" default="cony"/>' >
+
+ <%
     FileReader reader = new FileReader(getServletContext().getRealPath("serverProgram/jsp/jstl/coreURL_target.jsp"));
     FileReader reader2 = new FileReader(getServletContext().getRealPath("serverProgram/jsp/jstl/coreURL_target.jsp"));
+    
+    pageContext.setAttribute("reader", reader);
+    pageContext.setAttribute("reader2", reader2);
 %>
 
 escape true : <br>
-<c:out value="<%=reader%>" escapeXml="true"/>
+<%--<c:out value="<%=reader%>" escapeXml="true"/>--%>
+<c:out value="${reader}" escapeXml="true"/>
 <br><br>
 
 escape false : <br>
-<c:out value="<%=reader2%>" escapeXml="false"/>
+<%--<c:out value="<%=reader2%>" escapeXml="false"/> --%>
+<c:out value="${reader2}" escapeXml="false"/>
 
 </body>
 </html>

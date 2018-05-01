@@ -20,19 +20,19 @@
 <c:if test="검사조건"> 
 java if 구문, else가 없기 때문에 제한적으로 사용
 --%>
-<c:if test="${code} == '05'">
-	code ${code}
+<c:if test="${code == '05'}">
+	code ${code} <br>
 </c:if>
 
 <%--
 <c:choose>, <c:when>, <c:otherwise> java 의 if else 
 --%>
 <c:choose>
-	<c:when test="${code}=='01'"> choose when code 01 </c:when>
-	<c:when test="${code}=='02'"> choose when code 02 </c:when>
-	<c:when test="${code}=='03'"> choose when code 03 </c:when>
-	<c:when test="${code}=='04'"> choose when code 04 </c:when>
-	<c:when test="${code}=='05'"> choose when code 05 </c:when>
+	<c:when test="${code=='01'}"> choose when code 01 </c:when>
+	<c:when test="${code=='02'}"> choose when code 02 </c:when>
+	<c:when test="${code=='03'}"> choose when code 03 </c:when>
+	<c:when test="${code=='04'}"> choose when code 04 </c:when>
+	<c:when test="${code=='05'}"> choose when code 05 </c:when>
 	<c:otherwise> choose other wise code ${code}</c:otherwise>
 </c:choose>
 <br/><br/><br/>

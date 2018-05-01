@@ -25,7 +25,9 @@ url : url 생성
 <br><br><br>
 
 <c:url value="coreURL_target.jsp" var="coreUrl_target"/> <br>
-<a href="${coreUrl_target}"> coreUrl_target </a>
+<a href="${coreUrl_target}"> coreUrl_target </a><br/>
+
+pageContext.getAttribute("coreUrl_target") : <%=pageContext.getAttribute("coreUrl_target") %>
 
 <br>
 <%--scope 속성 설정시 value, context는 반드시 /로 시작해야 한다.  --%>

@@ -18,6 +18,11 @@ import javax.servlet.http.Part;
 /**
  * Servlet implementation class FileUploadServlet
  */
+/**
+fileSizeThreshold : 서버로 파일을 저장할때 파일의 임시 저장 사이즈
+maxFileSize : 1개의 파일이 최대 사이즈
+maxRequestSize : 서버로 전송 되는 request 의 최대 사이즈 ( 파일 + formData)
+*/
 @WebServlet("/FileUploadPartsServlet")
 @MultipartConfig(maxFileSize=1024*1024*15, maxRequestSize=1024*1024*10 )
 public class FileUploadPartsServlet extends HttpServlet {

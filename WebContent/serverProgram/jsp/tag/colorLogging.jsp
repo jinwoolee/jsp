@@ -10,12 +10,13 @@
 <body>
 
 body 안에서 실행되는 로직<br>
-
+<%request.setAttribute("userId", "brown"); %>
 <tags:colorLogging color="red" lineSize="5"/>
 <%
 for(int i = 0; i < 10; i++)
 	out.print(i + "<br>");
 %>
+
 <tags:colorLogging color="blue"/>
 <br><br>
 
@@ -24,6 +25,7 @@ for(int i = 0; i < 10; i++)
 for(int i = 0; i < 10; i++)
 	out.print(i + "<br>");
 %>
+<%=request.getAttribute("userId")%>
 <tags:bodyColorLogging color="blue"/>
 
 <br><br>

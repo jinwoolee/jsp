@@ -21,9 +21,10 @@
 
 	// 파일 기본경로
 	String defaultPath = request.getServletContext().getRealPath("/");
-
+	
 	// 파일 기본경로 _ 상세경로
 	String path = defaultPath + "upload" + File.separator;
+	System.out.println("path : " + path);
 
 	File file = new File(path);
 	if(!file.exists()) {
@@ -48,6 +49,6 @@
 	os.flush();
 	os.close();
 
-	sFileInfo += "&bNewLine=true&sFileName="+ name+"&sFileURL="+"/upload/"+realname;
+	sFileInfo += "&bNewLine=true&sFileName="+ name+"&sFileURL="+request.getContextPath()+"/upload/"+realname;
 	out.println(sFileInfo);
 %>

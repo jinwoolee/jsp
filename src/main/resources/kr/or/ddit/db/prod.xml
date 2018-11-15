@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="prod">
+	<!-- 제품 리스트 페이징 조회 -->
+	<select id="selectProdList" resultType="prodVo" parameterType="pageVo">
+		select *
+		 from (
+		    select rownum rnum, a.*
+		      from (select prod_id, prod_name, lprod_nm, prod_insdate
+		              from prod, lprod
+		    where prod.prod_lgu = lprod.lprod_gu
+		    order by prod_id) a )
+		where rnum between (#{page}-1)*#{pageSize} + 1 and #{page}*#{pageSize}
+	</select>
+
+	<!-- 제품 상세 조회 -->
+	<select id="selectProdDetail" resultType="prodVo" parameterType="string">
+		select prod_id, prod_name, lprod_nm, buyer_name, buyer_mail
+		 from prod, lprod, buyer
+		where prod_id = #{prod_id}
+		  and  prod.prod_lgu = lprod.lprod_gu
+		  and prod.prod_buyer = buyer.buyer_id
+	</select>
+	
+	<!-- 제품 전체 건수 조회 -->
+	<select id="selectProdCnt" resultType="int">
+		select count(*)
+ 		  from prod
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

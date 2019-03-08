@@ -38,8 +38,8 @@
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">사용자 정보조회</h1>
-				
-				<form action="${cp }/userModifyForm" class="form-horizontal" role="form">
+				ttttest
+				<form action="${cp }/user/userModifyForm" class="form-horizontal" role="form">
 					
 					<input type="hidden" name="userId" value="${userVo.userId }"/>
 					

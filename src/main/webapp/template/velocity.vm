@@ -1,0 +1,33 @@
+$response.setContentType("text/html; charset=utf-8")
+
+<html>
+<head></head>
+<body>
+	velocity.vm <br>
+	te : 한글	 22 한글
+	attr : $attr <br>
+	rangers : $rangers <br>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>한글</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			#foreach($ranger in $rangers)
+				<tr>
+					<td>$ranger</td>
+				</tr>
+			#end 			
+		</tbody>		
+	</table>
+</body>
+</html>
+
+
+
+
+
+

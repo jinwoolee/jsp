@@ -6,7 +6,7 @@
 		</layout>
 	</appender>
 
-	<logger name="kr.or.ddit" level="error">
+	<logger name="kr.or.ddit" level="debug">
 		<appender-ref ref="STDOUT" />
 	</logger>
 </configuration>

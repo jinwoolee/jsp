@@ -22,8 +22,7 @@
 
   <body>
     <div class="container">
-      <form class="form-signin" 
-      		action="<%=request.getContextPath() %>/login/loginProcess.jsp"
+      <form class="form-signin" action="<%=request.getContextPath() %>/login"
       		method="post">
       
         <h2 class="form-signin-heading">Please sign in</h2>

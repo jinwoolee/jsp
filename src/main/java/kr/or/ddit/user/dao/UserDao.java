@@ -1,14 +1,13 @@
 package kr.or.ddit.user.dao;
 
 import java.util.List;
-import java.util.Map;
+
+import kr.or.ddit.mybatis.MyBatisUtil;
+import kr.or.ddit.user.model.UserVo;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import kr.or.ddit.mybatis.MyBatisUtil;
-import kr.or.ddit.user.model.UserVo;
 
 public class UserDao implements IuserDao{
 	private static final Logger logger = LoggerFactory
@@ -18,12 +17,15 @@ public class UserDao implements IuserDao{
 		
 		/***Given***/
 		IuserDao userDao = new UserDao();
+		String userId = "brown";
 
 		/***When***/
 		List<UserVo> userList = userDao.userList();
-
+		UserVo userVo = userDao.getUser(userId);
+		
 		/***Then***/
 		logger.debug("userList : {}", userList);
+		logger.debug("userVo : {}", userVo);
 	}
 
 	/** 
@@ -40,6 +42,12 @@ public class UserDao implements IuserDao{
 		return userList;
 	}
 
+	@Override
+	public UserVo getUser(String userId) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		UserVo userVo = sqlSession.selectOne("user.getUser", userId);
+		return userVo;
+	}
 }
 
 

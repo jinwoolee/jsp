@@ -3,16 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
+	<!-- 전체 사용자 리스트 조회 -->
+	<select id="userList" resultType="userVo">
+		select *
+		from users
+		order by
+		userid
+	</select>
+
+	<!-- 특정 사용자 조회 -->
+	<select id="getUser" parameterType="string" resultType="userVo">
+		select *
+		from users
+		where userId = #{userId}
+	</select>
+
+	<!-- 사용자 페이지 리스트 조회 -->
+	<!-- pageVo int page, int pageSize -->
+	<select id="userPagingList" parameterType="pageVo" resultType="userVo">
+				
+		<![CDATA[
+		select *
+		from
+		(select a.*, rownum rn
+		 from
+		(select a.*
+		 from users a
+		order by userid) a )
+		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
 	
-  <select id="userList" resultType="userVo">
-    select * 
-    from users
-    order by userid
-  </select>
-  
-  <select id="getUser" parameterType="string" resultType="userVo">
-  	select *
-  	from users 
-  	where userId = #{userId}
-  </select>
+	<!-- 사용자 전체수 조회 -->
+	<select id="usersCnt" resultType="int">
+		select count(*)
+		from users
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

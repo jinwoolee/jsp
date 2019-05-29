@@ -1,3 +1,5 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@page import="org.apache.commons.dbcp2.BasicDataSource"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
@@ -13,9 +15,11 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		
+		String DATASOURCE_CONTEXT = "java:comp/env/jdbc/oracleDB";
+		
 		try {
-			//bs 가져오기
-			BasicDataSource bs = (BasicDataSource)application.getAttribute("bs");
+			InitialContext context = new InitialContext();
+			DataSource bs = (DataSource)context.lookup(DATASOURCE_CONTEXT);
 			
 			// 2. 접속 ==> Connection객체 생성
 			long startTime = System.currentTimeMillis();

@@ -1,7 +1,7 @@
 package kr.or.ddit.user.model;
 
 public class UserVo {
-	private String name;	
+	private String name;
 	private String userId;
 	private String alias;
 	

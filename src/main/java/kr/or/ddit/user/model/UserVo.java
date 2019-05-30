@@ -4,6 +4,7 @@ public class UserVo {
 	private String name;
 	private String userId;
 	private String alias;
+	private String pass;
 	
 	public UserVo(String name, String userId, String alais){
 		this.name = name;
@@ -33,6 +34,15 @@ public class UserVo {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+	
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVo [name=" + name + ", userId=" + userId + ", alias="

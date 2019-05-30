@@ -20,6 +20,31 @@
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
+
+<style>
+	.userTr:hover{
+		cursor: pointer;
+	}
+</style>
+
+<script>
+$(document).ready(function(){
+	//사용자 tr 태그 이벤트 등록
+	$(".userTr").on("click", function(){
+		console.log("userTr click");
+		//userId를 획득하는 방법
+		//$(this).find(".userId").text();
+		//$(this).data("userid");
+		
+		//사용자 아이디를 #userId 값으로 설정해주고
+		var userId = $(this).find(".userId").text();
+		$("#userId").val(userId);
+		
+		//#frm 을 이용하여 submit();
+		$("#frm").submit();
+	});
+});	
+</script>
 </head>
 
 <body>
@@ -36,6 +61,13 @@
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>
+						
+						<!-- 사용자 상세조회 : userId가 필요 -->
+						<form id="frm" action="${pageContext.request.contextPath }/user"
+							  method="get">
+							<input type="hidden" id="userId" name="userId" />	  
+						</form>
+						
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
@@ -47,8 +79,8 @@
 								
 								<!-- 향상된 for -->
 								<c:forEach items="${userList }" var="vo" varStatus="status">
-									<tr>
-										<td>${vo.userId }</td>
+									<tr class="userTr" data-userid="${vo.userId }">
+										<td class="userId">${vo.userId }</td>
 										<td>${vo.name }</td>
 										<td>${vo.alias }</td>
 										<td></td>

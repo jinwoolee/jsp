@@ -1,6 +1,8 @@
 package kr.or.ddit.user.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +14,14 @@ import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.service.IuserService;
 import kr.or.ddit.user.service.UserService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@WebServlet("/user")
-public class UserController extends HttpServlet {
+/**
+ * Servlet implementation class UserController
+ */
+@WebServlet("/userList")
+public class UserListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private IuserService userService;
-	private static final Logger logger = LoggerFactory
-			.getLogger(UserController.class);
 	
 	@Override
 	public void init() throws ServletException {
@@ -28,23 +29,19 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("UserController doGet");
 		
-		//request객체로부터 사용자 아이디 파라미터 획득
-		String userId = request.getParameter("userId");
+		//userList객체를 userList.jsp에서 참고할수 있도록 request객체에 속성으로 넣어준다
+		request.setAttribute("userList", userService.userList());
 		
-		//사용자 아이디로 사용자 정보를 조회
-		UserVo userVo = userService.getUser(userId);
-		
-		//조회 결과를 request객체에 속성으로 저장
-		request.setAttribute("userVo", userVo);
-		
-		//화면을 담당하는 /user/user.jsp로 forward
-		request.getRequestDispatcher("/user/user.jsp").forward(request, response);
+		//userList객체를 이용하여 사용자 화면을 생성하는 jsp
+		request.getRequestDispatcher("/user/userList.jsp").forward(request, response);
+	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }
+
 
 
 

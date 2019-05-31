@@ -20,6 +20,19 @@
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
+<script>
+
+$(document).ready(function(){
+	<c:if test="${not empty msg}">
+		alert("${msg}");
+		<c:remove var="msg"/>
+	</c:if>	
+	
+	$("#userModifyBtn").on("click", function(){
+		$("#frm").submit();	
+	});
+});
+</script>
 </head>
 
 <body>
@@ -37,7 +50,11 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자상세</h2>
 						
-						<form class="form-horizontal" role="form">
+						<form id="frm" action="${pageContext.request.contextPath }/userModify"
+						      method="get" class="form-horizontal" role="form">
+						      
+						      <input type="hidden" name="userId" value="${userVo.userId }"/>
+						      
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
@@ -92,13 +109,13 @@
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
-									<label class="control-label">${userVo.birth }</label>
+									<label class="control-label">${userVo.birthStr }</label>
 								</div>
 							</div>
 		
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-default">사용자 수정</button>
+									<button id="userModifyBtn" type="button" class="btn btn-default">사용자 수정</button>
 								</div>
 							</div>
 						</form>				

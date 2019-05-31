@@ -1,5 +1,6 @@
 package kr.or.ddit.user.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserVo {
@@ -14,7 +15,16 @@ public class UserVo {
 	private String path;
 	private String filename;
 	
-	
+	public UserVo(String name, String userId, String alias, String pass,
+			String addr1, String addr2, String zipcd, Date birth) {
+		this(name, userId, alias);
+		this.pass = pass;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcd = zipcd;
+		this.birth = birth;
+	}
+
 	public UserVo(String name, String userId, String alais){
 		this.name = name;
 		this.userId = userId;
@@ -78,6 +88,11 @@ public class UserVo {
 
 	public Date getBirth() {
 		return birth;
+	}
+	
+	public String getBirthStr(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(this.birth);
 	}
 
 	public void setBirth(Date birth) {

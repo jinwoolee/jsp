@@ -89,7 +89,7 @@ $(document).ready(function(){
 							</table>
 						</div>
 
-						<a class="btn btn-default pull-right">사용자 등록</a>
+						<a href="${pageContext.request.contextPath }/userForm" class="btn btn-default pull-right">사용자 등록</a>
 
 						<!-- 사용자수 : 105건
 							 페이지네이션 : 11건

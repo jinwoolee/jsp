@@ -194,7 +194,11 @@ public class UserDaoTest {
 	}
 	
 	
-
+	@Test
+	public void dateTest(){
+		logger.debug("new Date : {}", new Date());
+		
+	}
 }
 
 

@@ -13,7 +13,7 @@
 
 	<!-- 특정 사용자 조회 -->
 	<select id="getUser" parameterType="string" resultType="userVo">
-		select *
+		select users.*, to_char(birth, 'yyyy-MM-dd') birthStr
 		from users
 		where userId = #{userId}
 	</select>

@@ -14,6 +14,7 @@ public class UserVo {
 	private Date birth;
 	private String path;
 	private String filename;
+	private String birthStr;
 	
 	public UserVo(String name, String userId, String alias, String pass,
 			String addr1, String addr2, String zipcd, Date birth) {
@@ -90,13 +91,23 @@ public class UserVo {
 		return birth;
 	}
 	
-	public String getBirthStr(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(this.birth);
-	}
+//	public String getBirthStr(){
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		return sdf.format(this.birth);
+//	}
+	
+	
 
 	public void setBirth(Date birth) {
 		this.birth = birth;
+	}
+
+	public String getBirthStr() {
+		return birthStr;
+	}
+
+	public void setBirthStr(String birthStr) {
+		this.birthStr = birthStr;
 	}
 
 	public String getPath() {

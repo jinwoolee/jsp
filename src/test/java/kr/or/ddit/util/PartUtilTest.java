@@ -67,8 +67,8 @@ public class PartUtilTest {
 		String ext3 = PartUtil.getExt(filename3);
 
 		/***Then***/
-		assertEquals("png", ext);
-		assertEquals("png", ext2);
+		assertEquals(".png", ext);
+		assertEquals(".png", ext2);
 		assertEquals("", ext3);
 	}
 	

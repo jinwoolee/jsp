@@ -85,11 +85,12 @@ function dataInit(){
 						
 						<form id="frm" class="form-horizontal" role="form"
 							  action="${pageContext.request.contextPath }/userForm"
-							  method="post" >
+							  method="post"
+							  enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
-									<input type="file" name="filename"/>
+									<input type="file" name="profile"/>
 								</div>
 							</div>
 							

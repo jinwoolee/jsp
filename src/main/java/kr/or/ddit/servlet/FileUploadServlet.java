@@ -49,7 +49,6 @@ public class FileUploadServlet extends HttpServlet {
 			String contentDisposition = part.getHeader("content-disposition");
 			String fileName = PartUtil.getFileName(contentDisposition);
 			String ext = PartUtil.getExt(fileName);
-			ext = ext.equals("") ? "" : "."+ext;
 			
 			//년도에 해당하는 폴더가 있는지, 년도안에 월에 해당하는 폴더가 있는지
 			Date dt = new Date();

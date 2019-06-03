@@ -44,7 +44,7 @@
 	<insert id="insertUser" parameterType="userVo">
 		insert into users 
 		values(#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, 
-        		#{addr2}, #{zipcd}, #{birth}, '', '')
+        		#{addr2}, #{zipcd}, #{birth}, #{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR})
      </insert>
      
      <!-- 사용자 삭제 -->
@@ -59,6 +59,9 @@
      		set name = #{name}, alias = #{alias}, pass = #{pass}, 
      		    addr1 = #{addr1}, addr2 = #{addr2}, zipcd = #{zipcd},
      		    birth = #{birth}
+     		    <if test="path != null">
+     		    	, path = #{path}, filename = #{filename} 
+     		    </if>
      	where userid = #{userId}   
      </update>
 </mapper>

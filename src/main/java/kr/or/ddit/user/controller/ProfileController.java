@@ -36,11 +36,22 @@ public class ProfileController extends HttpServlet {
 		//사용자 정보(path)를 조회
 		UserVo userVo = userService.getUser(userId);
 		
+		
 		//path정보로 file을 읽어 들여서
 		ServletOutputStream sos = response.getOutputStream();
+		FileInputStream fis = null;
+		String filePath = null;
 		
-		File file = new File(userVo.getPath());
-		FileInputStream fis = new FileInputStream(file);
+		//사용자가 업로드한 파일이 존재할 경우 : path
+		if(userVo.getPath() != null)
+			filePath = userVo.getPath();
+		//사용자가 업로드한 파일이 존재하지 않을 경우 : no_image.gif
+		else
+			filePath = getServletContext().getRealPath("/img/no_image.gif");
+			//webapp/img/no_image.gof
+		
+		File file = new File(filePath);
+		fis = new FileInputStream(file);
 		byte[] buffer = new byte[512];
 		
 		//repsonse객체에 스트림으로 써준다

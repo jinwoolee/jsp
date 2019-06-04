@@ -64,6 +64,20 @@
      		    </if>
      	where userid = #{userId}   
      </update>
+     
+     <!-- 사용자 비밀번호 암호화 적용 대상 조회 -->
+     <select id="userListForPassEncrypt" resultType="userVo">
+     	select *
+		from users
+		where userid not in ('brown', 'userTest')
+     </select>
+     
+     <!-- 사용자 비밀번호 업데이트 -->
+     <update id="updateUserEncryptPass" parameterType="userVo">
+     	update users set pass = #{pass}
+     	where userid = #{userId}
+     </update> 
+     
 </mapper>
 
 

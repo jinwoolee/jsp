@@ -9,7 +9,7 @@
 <script>
 // localhost/jsp/jstl/redirect.jsp   --> localhost/jsp/jstl/core.jsp
 
-document.location = "${pageContext.request.contextPath}/jstl/core.jsp";
+document.location = "${cp}/jstl/core.jsp";
 </script>
 </head>
 <body>

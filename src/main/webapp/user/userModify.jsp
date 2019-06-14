@@ -81,14 +81,14 @@ function dataInit(){
 						<h2 class="sub-header">사용자 등록</h2>
 						
 						<form id="frm" class="form-horizontal" role="form"
-							  action="${pageContext.request.contextPath }/userModify"
+							  action="${cp }/userModify"
 							  method="post"
 							  enctype="multipart/form-data" >
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
 									<img
-										src="${pageContext.request.contextPath }/profile?userId=${userVo.userId}" />
+										src="${cp }/profile?userId=${userVo.userId}" />
 									<input type="file" name="profile"/>
 								</div>
 							</div>

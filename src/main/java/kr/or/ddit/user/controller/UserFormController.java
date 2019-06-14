@@ -49,8 +49,6 @@ public class UserFormController extends HttpServlet {
 	//사용자 등록 요청 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger.debug("UserForm doPost");
-		request.setCharacterEncoding("utf-8");
-		
 		//사용자 보낸 파라미터를 사용해서 UserVo 인스턴스를 만들어서
 		String userId	=	request.getParameter("userId");
 		String name	 	=	request.getParameter("name");
@@ -60,6 +58,8 @@ public class UserFormController extends HttpServlet {
 		String zipcd	=	request.getParameter("zipcd");
 		String birth	=	request.getParameter("birth");
 		String pass		=	request.getParameter("pass");
+		
+		
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

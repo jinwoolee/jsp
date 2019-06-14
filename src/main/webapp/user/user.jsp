@@ -51,7 +51,7 @@
 						<h2 class="sub-header">사용자상세</h2>
 
 						<form id="frm"
-							action="${pageContext.request.contextPath }/userModify"
+							action="${cp }/userModify"
 							method="get" class="form-horizontal" role="form">
 
 							<input type="hidden" name="userId" value="${userVo.userId }" />
@@ -61,7 +61,7 @@
 									사진</label>
 								<div class="col-sm-10">
 									<img
-										src="${pageContext.request.contextPath }/profile?userId=${userVo.userId}" />
+										src="${cp }/profile?userId=${userVo.userId}" />
 								</div>
 							</div>
 

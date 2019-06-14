@@ -98,6 +98,19 @@ public class PartUtilTest {
 		assertEquals("06", mm);
 	}
 
+	@Test
+	public void substringUriTest(){
+		/***Given***/
+		String uri = "/jsp/userPagingList";
+		String contextPath = "/jsp";
+
+		/***When***/
+		uri = uri.substring(contextPath.length());
+
+		/***Then***/
+		assertEquals("/userPagingList", uri);
+
+	}
 }
 
 

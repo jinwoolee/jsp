@@ -1,9 +1,4 @@
-﻿/**
- * 전자정부 제공 ARIAUTIL
- * ARIAUtil
- */
-//package crdf.regi.egov.security;
-package kr.or.ddit.encrypt.kisa.aria;
+﻿package kr.or.ddit.encrypt.kisa.aria;
 
 import java.io.File;
 import java.io.FileInputStream;

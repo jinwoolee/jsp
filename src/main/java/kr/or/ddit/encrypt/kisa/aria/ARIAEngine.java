@@ -1,10 +1,3 @@
-﻿//
-//  ARIA.java
-//  
-//  A pure Java implementation of ARIA 
-//  following the official ARIA specification at
-//
-//package crdf.regi.egov.security;
 package kr.or.ddit.encrypt.kisa.aria;
 
 import java.io.PrintStream;

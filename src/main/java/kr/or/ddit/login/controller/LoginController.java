@@ -1,7 +1,6 @@
 package kr.or.ddit.login.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
-import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256_test;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.service.IuserService;
 import kr.or.ddit.user.service.UserService;

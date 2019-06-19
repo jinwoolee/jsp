@@ -13,7 +13,7 @@
 
 	<!-- 특정 사용자 조회 -->
 	<select id="getUser" parameterType="string" resultType="userVo">
-		select users.*, to_char(birth, 'yyyy-MM-dd') birthStr
+		select /*+ INDEX(users PK_users) */ users.*, to_char(birth, 'yyyy-MM-dd') birthStr
 		from users
 		where userId = #{userId}
 	</select>
@@ -36,7 +36,7 @@
 	
 	<!-- 사용자 전체수 조회 -->
 	<select id="usersCnt" resultType="int">
-		select count(*)
+		select /*+ INDEX_FFS(users PK_USERS) */ count(*)
 		from users
 	</select>
 	

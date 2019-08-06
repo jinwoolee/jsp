@@ -23,7 +23,7 @@
 	</tr>
 	<%for(UserVo userVo : userList){ %>
 		<tr>
-			<td><%=userVo.getUserName() %></td>
+			<td><%=userVo.getUserNm() %></td>
 			<td></td>
 		</tr>
 	<%} %>

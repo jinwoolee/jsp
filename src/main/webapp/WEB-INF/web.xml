@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<display-name>jsp</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -13,10 +12,22 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- 초기화 파라미터 -->
+	<context-param>
+		<param-name>ADMIN</param-name>
+		<param-value>brown</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>helloWorld</servlet-name>	<!-- 개발자가 붙여주는 서블릿 이름(별칭) -->
 		<servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>	<!-- 서브릿의 풀 네임 (패키지 + 클래스명) -->
+		<load-on-startup>1</load-on-startup>
+<!-- 		<init-param> -->
+<!-- 			<param-name>test</param-name> -->
+<!-- 			<param-value>sally</param-value> -->
+<!-- 		</init-param> -->
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>helloWorld</servlet-name>
 		<url-pattern>/helloWorld</url-pattern>

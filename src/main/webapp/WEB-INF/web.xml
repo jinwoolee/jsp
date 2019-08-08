@@ -11,7 +11,26 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-
+	
+	<!-- error page -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404/404.html</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/error/type/arithmeticException.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500/500.html</location>
+	</error-page>
+	
+	
+	
+	
 	<!-- 초기화 파라미터 -->
 	<context-param>
 		<param-name>ADMIN</param-name>

@@ -2,14 +2,14 @@ package kr.or.ddit.user.repository;
 
 import java.util.List;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
 
 public class UserDaoMainTest {
 	public static void main(String[] args) {
 		//userDao.getUserList();
 		IUserDao userDao = new UserDao();
 		
-		List<UserVo> userList = userDao.getUserList();
+		List<User> userList = userDao.getUserList();
 		
 		if(userList.size() == 5)
 			System.out.println("db 조회 성공");

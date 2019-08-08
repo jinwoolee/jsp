@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
 import kr.or.ddit.util.MybatisUtil;
 
 public class UserDao implements IUserDao{
@@ -17,7 +17,7 @@ public class UserDao implements IUserDao{
 	* Method 설명 : 사용자 전체 리스트 조회
 	*/
 	@Override
-	public List<UserVo> getUserList() {
+	public List<User> getUserList() {
 		//db에서 조회가 되었다고 가정하고 가짜 객체를 리턴
 		/*List<UserVo> userList = new ArrayList<UserVo>();
 		userList.add(new UserVo("brown"));
@@ -27,7 +27,7 @@ public class UserDao implements IUserDao{
 		userList.add(new UserVo("james"));*/
 		
 		SqlSession sqlSession = MybatisUtil.getSession();
-		List<UserVo> userList = sqlSession.selectList("user.getUserList");
+		List<User> userList = sqlSession.selectList("user.getUserList");
 		sqlSession.close();
 		
 		return userList;
@@ -42,9 +42,9 @@ public class UserDao implements IUserDao{
 	* Method 설명 : userId를 갖는 사용자 정보 조회
 	*/
 	@Override
-	public UserVo getUser(String userId) {
+	public User getUser(String userId) {
 		SqlSession sqlSession = MybatisUtil.getSession();
-		UserVo userVo = sqlSession.selectOne("user.getUser", userId);
+		User userVo = sqlSession.selectOne("user.getUser", userId);
 		sqlSession.close();
 		
 		return userVo;

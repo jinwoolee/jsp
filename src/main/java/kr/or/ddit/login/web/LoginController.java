@@ -102,6 +102,7 @@ public class LoginController extends HttpServlet {
 			logger.debug("session.getId() : {}", session.getId());
 			
 			session.setAttribute("S_USERVO", user);
+			request.setAttribute("elTest", "elTestValue");
 			
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}

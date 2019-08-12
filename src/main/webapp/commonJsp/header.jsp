@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.user.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -18,6 +19,7 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
+				<li><a href="#">${S_USERVO.userNm}</a></li>
 			</ul>
 			<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
@@ -25,3 +27,5 @@
 		</div>
 	</div>
 </nav>
+
+

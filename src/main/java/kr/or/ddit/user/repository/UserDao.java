@@ -50,6 +50,22 @@ public class UserDao implements IUserDao{
 		return userVo;
 	}
 
+	/**
+	* Method : getUserListOnlyHalf
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 리스트중 50명임의 조회
+	*/
+	@Override
+	public List<User> getUserListOnlyHalf() {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		List<User> userList = sqlSession.selectList("user.getUserListOnlyHalf");
+		sqlSession.close();
+		
+		return userList;
+	}
+
 }
 
 

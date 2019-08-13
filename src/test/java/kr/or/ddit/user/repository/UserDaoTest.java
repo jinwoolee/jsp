@@ -47,6 +47,24 @@ public class UserDaoTest {
 		assertEquals("브라운", userVo.getUserNm());
 		assertEquals("brown1234", userVo.getPass());
 	}
+	
+	/**
+	* Method : getUserListOnlyHalfTest
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* Method 설명 : 사용자 리스트 절반 조회 테스트
+	*/
+	@Test
+	public void getUserListOnlyHalfTest() {
+		/***Given***/
+		IUserDao userDao = new UserDao();
+
+		/***When***/
+		List<User> userList = userDao.getUserListOnlyHalf();
+
+		/***Then***/
+		assertEquals(50, userList.size());
+	}
 
 }
 

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/elScope" method="post">
+<form action="${pageContext.request.contextPath }/elScope" method="post">
 	request : <input type="text" name="req" value="brown"/> <br>
 	session : <input type="text" name="session" value="cony"/> <br>
 	application : <input type="text" name="application" value="sally"/> <br>

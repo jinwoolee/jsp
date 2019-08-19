@@ -1,20 +1,32 @@
+<%-- <%@ page language="java" contentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" --%>
+<%--      pageEncoding="UTF-8"%>  --%>
+     
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
 <%@page import="kr.or.ddit.user.repository.IUserDao"%>
-<%@ page language="java" contentType="application/vnd.ms-excel; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="application/vnd.ms-excel; charset=UTF-8" 
+     pageEncoding="UTF-8"%> 
+<%
+	//response.setHeader("content-type, value)
+	//response.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
+
 <title>Insert title here</title>
 </head>
 <body>
 <%
 	response.setHeader("Content-Disposition", "attahchement; filename=line.xls");
+	
+	//response.setHeader("Content-Disposition", "attahchement; filename=line.xlsx");
 	IUserDao userDao = new UserDao();
 	List<User> userList = userDao.getUserList();
+	System.out.println("userList : " + userList);
 %>
 <table>
 	<tr>

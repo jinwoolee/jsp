@@ -17,21 +17,9 @@
 
 <title>Jsp-basicLib</title>
 <%@ include file="/commonJsp/basicLib.jsp"%>
-<script>
-$(document).ready(function(){
-	$(".lprodTr").on("click", function(){
-		var lprod_id = $(this).children()[1].textContent;
-		$("#lprod_gu").val(lprod_id);
-		$("#frm").submit();
-	})
-});
-</script>
 </head>
 
 <body>
-<form id="frm" action="${cp }/prodList" method="get">
-	<input type="hidden" id="lprod_gu" name="lprod_gu" />
-</form>
 	
 	<!-- header -->
 	<%@ include file="/commonJsp/header.jsp" %>
@@ -47,26 +35,32 @@ $(document).ready(function(){
 
 				<div class="row">
 					<div class="col-sm-8 blog-main">
-						<h2 class="sub-header">제품그룹리스트</h2>
+						<h2 class="sub-header">제품리스트</h2>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>제품그룹 아이디</th>
-									<th>제품그룹 코드</th>
-									<th>제품그룹 명</th>
+									<th>제품그룹명</th>
+									<th>제품그룹번호</th>
+									<th>바이어이름</th>
+									<th>제품아이디</th>
+									<th>제품명</th>
+									<th>제품가격</th>
 								</tr>
 								
-								<c:forEach items="${lprodList }" var="lprod">
-									<tr class="lprodTr">
-										<td>${lprod.lprod_id }</td>
-										<td>${lprod.lprod_gu }</td>
-										<td>${lprod.lprod_nm }</td>
+								<c:forEach items="${prodList }" var="prod">
+									<tr>
+										<td>${prod.lprod_nm }</td>
+										<td>${prod.lprod_gu }</td>
+										<td>${prod.buyer_name }</td>
+										<td>${prod.prod_id }</td>
+										<td>${prod.prod_name }</td>
+										<td>${prod.prod_cost }</td>
 									</tr>
 								</c:forEach>
 							</table>
 						</div>
 
-						<a class="btn btn-default pull-right">제품그룹 등록</a>
+						<a class="btn btn-default pull-right">제품 등록</a>
 
 						<div class="text-center">
 							<ul class="pagination">

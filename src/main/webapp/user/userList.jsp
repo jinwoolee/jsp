@@ -17,9 +17,35 @@
 
 <title>Jsp-basicLib</title>
 <%@ include file="/commonJsp/basicLib.jsp"%>
+
+<script>
+//문서 로딩이 완료되고 나서
+$(document).ready(function(){
+	
+	//사용자 정보 클릭시 이벤트 핸들러
+	$(".userTr").on("click", function(){
+		
+		console.log("userTr click");
+		
+		//클릭된 tr 태그의 자식태그(td)중 첫번째 자식의 텍스트 문자열
+		console.log($(this).children().first().text());
+		
+		//input 태그에 값 설정
+		$("#userId").val($(this).children().first().text());
+		
+		//form 태그이용 전송
+		console.log("serialize : "  + $("#frm").serialize());
+		
+		$("#frm").submit();
+	});
+});
+</script>
 </head>
 
 <body>
+<form id="frm" action="${cp }/user" method="get">
+	<input type="hidden" id="userId" name="userId" />
+</form>
 	
 	<!-- header -->
 	<%@ include file="/commonJsp/header.jsp" %>
@@ -58,7 +84,7 @@
 								
 								<%-- for(User user : userList) --%>
 								<c:forEach items="${userList }" var="user">
-									<tr>
+									<tr class="userTr">
 										<td>${user.userId }</td>
 										<td>${user.userNm }</td>
 										<td>${user.alias }</td>

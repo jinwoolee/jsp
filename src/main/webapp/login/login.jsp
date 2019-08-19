@@ -15,14 +15,14 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${cp }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath }/css/signin.css" rel="stylesheet">
+	<link href="${cp }/css/signin.css" rel="stylesheet">
 	
-	<script src="${pageContext.request.contextPath }/js/jquery-3.4.1.min.js"></script>
+	<script src="${cp }/js/jquery-3.4.1.min.js"></script>
 	
-	<script src="${pageContext.request.contextPath }/js/js.cookie.js"></script>
+	<script src="${cp }/js/js.cookie.js"></script>
 	<script>
 	$(document).ready(function(){
 		

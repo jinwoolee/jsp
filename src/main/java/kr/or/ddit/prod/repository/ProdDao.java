@@ -9,8 +9,6 @@ import kr.or.ddit.util.MybatisUtil;
 
 public class ProdDao implements IProdDao {
 	
-	
-
 	/**
 	* Method : getProdList
 	* 작성자 : SEM-PC

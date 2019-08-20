@@ -20,8 +20,10 @@
 <script>
 $(document).ready(function(){
 	$(".lprodTr").on("click", function(){
-		var lprod_id = $(this).children()[1].textContent;
-		$("#lprod_gu").val(lprod_id);
+		var lprod_gu = $(this).data("lprod_gu");
+		console.log("lprod_gu : " + lprod_gu);
+		
+		$("#lprod_gu").val(lprod_gu);
 		$("#frm").submit();
 	})
 });
@@ -57,7 +59,9 @@ $(document).ready(function(){
 								</tr>
 								
 								<c:forEach items="${lprodList }" var="lprod">
-									<tr class="lprodTr">
+									<tr class="lprodTr" data-lprod_gu="${lprod.lprod_gu }" 
+														data-lprod_nm="${lprod.lprod_nm }"
+														data-lprod="${lprod }">
 										<td>${lprod.lprod_id }</td>
 										<td>${lprod.lprod_gu }</td>
 										<td>${lprod.lprod_nm }</td>

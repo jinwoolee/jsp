@@ -36,7 +36,6 @@ public class User {
 	}
 	
 	public String getReg_dt_fmt() {
-		logger.debug("getReg_dt_fmt method call");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(reg_dt);
 	}

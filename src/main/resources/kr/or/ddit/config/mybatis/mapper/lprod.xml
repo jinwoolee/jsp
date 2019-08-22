@@ -8,11 +8,23 @@
 		from lprod
 	</select>
 	
-	<select id="getUser" parameterType="String" resultType="user">
+	<select id="getLprodPagingList" resultType="lprod" parameterType="page">
 		select *
-		from users
-		where userId = #{userId}	
+		 from 
+		(select rownum rn, a.*
+		 from 
+		(select *
+		 from lprod
+		order by lprod_gu) a )
+		where rn between (#{page}-1)*#{pagesize} + 1 and #{page}*#{pagesize}
 	</select>
+	
+	<select id="getLprodTotalCnt" resultType="Integer">
+		select count(*)
+		from lprod
+	</select>
+	
+	
 </mapper>
 
 

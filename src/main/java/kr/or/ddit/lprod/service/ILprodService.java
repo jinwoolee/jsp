@@ -1,13 +1,12 @@
-package kr.or.ddit.lprod.dao;
+package kr.or.ddit.lprod.service;
 
 import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
+import java.util.Map;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.lprod.model.Lprod;
 
-public interface ILprodDao {
+public interface ILprodService {
 
 	/**
 	* Method : getLprodList
@@ -16,7 +15,7 @@ public interface ILprodDao {
 	* @return
 	* Method 설명 : 제품 그룹 리스트 조회
 	*/
-	List<Lprod> getLprodList(SqlSession sqlSession);
+	List<Lprod> getLprodList();
 
 	/**
 	* Method : getLprodPagingList
@@ -27,16 +26,6 @@ public interface ILprodDao {
 	* @return
 	* Method 설명 : 제품 그룹 페이징 리스트 조회
 	*/
-	List<Lprod> getLprodPagingList(SqlSession sqlSession, Page page);
-
-	/**
-	* Method : getLprodTotalCnt
-	* 작성자 : SEM-PC
-	* 변경이력 :
-	* @param sqlSession
-	* @return
-	* Method 설명 : 제품 그룹 전체 건수 조회
-	*/
-	int getLprodTotalCnt(SqlSession sqlSession);
+	Map<String, Object> getLprodPagingList(Page page);
 
 }

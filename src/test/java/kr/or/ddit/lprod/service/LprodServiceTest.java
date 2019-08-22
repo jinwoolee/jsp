@@ -1,8 +1,9 @@
-package kr.or.ddit.lprod.dao;
+package kr.or.ddit.lprod.service;
 
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
@@ -12,15 +13,14 @@ import kr.or.ddit.common.model.Page;
 import kr.or.ddit.lprod.model.Lprod;
 import kr.or.ddit.util.MybatisUtil;
 
-public class LprodDaoTest {
+public class LprodServiceTest {
 
-	private ILprodDao lprodDao;
+	private ILprodService lprodService;
 	private SqlSession sqlSession;
 	
 	@Before
 	public void setup() {
-		lprodDao = new LprodDao();	
-		sqlSession = MybatisUtil.getSession();
+		lprodService = new LprodService();	
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class LprodDaoTest {
 		/***Given***/
 	
 		/***When***/
-		List<Lprod> lprodList = lprodDao.getLprodList(sqlSession);
+		List<Lprod> lprodList = lprodService.getLprodList();
 
 		/***Then***/
 		assertEquals(10, lprodList.size());
@@ -52,27 +52,15 @@ public class LprodDaoTest {
 		Page page = new Page(1, 5);
 
 		/***When***/
-		List<Lprod> lprodList = lprodDao.getLprodPagingList(sqlSession, page);
+		Map<String, Object> resultMap = lprodService.getLprodPagingList(page);
+		List<Lprod> lprodList = (List<Lprod>)resultMap.get("lprodList");
+		int paginationSize = (Integer)resultMap.get("paginationSize");
 
 		/***Then***/
 		assertEquals(5, lprodList.size());
+		assertEquals(2, paginationSize);
 	}
 	
-	/**
-	* Method : getLprodTotalCnt
-	* 작성자 : SEM-PC
-	* 변경이력 :
-	* Method 설명 : 제품그룹 리스트 전체 건수 조회
-	*/
-	@Test
-	public void getLprodTotalCnt() {
-		/***Given***/
-		
-		/***When***/
-		int totalCnt = lprodDao.getLprodTotalCnt(sqlSession);
-
-		/***Then***/
-		assertEquals(10, totalCnt);
-	}
+	
 
 }

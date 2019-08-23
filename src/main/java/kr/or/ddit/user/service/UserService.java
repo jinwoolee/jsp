@@ -72,6 +72,41 @@ public class UserService implements IUserService{
 		return map;
 	}
 
+	/**
+	* Method : insertUser
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @param user
+	* Method 설명 : 사용자 등록
+	*/
+	@Override
+	public int insertUser(User user) {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		int insertCnt = userDao.insertUser(sqlSession, user);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return insertCnt;
+	}
+
+	/**
+	* Method : deleteUser
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @param userId
+	* Method 설명 : 사용자 삭제
+	*/
+	@Override
+	public int deleteUser(String userId) {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		int deleteCnt = userDao.deleteUser(sqlSession, userId);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return deleteCnt;
+	}
 }
 
 

@@ -42,8 +42,15 @@ public class UserController extends HttpServlet {
     	request.setAttribute("user", user);
     	
     	request.getRequestDispatcher("/user/user.jsp").forward(request, response);
-    	
 	}
+    
+    @Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	logger.debug("userControoler.doPost");
+		doGet(req, resp);
+	}
+    
+    
 }
 
 

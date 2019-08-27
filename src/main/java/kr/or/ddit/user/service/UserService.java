@@ -107,6 +107,24 @@ public class UserService implements IUserService{
 		
 		return deleteCnt;
 	}
+
+	/**
+	* Method : updateUser
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @param user
+	* @return
+	* Method 설명 : 사용자 정보 수정
+	*/
+	@Override
+	public int updateUser(User user) {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		int insertCnt = userDao.updateUser(sqlSession, user);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return insertCnt; 
+	}
 }
 
 

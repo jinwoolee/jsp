@@ -1,5 +1,6 @@
 package kr.or.ddit.user.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,12 +25,12 @@ import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.util.FileuploadUtil;
 
-@WebServlet("/userForm")
+@WebServlet("/userModify")
 @MultipartConfig(maxFileSize = 1024*1024*5, maxRequestSize = 1024*1024*5*5)
-public class UserFormController extends HttpServlet {
+public class UserModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    private static final Logger logger = LoggerFactory.getLogger(UserFormController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserModifyController.class);
     
     private IUserService userService;
     
@@ -39,7 +40,10 @@ public class UserFormController extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/user/userForm.jsp").forward(request, response);
+		String userId = request.getParameter("userId");
+		User user = userService.getUser(userId);
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("/user/userModify.jsp").forward(request, response);
 	}
 
 	
@@ -82,6 +86,12 @@ public class UserFormController extends HttpServlet {
 			path = FileuploadUtil.getPath() + realFilename + ext;
 			
 			picture.write(path);
+			
+			//기존 파일은 삭제한다
+			User orgUser = userService.getUser(userId);
+			
+			File file = new File(orgUser.getRealfilename());
+			file.delete();
 		}
 		
 		
@@ -108,7 +118,7 @@ public class UserFormController extends HttpServlet {
 			int insertCnt = 0;
 			
 			try{
-				insertCnt = userService.insertUser(user);
+				insertCnt = userService.updateUser(user);
 				if(insertCnt == 1) {
 					response.sendRedirect(request.getContextPath() + "/user?userId=" + userId);
 				}

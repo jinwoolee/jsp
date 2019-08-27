@@ -110,6 +110,19 @@ public class UserDao implements IUserDao{
 		return sqlSession.delete("user.deleteUser", userId);
 	}
 
+	/**
+	* Method : updateUser
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @param user
+	* @return
+	* Method 설명 : 사용자 정보 수정
+	*/
+	@Override
+	public int updateUser(SqlSession sqlSession, User user) {
+		return sqlSession.update("user.updateUser", user);
+	}
+
 }
 
 

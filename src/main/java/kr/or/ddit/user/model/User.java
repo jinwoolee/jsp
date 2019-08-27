@@ -6,6 +6,8 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
+
 public class User {
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
@@ -17,6 +19,9 @@ public class User {
 	private String addr1;		//주소1
 	private String addr2;		//주소2
 	private String zipcode;		//우편번호
+	private String filename;		//파일명(사용자 업로드 파일명) 
+	private String realfilename;	//물리 파일명
+	private String realfilename2;	//물리 파일명
 	
 	public User() {
 		
@@ -27,7 +32,7 @@ public class User {
 	}
 	
 	public User(String userId, String userNm, String alias, Date reg_dt, String addr1, String addr2,
-			String zipcode, String pass) {
+			String zipcode, String pass, String filename, String realfilename) {
 		this.userId = userId;
 		this.userNm = userNm;
 		this.alias = alias;
@@ -36,6 +41,8 @@ public class User {
 		this.addr2 = addr2;
 		this.zipcode = zipcode;
 		this.pass = pass;
+		this.filename = filename;
+		this.realfilename = realfilename;
 	}
 
 	public String getAlias() {
@@ -107,15 +114,41 @@ public class User {
 		this.zipcode = zipcode;
 	}
 	
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getRealfilename() {
+		return realfilename;
+	}
+
+	public void setRealfilename(String realfilename) {
+		this.realfilename = realfilename;
+	}
+	
+	public String getRealfilename2() {
+		return realfilename2;
+	}
+
+	public void setRealfilename2(String realfilename2) {
+		this.realfilename2 = realfilename2;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", pass=" + pass + ", userNm=" + userNm + ", alias=" + alias + ", reg_dt="
-				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + "]";
+				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename
+				+ ", realfilename=" + realfilename + "]";
 	}
 
 	public boolean checkLoginValidate(String userId, String pass) {
 		
-		if(userId.equals(this.userId) && pass.equals(this.pass))
+		//암호화 문장끼리 비교
+		if(userId.equals(this.userId) && KISA_SHA256.encrypt(pass).equals(this.pass))
 			return true;
 		
 		return false;

@@ -167,6 +167,44 @@ public class UserDaoTest {
 		/***Then***/
 		assertEquals(1, insertCnt);
 	}
+	
+	/**
+	* Method : updateUserTest
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @throws ParseException
+	* Method 설명 : 사용자 정보 수정 테스트
+	*/
+	@Test
+	public void updateUserTest() throws ParseException {
+		/***Given***/
+		User user = new User();
+		
+		user.setUserId(userId);
+		user.setUserNm("브라운테스트");
+		user.setPass("brownTest1234");
+		user.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-08"));
+		user.setAlias("곰테스트");
+		user.setAddr1("대전광역시 중구 중앙로 76");
+		user.setAddr2("영민빌딩 2층 DDIT");
+		user.setZipcode("34940");
+		user.setFilename("");
+		user.setRealfilename("");
+		
+		int insertCnt = userDao.insertUser(sqlSession, user);
+		
+		/***When***/
+		user.setUserNm("브라운수정");
+		int updateCnt = userDao.updateUser(sqlSession, user);
+		
+		User dbUser = userDao.getUser(sqlSession, userId);
+		sqlSession.commit();
+
+		/***Then***/
+		assertEquals(1, insertCnt);
+		assertEquals(1, updateCnt);
+		assertEquals("브라운수정", dbUser.getUserNm());
+	}
 
 }
 

@@ -24,7 +24,7 @@ ResultSet rs = null;  // 쿼리문이 select문일 경우에만 필요
 	long start = System.currentTimeMillis();
 	
 	for(int i = 0; i < 20; i++){
-		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","sem","java");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.96:1521:xe","sem","java");
 		String sql = "select * from lprod";  // 실행할 SQL문장
 		stmt = conn.createStatement();  // Statement객체 생성
 		rs = stmt.executeQuery(sql);

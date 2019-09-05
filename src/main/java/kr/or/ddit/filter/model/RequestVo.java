@@ -11,11 +11,9 @@ public class RequestVo {
 		//동일성(같은 객체냐
 		//if("test" == str) {
 		if(str == str) {
-			
 		}
 		//동치성(같은 값을 같냐)
 		if("test".equals("test")) {
-			
 		}
 	}
 	

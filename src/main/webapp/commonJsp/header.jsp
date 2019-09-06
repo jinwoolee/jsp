@@ -19,6 +19,7 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
+				<li><a href="${cp }/logout">logout</a></li>
 				<li><a href="#">${S_USERVO.userNm}</a></li>
 			</ul>
 			<form class="navbar-form navbar-right">

@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%   //스크립틀릿 : 자바 로직을 작성하는 공간	
+	<%   //스크립틀릿 : 자바 로직을 작성하는 공간
+		// 특정 메소드 안에서 구현하는 자바로직
 		Date date = new Date();
 	%>
 	

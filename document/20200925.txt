@@ -1,0 +1,94 @@
+ java ee에서 URL을 처리하는 과정
+ 
+ 1. client(web browser)가 요청하는 URL을 서버(tomcat)에서 접수
+   
+   2.1 servlet
+   		ex) localhost/TimesTablesServlet
+   		    server는 web.xml에 등록된 servlet-mapping을 통해 요청을 처리해줄
+   		    servlet을 확인하고 해당 servlet의 service 메소드를 호출
+   2.2 jsp
+   		ex) localhost/basic/timesTable.jsp
+   			server는 [서버의 web.xml]에 등록된 servlet-mapping 
+   			(*.jsp ==> jsp라는 이름의 servlet, class : JspServlet)을 통해
+   			요청을 처리해줄 servlet을 확인하고 해당 servlet을 통해 jsp가 만들어내는 
+   			컨텐트를 생성하여 응답으로 클라이언트에게 전달 
+  2.3 정적자료(image, css, js, html)
+  		ex) localhost/ccs/public.css
+  		정적 자료의 경우 서버에서 동적으로 처리할 부분이 없다
+  		정적 자료의 파일 내용을 그대로 사용자에게 전달 하면 된다
+  		
+  		
+  		<url-pattern>/</url-pattern>
+  		url-pattern의 /이 의미하는 것은 경로가 아니라
+  		server, web 어플리케이션에 설정된 url-mapping에서 처리 못하는 요청들을
+  		최종적으로 처리해주 역할을 하는 서블릿을 지칭(default-servlet)
+
+
+java 웹개발 비표준
+구글 play framework : 이런 비표준은 위에서 설명한 표준 스펙을 따르지 않는다
+
+
+이클립스 IDE 사용시 배포 경로 확인 방법
+1. 서버 시작후 console에 출력된 -Dwtp.deploy 값 확인
+2. server를 더블클릭 - 설정 창에서 Open launch configuration 클릭 - arguments tab
+  -Dwtp.deploy 값 확인 
+  		
+  		
+servlet : 사전에 컴파일하여 WEB-INF/classes 폴더에 복사
+jsp : TOMCAT 기동후 최초 요청이 왔을 때 servlet으로 변환, 컴파일
+      basic.jsp ==> baisc_jsp.java  ==> basic_jsp.class  		
+  		
+
+jsp 스크립트 요소
+1. 지시자 - jsp에 대한 설정 정보
+2. 스크립틀릿 - java 로직 작성
+3. 표현식 - 자바 변수, 객체를 텍스트로 출력 (out.write)
+4. 주석 <%--  주석 --%>
+5. 선언부 : 메소드를 선언하는 부분
+
+중요한 내용은 2, 3
+5번 같은 경우는 잘 사용하지 않는데 jsp 화면 역할을 담당한
+즉 처리 로직이 없다. 메소드의 경우 로직을 담당하기 때문에 화면 역할을 담당하는 jsp에
+로직을 넣는 것은 올바르지 않다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+   			   		     

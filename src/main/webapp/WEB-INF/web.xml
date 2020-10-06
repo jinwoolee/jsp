@@ -36,6 +36,31 @@
   	<servlet-name>timesTablesServlet</servlet-name>
   	<url-pattern>/TimesTablesServlet</url-pattern>
   </servlet-mapping>
+  
+  <!-- 에러페이지 설정 -->
+  
+  
+  <error-page>
+  	<exception-type>java.lang.RuntimeException</exception-type>
+  	<location>/error/runtimeException.jsp</location>
+  </error-page>
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/404/404.html</location>
+  </error-page>
+  
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/500/500.html</location>
+  </error-page>
+  
+  <error-page>
+  	<exception-type>java.lang.ArithmeticException</exception-type>
+  	<location>/error/arithmeticException.jsp</location>
+  </error-page>
+  
+  
 </web-app>
 
 

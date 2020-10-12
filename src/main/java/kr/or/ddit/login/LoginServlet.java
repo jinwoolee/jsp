@@ -51,11 +51,11 @@ public class LoginServlet extends HttpServlet {
 		 */
 		
 		//디비에 등록된 회원이 없거나, 비밀번호가 틀린경우 (로그인 페이지)
-		if(memberVo == null || !memberVo.getPassword().equals(password) ) {
+		if(memberVo == null || !memberVo.getPass().equals(password) ) {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		//비밀번호가 일치하는 경우(메인 페이지 이동)
-		else if(memberVo.getPassword().equals(password)){
+		else if(memberVo.getPass().equals(password)){
 			request.getSession().setAttribute("S_MEMBER", memberVo);
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}

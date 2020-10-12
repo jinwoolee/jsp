@@ -1,24 +1,30 @@
 package kr.or.ddit.member.model;
 
 public class MemberVo {
-	private String userId;
-	private String password;
-	
-	public String getUserId() {
-		return userId;
+	private String userid;
+	private String pass;
+	public String getUserid() {
+		return userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	@Override
+	public String toString() {
+		return "MemberVo [userid=" + userid + ", pass=" + pass + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		return result;
 	}
 	@Override
@@ -30,25 +36,19 @@ public class MemberVo {
 		if (getClass() != obj.getClass())
 			return false;
 		MemberVo other = (MemberVo) obj;
-		if (password == null) {
-			if (other.password != null)
+		if (pass == null) {
+			if (other.pass != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!pass.equals(other.pass))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (userid == null) {
+			if (other.userid != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!userid.equals(other.userid))
 			return false;
 		return true;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
-	@Override
-	public String toString() {
-		return "MemberVo [userId=" + userId + ", password=" + password + "]";
-	}
+	
 	
 }

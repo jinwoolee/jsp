@@ -1,0 +1,57 @@
+ DBMS입장에서 동일한 SQL이란?
+ 모든 문자가 동일한 SQL
+ 
+ 다음 SQL은 DBMS 입장에서는 서로 다른 SQL로 인식된다
+ SELECT * FROM mymember;
+ SELECT * FROM mymember;
+ SELECt * FROM mymember;
+ 
+ 
+ 
+ MemberDao 새로인 기능 추가
+ 전체 사용자 조회
+ 1. 메소드, sql id 이름?? ==> selectAllMember, getAllMember, getMemberList 
+ 2. 해당 sql 실행할 때 파라미터가 필요한지 ?? 
+ 	
+ 	SELECT *
+ 	FROM member
+ 	
+ 3. 해당 sql 실행 했을 때 반환되는 타입은 어떤건지 ?? MemberVo
+ dao, daoTest 코드 작성
+ 
+ mapper, daoI, dao, daoTest
+ 
+ 
+ 
+ 
+ 지금까지 배운 내용을 종합하여 실습
+ left 메뉴의 jobs 클릭시
+ jobs 테이블에 저장된 모든 데이터를 table 태그를 이용하여
+ 화면에 출력(job_id, job_title 두개 컬럼만 화면에 표시)
+ 
+ Servlet(Controller), service(service), dao(respository), model, view, 
+ 테스트코드 : service, dao
+ 
+ MemberDao ==> 여기사용 금지, xxxxDao ???
+ member.xml ==> jobs.xml ==> mybatis-config.xml
+ 
+ 10.12 4교시 내에 못 할경우 과제(10.13일 제출) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

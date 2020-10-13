@@ -38,7 +38,7 @@
 					class="icon-bar"></span>
 			</button>
 			<%	MemberVo memberVo = (MemberVo)session.getAttribute("S_MEMBER");	%>
-			<a class="navbar-brand" href="#">JSP/SPRING <%= memberVo == null ? "" : "[" + memberVo.getUserId() + "]" %></a>
+			<a class="navbar-brand" href="#">JSP/SPRING <%= memberVo == null ? "" : "[" + memberVo.getUserid() + "]" %></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">

@@ -1,0 +1,136 @@
+JSTL 카테고리
+core : 로직제어-반복문, 조건분기, 변수 ==> 스크립틀릿을 대체
+국제화 : 날짜형식, 통화, 숫자 포맷
+fn : 문자관련 함수(사용 빈도는 다소 떨어짐)
+xml, database....
+
+
+JSTL 혹은 별도 태그를 사용 하고 싶은 경우 해당 정의 사항을 선언
+<%@ ..... 지시자 : 페이지 설정, 정보에 대한 안내
+<%@ page
+<%@ taglib prefix="" uri="url...." %>
+
+prefix 설정은 개발자 임의로 설정이 가능하지만 많은 개발자들이 다음과
+같은 형식으로 사용을 한다 
+core ==> c
+국제화(format) ==> fmt
+
+
+core tag library
+set : 속성(page, request, session, application)
+
+
+<c:set var="userId" value="brown" scope="page"/>
+var : 속성명
+value : 저장할 값
+scope : 어떤 scope 객체에 저장할지, scope 생략가능(default page)
+
+
+<c:set var="userId" value="brown" scope="request"/>
+<% request.setAttribute("userId", "brown"); %>
+
+
+
+if : java if와 같은데 else if, else 기능이 빠짐
+     즉 한 조건으로만 비교가능하고 추가적인 비교조건은 불가능
+     
+<c:if test="참거짓을 판단할수 있는 문장">
+	test 속성이 참일때 실행할 문장
+</c:if>     
+
+주의점 test 속성을 통해 값을 비교할 경우 다음과 같은 실수를 많이 한다
+<c:if test="${name} == 'brown'" />....</c:if>
+
+==> 비교 구문이 EL 안에 표현되어야 함
+
+<c:if test="${name == 'brown'}" />....</c:if>
+
+주의점2 test 속성에 공백이 있으면 안됨
+test="${name == 'brown'} "  
+==>
+test="${name == 'brown'}"
+
+
+
+choose : java의 if - else if - else
+<c:choose>
+	<c:when test="" > test 속성이 참일때 실행할 문장 </c:when>
+	<c:when test="" > test 속성이 참일때 실행할 문장 </c:when>
+	<c:when test="" > test 속성이 참일때 실행할 문장 </c:when>
+	<c:otherwise> 위에 기술된 when 절의 조건을 만족시키지 못할때 기본으로 실행할 문장(else)</c:otherwise>
+</c:choose>
+
+
+foreach : java의 반복문(속성을 어떤걸 쓰냐에 따라 일반 반복문, 향상 for문 둘다 가능)
+속성
+items : 여러개의 값을 갖고있는 배열, 리스트, map등의 객체를 설정
+var : items의 값을 하나씩 저장할 변수
+	for(String var : items)
+	<c:foreach items="${items}" var="var">
+	</c:foreach>
+	
+일반 for(index를 사용, 시작, 종료값)
+for(int i = 0; i <= 10; i++)
+begin : 인덱스 변수의 시작값
+end : 인덱스 변수의 종료값
+step : 증감값 (기본값은 1)
+var : 인덱스 변수
+varStatus : 루프의 정보를 담고있는 변수
+	index : 루프에서 현재 인덱스
+	count : 루프 실행 횟수
+	begin, end : 루프 시작, 종료값
+	step : 루프 스텝
+	
+
+<c:foreach var="i" begin="0" end="10" step="1">
+</c:foreach>
+
+
+EL scope 기본객체 : pageScope, requestScope(request개체에 저장된 속성들을 모아놓은 map),
+				  sessionScope, applicationScope
+     기타 기본객체 : param, paramValues, header, headerValues, cookie
+     
+     <%=request.getContextPath()%>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

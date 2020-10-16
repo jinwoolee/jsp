@@ -54,14 +54,18 @@
 						</div>
 
 						<a class="btn btn-default pull-right">사용자 등록</a>
-
 						<div class="text-center">
 							<ul class="pagination">
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+								<c:forEach var="i" begin="1" end="${pages }">
+									<c:choose>
+										<c:when test="${i == page}">
+											<li class="active"><span>${i }</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath }/memberList?page=${i}">${i}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>

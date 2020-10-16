@@ -13,4 +13,32 @@
   	SELECT *
   	FROM users
   </select>
+  
+  <select id="selectMemberPageList" resultType="MemberVo" parameterType="PageVo">
+	  SELECT *
+		FROM
+		    (SELECT ROWNUM rn, a.*
+		     FROM
+		        (SELECT *
+		         FROM users
+		         ORDER BY userid) a )
+		WHERE rn BETWEEN (#{page} - 1) * #{pageSize} + 1  AND #{page} * #{pageSize}
+  </select>
+  
+  <select id="selectMemberTotalCnt" resultType="int" >
+		SELECT COUNT(*)
+		FROM users	
+  </select>
+  
+  
 </mapper>
+
+
+
+
+
+
+
+
+
+

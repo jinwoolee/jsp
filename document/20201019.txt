@@ -1,0 +1,27 @@
+jslt : fmt
+<fmt:formatNumber> 숫자 => 포맷팅된 문자열로 변경
+<fmt:parseNumber> 포맷팅된 문자열로 변경 => 숫자
+
+<fmt:formatDate> 날짜 => 포맷팅된 문자열로 변경
+<fmt:parseDate> 포맷팅된 문자열로 변경 => 날짜
+
+
+2-14 Filter
+Filter : 요청된 URL을 처리하는 servlet으로 요청 처리를 전달하기 전에
+         보안, 로깅, 공통된 로직을 처리할 때 사용하는 모듈
+
+Servlet 생성방법 : HttpServet 클래스를 상속(extends)
+Filter 생성방법 : Filter interface 구현
+	Filter interface		servlet
+		init				  init	
+		doFilter			  doXXX
+		destroy				  destroy
+			
+Servlet 등록 : web.xml - servlet, servlet-mapping,   @WebServlet
+Filter 등록 : web.xml - filter, filter-mapping,  @WebFilter
+
+
+
+
+
+

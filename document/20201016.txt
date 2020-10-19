@@ -9,3 +9,30 @@ memberDao, memberService selectMemberPageList(int page)
 member.xml
 
 MemberDaoTest, memberServiceTest
+
+
+
+JSTL 국제화
+
+i18n
+국제화 영단어
+I nternationalizatio n
+
+하나의 사이트에서 사용자의 요청에 따라 다른 언어로 화면을 생성하는 기능
+국제화 기능이 자동으로 언어 번역을 해주는 것은 아님
+
+서비스할 언어에 대해 번역본을 준비 ==> 리소스 번들  
+
+로케일 = 언어코드[_국가코드]
+리소스번들명_로케일.properties
+
+
+
+
+
+
+
+
+
+
+

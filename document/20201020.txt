@@ -1,0 +1,19 @@
+RequestCounterFilter
+LoginServlet
+
+//전처리(요청이 요청을 처리할 서블릿으로 가기 전)
+chain.doFilter
+//후처리(생성된 응답이 클라이언트에게 가는 중)
+
+전처리  ==> 서블릿  ==> 후처리
+
+1. RequestCounterFilter 전처리 부분-chain.doFilter 호출전
+2. loginServlet doGet
+3. RequestCounterFilter 후처리 부분-chain.doFilter 호출후
+
+
+RequestCounterFilter.doFilter()
+uri : /login 
+RequestCounterFilter 전처리 부분-chain.doFilter 호출전
+loginServlet doGet
+RequestCounterFilter 후처리 부분-chain.doFilter 호출후

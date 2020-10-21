@@ -7,4 +7,24 @@ Http (request / response) Message
 			locale
 3. BODY :
 	요청 : post방식일 경우 파라미터  
-	응답 : 컨텐츠 정보 - html, json, xml			
+	응답 : 컨텐츠 정보 - html, json, xml
+	
+	
+	
+사용자 상세조회 페이지
+사용자 리스트의 tr태그 클릭시 
+1. 클릭한 사용자의 아이디를 확인할 수 있는 방법 필요
+2. 사용자 상세 조회 로직을 처리해줄 servlet 필요
+	-service, dao
+3. 사용자 상세 조회 화면을 처리해줄 jsp 필요
+
+
+
+
+
+
+
+
+
+
+

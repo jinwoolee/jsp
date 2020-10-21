@@ -1,0 +1,10 @@
+Http (request / response) Message
+
+구성
+1. LINE : 메소드, URL, HTTP 버전
+2. HEADER : 메타(꾸며준다) 정보     / 메타 데이터-데이터에 대한 설명을 담은 데이터
+			user-agent:browser
+			locale
+3. BODY :
+	요청 : post방식일 경우 파라미터  
+	응답 : 컨텐츠 정보 - html, json, xml			

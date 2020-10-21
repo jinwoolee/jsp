@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class UnitFilter implements Filter {
 
 

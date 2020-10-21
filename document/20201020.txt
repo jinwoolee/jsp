@@ -50,6 +50,51 @@ request.getParameterMap()을 통해 새로운 map 객체를 생성하고
    HttpServletRequestWrapper 클래스를 상속 
 
 
+event listener ==> event handler
+jquery를 활용하여
+버튼이 클릭 되었을 때 특정 로직 실행 하도록 event handler 등록
+$("#btn").on("click", function(){
+});
+
+web.xml에 리스너 등록
+<listener>
+	<listener-class>패지키.클래스명</listener-class>
+</listener>
+
+서버에도 감지할수 있는 이벤트 종류가 존재
+life cycle : scope 객체가 생성되고, 소멸될 때 이벤트 감지
+attribute : scope객체에 속성이 추가되거나, 수정, 변경될 때 이벤트 감지
+기타 등등....
+
+                   life cycle                   attribute
+request		 ServletRequestListener      ServletRequestAttriubteListener
+
+session       HttpSessionListener        HttpSessionAttributeListener
+
+application   ServletContextListener     ServletContextAttriubteListener
+
+
+
+
+logout 기능 추가
+/logout url 요청시
+
+세션에 저장된 속성 제거 : session.invalidate();
+응답 화면 : login.jsp
+
+// SessionAttributeListener.attributeRemoved
+userMap에서 해당 사용자 정보 삭제
+userMap.jsp 에서 로그아웃한 사용자가 안나오는 것 확인
+
+
+
+
+
+             
+
+
+
+
 
 
 

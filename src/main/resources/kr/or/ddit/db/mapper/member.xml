@@ -30,6 +30,28 @@
 		FROM users	
   </select>
   
+  <insert id="insertMember" parameterType="MemberVo">
+  	INSERT INTO users VALUES(#{userid}, #{usernm}, #{pass},
+  							 SYSDATE, #{alias}, #{addr1}, #{addr2},
+  							 #{zipcode}, #{filename}, #{realFilename})
+  </insert>
+  
+  <delete id="deleteMember" parameterType="String">
+  	DELETE users
+  	WHERE userid = #{userid}
+  </delete>
+  
+  <update id="updateMember" parameterType="MemberVo">
+	UPDATE users SET usernm = #{usernm}, 
+					 pass = #{pass},
+					 alias = #{alias},
+					 addr1 = #{addr1},
+					 addr2 = #{addr2},
+  					 zipcode = #{zipcode},
+  					 filename = NVL(#{filename}, filename),
+  					 realFilename = #{realFilename}
+	WHERE userid = #{userid}  							   
+  </update>
   
 </mapper>
 

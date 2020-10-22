@@ -1,0 +1,63 @@
+memberList.jsp
+
+사용자 등록 버튼 클릭시(/memberRegist GET)
+사용자 등록하면 응답생성
+새로운 사용자를 등록 ==> 별도의 파라미터는 없음
+
+1. SERVLET : kr.or.ddit.member.controller.MemberRegistServlet
+2. jsp : webapp/member/memberRegist.jsp
+					  ==> member.jsp (copy)
+					  
+					  
+중복되지 않는 값 생성
+db : sequence
+	 키 값을 저장한 테이블 (사용여부)
+java : UUID - 무료
+       유료 LIB
+       
+       
+화면 생성 위임시 forward, redirect 선택시 참고 규칙
+1. 특별한 경우가 아니면 forward를 선택
+2. 단 서버의 상태가 변경되는 요청에 대해서는 redirect로 응답을 생성한다
+  . 사용자가 F5(새로 고침)를 눌렀을 때 최초 요청(서버의 상태가 변경되는 요청)을 피할 수 있다
+    --> 데이터가 중복 등록 되는 것을 방지할 수 있다.       
+       
+       
+SELECT, SELECT LIST, INSERT
+
+
+사용자 정보 수정 : UDPATE
+사용자 정보 수정 화면 요청(memberUpdate.jsp) : /memberUpdate?userid=brown
+사용자 정보 수정 화면에서는 테이블에 저장된
+                 사용자의 정보가 input tag에 설정이 되어야 한다
+(단 사용자 아이디는 수정의 대상이 아님, 사용자 수정을 못하게 막아야함.)
+
+사용자 사진은 현재 등록된 사진을 이미지로 표현
+그 밑에 사용자가 새로운 사진으로 바꾸고 싶을 때 이미지를 업로드할 수 있는
+input 태그를 준비
+
+이름, 별명, 주소, 비밀번호를 수정 할 수 있다.
+
+수정 버튼 클릭시 사용자가 입력한 정보로 table에 update
+** 만약에 사용자가 새로운 사진 파일을 업로드 하지 않았을 경우 기존 이미지를 유지
+
+정상적으로 수정될 경우 해당 사용자 정보 상세 조회 페이지로 이동
+테스트코드 작성 포함(service, dao)
+
+
+
+
+
+                 
+ 
+
+       
+       
+
+
+
+
+
+
+
+       

@@ -51,6 +51,11 @@ public class MemberListServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
 }
 

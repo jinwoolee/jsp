@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
@@ -12,11 +13,27 @@ import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.model.MemberVo;
 
 public class MemberDaoTest {
+	
+	/*테스트 메소드 실행 사이클:
+	 @BeforeClass (static)
+		@Before => @Test => @After
+		@Before => @Test => @After
+		@Before => @Test => @After
+	 @AfterClass (static)
+	 */
+	
+	MemberDaoI memberDao;
+	
+	@Before
+	public void setup() {
+		memberDao = new MemberDao();
+		String userid = "ljw";
+		memberDao.deleteMember(userid);		
+	}
 
 	@Test
 	public void getMemberTest() {
 		/***Given***/
-		MemberDao memberDao = new MemberDao();
 		String userId = "brown";
 		
 		MemberVo answerMemberVo = new MemberVo();
@@ -36,7 +53,6 @@ public class MemberDaoTest {
 	@Test
 	public void selectAllMemberTest() {
 		/***Given***/
-		MemberDaoI memberDao = new MemberDao();
 		
 		/***When***/
 		List<MemberVo> memberList = memberDao.selectAllMember();
@@ -49,7 +65,6 @@ public class MemberDaoTest {
 	@Test
 	public void selectMemberPageListTest() {
 		/***Given***/
-		MemberDaoI memberDao = new MemberDao();
 		PageVo pageVo = new PageVo(1, 7);
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		//int page = 1;
@@ -64,7 +79,6 @@ public class MemberDaoTest {
 	@Test
 	public void selectMemberTotalCntTest() {
 		/***Given***/
-		MemberDaoI memberDao = new MemberDao();
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 
 		/***When***/
@@ -73,7 +87,46 @@ public class MemberDaoTest {
 		/***Then***/
 		assertEquals(15, totalCnt);
 	}
+	
+	@Test
+	public void insertMemberTest() {
+		/***Given***/
+		MemberVo memberVo 
+			= new MemberVo("ljw", "pass1234", "이진우", "sem",
+							"대전 중구 중앙로 76", "영민빌딩 404호", "34940", 
+							"D:\\profile\\sally.png", "sally.png");
+
+		/***When***/
+		int insertCnt = memberDao.insertMember(memberVo);
+
+		/***Then***/
+		assertEquals(1, insertCnt);
+	}
+	
+	@Test
+	public void updateMemberTest() {
+		/***Given***/
+		MemberVo memberVo 
+			= new MemberVo("ljw", "pass1234", "이진우", "sem",
+							"대전 중구 중앙로 76", "영민빌딩 404호", "34940", 
+							"D:\\profile\\sally.png", "sally.png");
+		
+		int insertCnt = memberDao.insertMember(memberVo);
+		
+		/***When***/
+		memberVo.setAlias("sem_mod");
+		int updateCnt = memberDao.updateMember(memberVo);
+
+		/***Then***/
+		assertEquals(1, insertCnt);
+		assertEquals(1, updateCnt);
+	}
 }
+
+
+
+
+
 
 
 

@@ -22,7 +22,21 @@
   	<servlet-name>basicServlet</servlet-name>
   	<url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>timesTablesServlet</servlet-name>
+  	<servlet-class>kr.or.ddit.servlet.basic.TimesTableServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>timesTablesServlet</servlet-name>
+  	<url-pattern>/TimesTablesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+
+
+
 
 
 

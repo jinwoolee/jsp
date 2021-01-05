@@ -12,9 +12,9 @@
    
     <title>Signin Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
-
+    <%@ include file="/common/common_lib.jsp"%>
+    <%-- common_lib.jsp의 내용을 지금 기술되는 부분에 코드를 복사해서 붙여 넣기  --%>
+    
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
 

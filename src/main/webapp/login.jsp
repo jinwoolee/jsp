@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- The above 3 meta tags *must* come first in the he ad; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
    
@@ -67,7 +67,7 @@
         		placeholder="사용자 아이디" required autofocus name="userid" >
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control"
-        	   placeholder="Password" required name="pass" value="brownpass">
+        	   placeholder="Password" required name="pass" value="brownPass">
         <div class="checkbox">
           <label>
             <input type="checkbox" id="rememberme" value="remember-me"> Remember me

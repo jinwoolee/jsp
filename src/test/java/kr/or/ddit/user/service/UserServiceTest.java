@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
@@ -17,6 +19,33 @@ import kr.or.ddit.user.respository.UserDaoI;
 
 public class UserServiceTest {
 
+	private UserServiceI userService;
+	
+	@Before
+	public void setup() {
+		userService = new UserService();
+		
+		//테스트에서 사용할 신규 사용자 추가
+		UserVo userVo = new UserVo("testUser", "테스트사용자", "testUserPass", 
+							       new Date(), "대덕", "대전 중구 중앙로 76", "4층", "34940");
+		
+		userService.registUser(userVo);
+		
+		//신규 입력 테스트를 위해 테스트 과정에서 입력된 데이터를 삭제
+		userService.deleteUser("ddit_n");
+		
+//		@Before           ==>    @Test registUser          ==> @After
+//		17 +1(testUser)	          -1(ddit_n) +1 (ddit_n)       -1(testUser) 17
+//		
+//		@Before           ==>    @Test selectAllUser          ==> @After
+//		17 +1(testUser)            16, select결과
+	}
+	
+	@After
+	public void tearDodwn() {
+		userService.deleteUser("testUser");
+	}
+	
 	//전체 사용자 조회 테스트
 	@Test
 	public void selectAllUserTest() {
@@ -27,7 +56,7 @@ public class UserServiceTest {
 		List<UserVo> userList = userService.selectAllUser();
 
 		/***Then***/
-		assertEquals(16, userList.size());
+		assertEquals(17, userList.size());
 	}
 	
 	//사용자 아이디를 이용하여 특정 사용자 정보 조회
@@ -75,7 +104,7 @@ public class UserServiceTest {
 
 		/***Then***/
 		assertEquals(5, userList.size());
-		assertEquals(16, userCnt);
+		assertEquals(17, userCnt);
 	}
 	
 	@Test

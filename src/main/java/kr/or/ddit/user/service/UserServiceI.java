@@ -22,6 +22,9 @@ public interface UserServiceI {
 
 	//사용자 정보 등록
 	int registUser(UserVo userVo);
+
+	//사용자 삭제
+	int deleteUser(String userid);
 }
 
 

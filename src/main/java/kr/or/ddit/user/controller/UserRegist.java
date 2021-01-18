@@ -57,15 +57,15 @@ public class UserRegist extends HttpServlet{
 		
 		UserVo userVo = new UserVo(userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode);
 		
-		int updateCnt = 0;
+		int insertCnt = 0;
 		try {
-			updateCnt = userService.registUser(userVo);			
+			insertCnt = userService.registUser(userVo);			
 		}catch(Exception e) {
-			updateCnt = 0;
+			insertCnt = 0;
 		}
 		
 		//사용자 등록이 정상적으로 된 경우	==> 사용자 페이징 리스트로 이동(1페이지)
-		if(updateCnt == 1) {
+		if(insertCnt == 1) {
 			resp.sendRedirect(req.getContextPath()+"/pagingUser");
 		}
 		//사용자 수정이 비정상적으로 된 경우 ==> 사용자 등록 페이지로 이동(사용자가 입력한 값 설정)

@@ -24,7 +24,7 @@ $(function(){
 <%--select box로 설정한 언어로 GREETING, LANG 값을 표현
     select box는 사용자가 설정한 언어 값으로 선택이 되어있게 설정 --%>
 param :  [${param.lang }]    
-<form action="${pageContext.request.contextPath }/jstl/selectLang.jsp">
+<form action="${cp }/jstl/selectLang.jsp">
 	<select name="lang">
 		<option value="ko" >한국어</option>
 		<option value="en" >english</option>

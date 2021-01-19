@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath }/css/signin.css" rel="stylesheet">
+    <link href="${cp }/css/signin.css" rel="stylesheet">
 	
 	<script>
 		//html 문서 로딩이 완료 되고 나서 실행 되는 코드
@@ -58,10 +58,10 @@
   <body>
 
     <div class="container">
-		UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %>
+		cp : ${cp } / <%=application.getAttribute("cp") %>
 		
       <form class="form-signin" id="frm"
-      		action="${pageContext.request.contextPath }/loginController" method="post">
+      		action="${cp }/loginController" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="userid" class="sr-only">userid</label>
         <input type="text" id="userid" class="form-control" 

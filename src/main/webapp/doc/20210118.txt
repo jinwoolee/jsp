@@ -56,6 +56,36 @@ out
 
 
 
+FILTER 
+요청을 처리할 servlet, jsp로 요청이 전달되기전에 사전에 먼저 요청을 받아
+공통적인 작업을 처리할 수 있는 객체
+
+1. 필터는 여러개 등록할 수 있다
+   . 요청 - 필터1- 필터2-..... - 최종적으로 해당 요청을 처리할 servlet, jsp로 요청이 전달
+     servlet, jsp에 의해 응답이 생성되면 거쳐온 필터의 역순으로 응답이 전달된다
+     servlet, jsp ==> 필터2 - 필터1 --- 최종 응답 전달
+2. 필터 생성방법
+	. Filter 인터페이스 구현
+	  . init, destroy, doFilter
+3. 필터 등록
+	web.xml 등록
+	@WebFilter
+		        
+
+실습 : 요청 URI 통계 필터
+	request.getRequestURI()
+	Map<String, Ineteger> map;
+	key - uri, 값은 - 요청 횟수
+	
+	   /login.jsp, 5
+	   /pagingUser, 15
+	  
+	요청 통계자료를 담은 map 객체를 다른 servlet, jsp에서도 활용하려면??? application Scope에 저장
+
+
+
+
+
 
 
 

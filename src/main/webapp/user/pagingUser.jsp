@@ -66,7 +66,7 @@ $(function(){
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
-								<c:forEach items="userList" var="user">
+								<c:forEach items="${userList }" var="user">
 									<tr class="user" data-userid="${user.userid }">
 										<td>${user.userid }</td>
 										<td>${user.usernm }</td>											

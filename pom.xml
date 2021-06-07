@@ -12,7 +12,7 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 
 		<!-- Logging -->
-		<version.logback>1.1.2</version.logback>
+		<version.logback>1.2.0</version.logback>
 
 		<!-- Jackson -->
 		<version.jackson>2.8.4</version.jackson>
